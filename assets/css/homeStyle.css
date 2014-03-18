@@ -1,0 +1,32 @@
+table#tblInsertForm
+{
+    margin-top: 50px;
+}
+
+body
+{
+    font-family: "Trebuchet MS";
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;border-width:1px;border-style:solid;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-yefz{font-weight:bold;font-family:Arial, Helvetica, sans-serif !important;;text-align:right}
+.tg .tg-gcqo{background-color:#f9f9f9;font-weight:bold;font-family:Arial, Helvetica, sans-serif !important;;text-align:right}
+.tg .tg-efv9{font-family:Arial, Helvetica, sans-serif !important;}
+.tg .tg-hfjq{background-color:#f9f9f9;font-family:Arial, Helvetica, sans-serif !important;}
+.tg .tg-431l{font-family:Arial, Helvetica, sans-serif !important;;text-align:center}
+.tg .tg-baox{font-weight:bold;font-size:20px;font-family:Arial, Helvetica, sans-serif !important;;text-align:center}
+.tg .tg-34fq{font-weight:bold;text-align:right}
+.tg .tg-icr7{font-style:italic;font-size:14px;color:#000000}
+
+h1#headerTitle
+{
+    text-align: center;
+    font-size: 30px;
+}
+
+a#linkLogout
+{
+    text-align: right;
+}
