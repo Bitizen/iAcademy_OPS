@@ -72,7 +72,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'application/iAcademy_OPS/';
+	$application_folder = 'application';
 
 /*
  * --------------------------------------------------------------------

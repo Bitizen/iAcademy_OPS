@@ -1,0 +1,12 @@
+table#tblInsertForm
+{
+	margin-top: 50px;
+}
+
+iframe.hide{
+	visibility:hidden;
+}
+
+body{
+	font-family: Arial;
+}
