@@ -23,7 +23,7 @@ function __autoload($classname) {
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:1337/iOPS_ion/';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------

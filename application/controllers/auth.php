@@ -25,40 +25,20 @@ class Auth extends CI_Controller {
 	function index()
 	{
 
-		if (!$this->ion_auth->logged_in())
-		{
-			//redirect them to the login page
-			redirect('auth/login', 'refresh');
+		if (!$this->ion_auth->logged_in()){
+			redirect('/', 'refresh');
 		}
-		/*elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
-		{
-			//redirect them to the home page because they must be an administrator to view this
-			return show_error('You must be an administrator to view this page.');
-		}*/
-		else
-		{
-		
-			//set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			//list the users
-			$this->data['users'] = $this->ion_auth->users()->result();
-			foreach ($this->data['users'] as $k => $user)
-			{
-				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-			}
+		redirect('user_controller');
 
-		}
-			//redirect them to the their respective home page
-			redirect('home', 'refresh');
 
-			//$this->_render_page('auth/index', $this->data);
-		
+
 	}
 
 	//log the user in
 	function login()
 	{
+
 		$this->data['title'] = "Login";
 
 		//validate form input
@@ -102,7 +82,8 @@ class Auth extends CI_Controller {
 				'type' => 'password',
 			);
 
-			$this->_render_page('login', $this->data);
+			$this->load->view('public/header.php');
+			$this->_render_page('public/login', $this->data);
 		}
 	}
 
@@ -164,8 +145,10 @@ class Auth extends CI_Controller {
 				'value' => $user->id,
 			);
 
-			//render
-			$this->_render_page('auth/change_password', $this->data);
+			
+			$this->load->view('public/header.php');
+
+			$this->_render_page('user/change_password', $this->data);
 		}
 		else
 		{
@@ -283,7 +266,9 @@ class Auth extends CI_Controller {
 				$this->data['csrf'] = $this->_get_csrf_nonce();
 				$this->data['code'] = $code;
 
-				//render
+				
+				$this->load->view('bootstrap/header.php');
+
 				$this->_render_page('auth/reset_password', $this->data);
 			}
 			else
@@ -482,7 +467,9 @@ class Auth extends CI_Controller {
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
 
-			$this->_render_page('auth/create_user', $this->data);
+			$this->load->view('admin/header.php');
+
+			$this->_render_page('admin/create_user', $this->data);
 		}
 	}
 
@@ -503,8 +490,8 @@ class Auth extends CI_Controller {
 		//validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('phone', $this->lang->line('edit_user_validation_phone_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'required|xss_clean');
+		//$this->form_validation->set_rules('phone', $this->lang->line('edit_user_validation_phone_label'), 'required|xss_clean');
+		//$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('groups', $this->lang->line('edit_user_validation_groups_label'), 'xss_clean');
 
 		if (isset($_POST) && !empty($_POST))
@@ -589,13 +576,13 @@ class Auth extends CI_Controller {
 			'name'  => 'company',
 			'id'    => 'company',
 			'type'  => 'text',
-			'value' => $this->form_validation->set_value('company', $user->company),
+			//'value' => $this->form_validation->set_value('company', $user->company),
 		);
 		$this->data['phone'] = array(
 			'name'  => 'phone',
 			'id'    => 'phone',
 			'type'  => 'text',
-			'value' => $this->form_validation->set_value('phone', $user->phone),
+			//'value' => $this->form_validation->set_value('phone', $user->phone),
 		);
 		$this->data['password'] = array(
 			'name' => 'password',
@@ -608,7 +595,9 @@ class Auth extends CI_Controller {
 			'type' => 'password'
 		);
 
-		$this->_render_page('auth/edit_user', $this->data);
+		$this->load->view('bootstrap/header.php');
+
+		$this->_render_page('admin/edit_user', $this->data);
 	}
 
 	// create a new group

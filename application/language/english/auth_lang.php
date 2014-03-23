@@ -22,8 +22,8 @@ $lang['error_csrf'] = 'This form post did not pass our security checks.';
 
 // Login
 $lang['login_heading']         = 'Login';
-$lang['login_subheading']      = 'Please login with your username and password below.';
-$lang['login_identity_label']  = 'Username:';
+$lang['login_subheading']      = 'Please login with your email and password below.';
+$lang['login_identity_label']  = 'Email:';
 $lang['login_password_label']  = 'Password:';
 $lang['login_remember_label']  = 'Remember Me:';
 $lang['login_submit_btn']      = 'Login';
@@ -42,6 +42,12 @@ $lang['index_active_link']       = 'Active';
 $lang['index_inactive_link']     = 'Inactive';
 $lang['index_create_user_link']  = 'Create a new user';
 $lang['index_create_group_link'] = 'Create a new group';
+// Dice
+$lang['index_reset_pw_link']     = 'Reset Password';
+
+
+
+
 
 // Deactivate User
 $lang['deactivate_heading']                  = 'Deactivate User';
@@ -95,6 +101,9 @@ $lang['edit_user_validation_company_label']          = 'Company Name';
 $lang['edit_user_validation_groups_label']           = 'Groups';
 $lang['edit_user_validation_password_label']         = 'Password';
 $lang['edit_user_validation_password_confirm_label'] = 'Password Confirmation';
+
+
+
 
 // Create Group
 $lang['create_group_title']                  = 'Create Group';
