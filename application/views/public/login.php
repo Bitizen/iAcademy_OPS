@@ -1,3 +1,4 @@
+<div class="col-lg-10 col-lg-offset-1">
 <h1><?php echo lang('login_heading');?></h1>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -25,3 +26,4 @@
 <?php echo form_close();?>
 
 <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+</div>

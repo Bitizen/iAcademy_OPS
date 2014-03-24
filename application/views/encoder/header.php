@@ -32,56 +32,38 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="<?php echo base_url();?>index.php/administrator_controller">iACADEMY Online Placement System</a>
+    <a class="navbar-brand" href="<?php echo base_url();?>index.php/encoder_controller">iACADEMY Online Placement System</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewMyAccount">My Account</a></li>
-      <li class="dropdown">
-        <a href="<?php echo base_url();?>index.php/administrator_controller" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewUsers">View Users</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Manage Users</li>
-          <li><a href="<?php echo base_url();?>index.php/auth/create_user">Add User</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employers <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewEmployers">View Employers</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Manage Employers</li>
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/addEmployer">Add Employer</a></li>
-        </ul>
-      </li>
+      <li><a href="<?php echo base_url();?>index.php/encoder_controller">My Account</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Alumni <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewAlumni">View Alumni</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/viewAlumni">View Alumni</a></li>
           <li class="divider"></li>
           <li class="dropdown-header">Manage Alumni</li>
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddAlumnusView">Add Alumnus</a></li>
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddAlumniByBulk">Add Alumni By Bulk</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/loadAddAlumnusView">Add Alumnus</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/loadAddAlumniByBulk">Add Alumni By Bulk</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Interns <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewInterns">View Interns</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/viewInterns">View Interns</a></li>
           <li class="divider"></li>
           <li class="dropdown-header">Manage Interns</li>
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddInternView">Add Intern</a></li>
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddInternsByBulk">Add Interns By Bulk</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/loadAddInternView">Add Intern</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/loadAddInternsByBulk">Add Interns By Bulk</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Careers <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewCareers">View Careers</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/viewCareers">View Careers</a></li>
           <li class="divider"></li>
           <li class="dropdown-header">Manage Careers</li>
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/addCareer">Add Job Opening</a></li>
+          <li><a href="<?php echo base_url();?>index.php/encoder_controller/addCareer">Add Job Opening</a></li>
         </ul>
       </li>
     </ul>

@@ -81,6 +81,7 @@ class Employer_Model extends CI_Model {
 
 		$data = $this->db->query($sql, $employer);
 		$this->db->reconnect();
+
 		$result['first'] = $data->row(0);
 		$result['second'] = $data->row(1);
 		$result['third'] = $data->row(2);
@@ -97,6 +98,7 @@ class Employer_Model extends CI_Model {
 
 		$data = $this->db->query($sql, $parameter);
 		$this->db->reconnect();
+		
 		$result['first'] = $data->row(0);
 		$result['second'] = $data->row(1);
 		$result['third'] = $data->row(2);

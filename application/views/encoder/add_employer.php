@@ -1,14 +1,8 @@
-
-  <div id="viewEmployerDiv" class="col-lg-10 col-lg-offset-1">
+ADD EMPLOYER-----
+  <div id="viewEmployerDiv">
     <legend>Employer Profile <img id="editMyProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit Company Profile" width="25" height="25" /></legend>
     
-     <ul class="nav nav-tabs" style="margin-bottom: 15px;">
-      <li class="active"><a href="#company_details" data-toggle="tab">Company Details</a></li>
-      <li><a href="#representatives" data-toggle="tab">Representatives</a></li>
-    </ul>
-    <div id="myTabContent" class="tab-content">
     <!-- COMPANY DETAILS -->
-    <div class="tab-pane fade active in" id="company_details">
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Company Details</h3></div>
       <div class="panel-body">
@@ -42,7 +36,7 @@
                   }
               ?>
               <?php //if(strlen($uploadErrorSEC != 0)) echo $uploadErrorSEC;?>
-              <?php echo form_open_multipart('administrator_controller/uploadSECRegistration');?>
+              <?php echo form_open_multipart('encoder_controller/uploadSECRegistration');?>
                 <input type="file" name="userfile" size="20" />
                 <br/>
                 <input type="submit" class="btn btn-default" value="Upload SEC Registration" />
@@ -152,11 +146,11 @@
         </table>
       </div>
     </div>
-    </div>
     <!-- END COMPANY DETAILS-->
 
+    <br/>
+
     <!-- PRIMAY CONTACY -->
-    <div class="tab-pane fade" id="representatives">
     <?php if($myEmployerContacts['first']->first_name != null || $myEmployerContacts['first']->first_name != "") { ?>
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Primary Contact</h3></div>
@@ -263,7 +257,7 @@
     </div>
     <?php } ?>
     <!-- END TERTIARY CONTACT-->
-  </div>
+
   </div>
 
 

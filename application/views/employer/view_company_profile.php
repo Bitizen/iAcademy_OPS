@@ -155,8 +155,8 @@
     </div>
     <!-- END COMPANY DETAILS-->
 
+    <!-- PRIMARY CONTACY -->
     <div class="tab-pane fade" id="representatives">
-      <!-- PRIMAY CONTACY -->
       <?php if($myEmployerContacts['first']->first_name != null || $myEmployerContacts['first']->first_name != "") { ?>
       <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Primary Contact</h3></div>

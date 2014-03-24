@@ -7,11 +7,22 @@ class User_Controller extends MY_Controller {
 		if ($this->ion_auth->in_group('admin')){
 			$this->load->view('admin/header');
 			$this->load->view('admin/index');	
-		}else if ($this->ion_auth->in_group('employer')){
+		} else if ($this->ion_auth->in_group('employer')){
 			$this->load->view('employer/header');
 			$this->load->view('employer/index');	
-		}else if ($this->ion_auth->in_group('intern')){
-			redirect('interncontroller');
+		} else if ($this->ion_auth->in_group('encoder')){
+			$this->load->model('encoder_model');
+			$this->load->helper('form');
+			$data['user'] = $this->encoder_model->viewMyAccount();	
+
+			$this->load->view('encoder/header.php');
+			$this->load->view('encoder/index', $data);
+		} else if ($this->ion_auth->in_group('alumnus')){
+			$this->load->view('alumnus/header');
+			$this->load->view('alumnus/index');	
+		} else if ($this->ion_auth->in_group('intern')){
+			$this->load->view('intern/header');
+			$this->load->view('intern/index');	
 		}
 	}
 

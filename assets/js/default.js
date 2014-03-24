@@ -17,6 +17,14 @@ $(document).ready(function() {
       format: "yyyy-mm-dd"
   });
 
+  $('#editInternProfile').click(function() {
+    $('#dialog-edit-intern-profile').modal();  
+  }); 
+
+  $('#editAlumnusProfile').click(function() {
+    $('#dialog-edit-alumnus-profile').modal();  
+  }); 
+
   $('#editMyProfile').click(function() {
     $('#dialog-edit-company-profile').modal();  
   }); 
