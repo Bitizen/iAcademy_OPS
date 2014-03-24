@@ -9,7 +9,7 @@
 		$('#example').dataTable( {
 			"bProcessing": true,
 			"bServerSide": true,
-			"sAjaxSource": "<?= base_url();?>index.php/administrator_controller/getAlumnusList",
+			"sAjaxSource": "<?= base_url();?>index.php/employer_controller/getAlumnusList",
 			"sServerMethod": "POST"
 		} );
 	} );

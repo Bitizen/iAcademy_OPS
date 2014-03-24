@@ -1,75 +1,5 @@
-<!doctype html>
-<html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>iAcademy Online Placement System</title>
-  
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/default.js"></script>
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" media="all"/>
-  
-  <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
-  <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-
-<!-- NAVIGATION BAR -->
-<div class="navbar navbar-default">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">iACADEMY Online Placement System</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav">
-        
-      <li class="dropdown">
-        <a href="<?php echo base_url();?>index.php/admincontroller/index" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">View Users</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Manage Users</li>
-          <li><a href="#">Add User</a></li>
-          <li><a href="#">Update User</a></li>
-          <li><a href="#">Disable User</a></li>
-        </ul>
-      </li>
-      <li class="active"><a href="#">My Account</a></li>
-      <li><a href="<?php echo base_url();?>index.php/employer_controller/viewEmployer">Employer</a></li>
-      <li><a href="#">Alumni</a></li>
-      <li><a href="#">Interns</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Careers <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">View Careers</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Manage Careers</li>
-          <li><a href="#">Add Job Opening</a></li>
-          <li><a href="#">Update Job Opening</a></li>
-          <li><a href="#">Remove Job Opening</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="<?php echo base_url();?>index.php/auth/logout">[<?php echo $this->ion_auth->user()->row()->username; ?>]Logout</a></li>
-    </ul>
-  </div>
-</div>
-<!-- END NAVIGATION BAR -->
-
-  <div id="empViewMyProfileDiv">
+  <div id="empViewMyProfileDiv" class="col-lg-10 col-lg-offset-1">
     <legend>My Account <img id="editMyProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit Company Profile" width="25" height="25" /></legend>
 
     <!-- PERSONAL INFORMATION -->
@@ -117,7 +47,7 @@
     <!-- END CONTACT DETAILS -->
 
     <!-- UPDATE MY PROFILE DIALOG -->
-    <form class="form-horizontal" action="<?php echo base_url();?>index.php/employer_controller/updateRepresentative" method="POST">
+    <form class="form-horizontal" action="<?php echo base_url();?>index.php/employer_controller/updateMyRepresentative" method="POST">
     <fieldset>
       
     <div class="modal" id="dialog-edit-company-profile" >

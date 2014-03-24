@@ -5,15 +5,11 @@ class User_Controller extends MY_Controller {
 	// Redirects users to controllers based on access level
 	function index(){
 		if ($this->ion_auth->in_group('admin')){
-			//$this->load->model('administrator_model');
-			//$this->load->helper('form');
-			//$data['user'] = $this->administrator_model->viewMyAccount();	
-
 			$this->load->view('admin/header');
 			$this->load->view('admin/index');	
-			//$this->load->view('admin/index', $data);	
 		}else if ($this->ion_auth->in_group('employer')){
-			redirect('employer_controller');
+			$this->load->view('employer/header');
+			$this->load->view('employer/index');	
 		}else if ($this->ion_auth->in_group('intern')){
 			redirect('interncontroller');
 		}

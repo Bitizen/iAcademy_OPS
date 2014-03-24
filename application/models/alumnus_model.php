@@ -1,6 +1,6 @@
 
 <?php
-class Intern_model extends CI_Model {
+class Alumnus_Model extends CI_Model {
 		
 	 function __construct() {
         parent::__construct();
@@ -11,6 +11,19 @@ class Intern_model extends CI_Model {
 		$this-> datatables -> select('studentID, firstName, lastName, middleName, landline, mobile, 
 				   emailAddress, courseID, statusID, currentEmployerID');
 		$this-> datatables -> from('iops.students');
+		$this -> datatables -> where('iops.students.isGraduate = ', '1');
+		$this-> datatables-> add_column('edit', '<a href="viewAlumnus?sID=$1">VIEW</a>', 'studentID');
+		$this-> datatables -> unset_column('studentID');
+		echo $this->datatables->generate();
+	}
+
+	function viewVerifiedAlumni() {
+		$this -> load -> library('Datatables');
+		$this-> datatables -> select('studentID, firstName, lastName, middleName, landline, mobile, 
+				   emailAddress, courseID, statusID, currentEmployerID');
+		$this-> datatables -> from('iops.students');
+		$this -> datatables -> where('iops.students.isGraduate = ', '1');
+		$this -> datatables -> where('iops.students.isVerified = ', '1');
 		$this-> datatables-> add_column('edit', '<a href="viewAlumnus?sID=$1">VIEW</a>', 'studentID');
 		$this-> datatables -> unset_column('studentID');
 		echo $this->datatables->generate();

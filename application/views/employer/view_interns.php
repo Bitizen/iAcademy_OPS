@@ -1,3 +1,4 @@
+
 <style type="text/css" title="currentStyle">
 	@import "<?= base_url();?>assets/css/demo_page.css";
 	@import "<?= base_url();?>assets/css/demo_table.css";
@@ -9,7 +10,7 @@
 		$('#example').dataTable( {
 			"bProcessing": true,
 			"bServerSide": true,
-			"sAjaxSource": "<?= base_url();?>index.php/administrator_controller/getAlumnusList",
+			"sAjaxSource": "<?= base_url();?>index.php/employer_controller/getInternList",
 			"sServerMethod": "POST"
 		} );
 	} );
@@ -17,7 +18,7 @@
 
 <?php $courses = unserialize (COURSE_LIST); ?>
 	<div id="viewUserListDiv" class="col-lg-10 col-lg-offset-1">
-	  <legend>Alumni</legend>
+	  <legend>Interns</legend>
 		<div id="dt_example">
 		<div id="container">
 			<div id="dynamic">

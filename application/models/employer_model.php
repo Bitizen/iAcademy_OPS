@@ -6,7 +6,7 @@ class Employer_Model extends CI_Model {
         parent::__construct();
     }
 
-	function viewRepresentative() {
+	function viewMyRepresentative() {
 
   		$sql = "CALL viewRepresentative(?)";
 
@@ -73,9 +73,24 @@ class Employer_Model extends CI_Model {
 		return $result;
 	}
 
+
 	function viewEmployerContacts() {
 
   		$sql = "CALL viewEmployerContacts(?)";
+  		$employer = $this->input->get('eID', TRUE);
+
+		$data = $this->db->query($sql, $employer);
+		$this->db->reconnect();
+		$result['first'] = $data->row(0);
+		$result['second'] = $data->row(1);
+		$result['third'] = $data->row(2);
+
+		return $result;
+	}
+
+	function viewMyEmployerContacts() {
+
+  		$sql = "CALL viewMyEmployerContacts(?)";
 
 		$user = $this->ion_auth->user()->row();
 		$parameter = $user->username;
@@ -106,6 +121,27 @@ class Employer_Model extends CI_Model {
 	function updateRepresentative() {
 		
 		$sql = "CALL updateRepresentative(?,?,?,?,?,?,?,?,?)";
+
+  		$representative = $this->input->get('uID', TRUE);
+
+		$parameters = array(
+			'uID' => $representative
+			, 'firstName' => $this->input->post('iFirstName')
+			, 'middleName' => $this->input->post('iMiddleName')
+			, 'lastName' => $this->input->post('iLastName')
+			, 'position' => $this->input->post('iPosition')
+			, 'telephone' => $this->input->post('iLandline')
+			, 'mobile' => $this->input->post('iMobile')
+			, 'email' => $this->input->post('iEmail')
+			, 'dateOfBirth' => $this->input->post('iDateOfBirth')
+		);
+
+		$data = $this->db->query($sql, $parameters);
+	}
+
+	function updateMyRepresentative() {
+		
+		$sql = "CALL updateMyRepresentative(?,?,?,?,?,?,?,?,?)";
 
 		$user = $this->ion_auth->user()->row();
 		$representative = $user->username;

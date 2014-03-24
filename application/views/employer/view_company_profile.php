@@ -1,89 +1,14 @@
-<!doctype html>
-<html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>iAcademy Online Placement System</title>
-  
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/default.js"></script>
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" media="all"/>
-  
-  <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
-  <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-
-  <link href="<?php echo base_url();?>assets/css/datepicker.css" rel="stylesheet">
-  <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-
-</head>
-<body>
-
-
-<!-- NAVIGATION BAR -->
-<div class="navbar navbar-default">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">iACADEMY Online Placement System</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav">
-          
-      <li class="dropdown">
-        <a href="<?php echo base_url();?>index.php/admincontroller/index" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">View Users</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Manage Users</li>
-          <li><a href="#">Add User</a></li>
-          <li><a href="#">Update User</a></li>
-          <li><a href="#">Disable User</a></li>
-        </ul>
-      </li>
-      <li><a href="<?php echo base_url();?>index.php/employer_controller/viewRepresentative">My Account</a></li>
-      <li class="active"><a href="#">Employer</a></li>
-      <li><a href="#">Alumni</a></li>
-      <li><a href="#">Interns</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Careers <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">View Careers</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Manage Careers</li>
-          <li><a href="#">Add Job Opening</a></li>
-          <li><a href="#">Update Job Opening</a></li>
-          <li><a href="#">Remove Job Opening</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="<?php echo base_url();?>index.php/auth/logout">[<?php echo $this->ion_auth->user()->row()->username; ?>]Logout</a></li>
-    </ul>
-  </div>
-</div>
-<!-- END NAVIGATION BAR -->
-    <!--
-    <?php //echo $myEmployer->companyLogoFilePath;?>
-    <?php
-      //$image = 'new.png'; 
-      //$content = file_get_contents($image); 
-      //header('Content-Type: image/jpeg');
-      //echo $content; exit();
-    ?>
-    -->
-  <div id="empViewMyProfileDiv">
+  <div id="empViewMyProfileDiv" class="col-lg-10 col-lg-offset-1">
     <legend>Employer Profile <img id="editMyProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit Company Profile" width="25" height="25" /></legend>
-    
+     
+     <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+      <li class="active"><a href="#company_details" data-toggle="tab">Company Details</a></li>
+      <li><a href="#representatives" data-toggle="tab">Representatives</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
     <!-- COMPANY DETAILS -->
+    <div class="tab-pane fade active in" id="company_details">
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Company Details</h3></div>
       <div class="panel-body">
@@ -227,13 +152,13 @@
         </table>
       </div>
     </div>
+    </div>
     <!-- END COMPANY DETAILS-->
 
-    <br/>
-
-    <!-- PRIMAY CONTACY -->
-    <?php if($myEmployerContacts['first']->first_name != null || $myEmployerContacts['first']->first_name != "") { ?>
-    <div class="panel panel-info">
+    <div class="tab-pane fade" id="representatives">
+      <!-- PRIMAY CONTACY -->
+      <?php if($myEmployerContacts['first']->first_name != null || $myEmployerContacts['first']->first_name != "") { ?>
+      <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Primary Contact</h3></div>
       <div class="panel-body">
         <table class="tg">
@@ -338,7 +263,7 @@
     </div>
     <?php } ?>
     <!-- END TERTIARY CONTACT-->
-
+  </div>
   </div>
 
 
@@ -355,7 +280,7 @@
       <strong>Note : </strong> All form fields are required.</div><br/>
  
       <!-- COMPANY DETAILS -->
-      <form class="form-horizontal" action="<?php echo base_url();?>index.php/employer_controller/updateEmployer" method="POST">
+      <form class="form-horizontal" action="<?php echo base_url();?>index.php/employer_controller/updateMyEmployer" method="POST">
         <fieldset>
         <div class="panel panel-primary">
           <div class="panel-heading">
