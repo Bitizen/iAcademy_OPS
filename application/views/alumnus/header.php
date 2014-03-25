@@ -32,23 +32,14 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="<?php echo base_url();?>index.php/employer_controller">iACADEMY Online Placement System</a>
+    <a class="navbar-brand" href="<?php echo base_url();?>index.php/alumnus_controller">iACADEMY Online Placement System</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="<?php echo base_url();?>index.php/employer_controller/viewMyAccount">My Account</a></li>
-      <li><a href="<?php echo base_url();?>index.php/employer_controller/viewMyEmployer">Employer</a></li>
-      <li><a href="<?php echo base_url();?>index.php/employer_controller/viewAlumni">Alumni</a></li>
-      <li><a href="<?php echo base_url();?>index.php/employer_controller/viewInterns">Interns</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Careers <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">View Careers</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Manage Careers</li>
-          <li><a href="#">Add Job Opening</a></li>
-        </ul>
-      </li>
+      <li><a href="<?php echo base_url();?>index.php/alumnus_controller/viewMyAccount">My Account</a></li>
+      <li><a href="<?php echo base_url();?>index.php/alumnus_controller/viewMyEmployer">Employer</a></li>
+      <li><a href="<?php echo base_url();?>index.php/alumnus_controller/viewInterns">Alumni</a></li>
+      <li><a href="<?php echo base_url();?>index.php/alumnus_controller/viewCareers">Careers</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?php echo base_url();?>index.php/auth/logout">[<?php echo $this->ion_auth->user()->row()->username; ?>] Logout</a></li>

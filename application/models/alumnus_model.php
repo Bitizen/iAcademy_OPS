@@ -47,7 +47,7 @@ class Alumnus_Model extends CI_Model {
 
 		$data = $this->db->query($sql);
 		$this->db->reconnect();
-		$result = $data->result_array();
+		$result = $data->result();
 
 		return $result;
 	}
@@ -59,7 +59,7 @@ class Alumnus_Model extends CI_Model {
   		$alumnus = $this->input->get('sID', TRUE);
 
 		$parameters = array(
-			'studentID' => $intern
+			'studentID' => $alumnus
 			, 'firstName' => $this->input->post('iFirstName')
 			, 'middleName' => $this->input->post('iMiddleName')
 			, 'lastName' => $this->input->post('iLastName')
@@ -73,7 +73,7 @@ class Alumnus_Model extends CI_Model {
 			, 'isVerified' => $this->input->post('iIsVerified')
 		);
 
-		$data = $this->db->query($sql, $alumnus);
+		$data = $this->db->query($sql, $parameters);
 	}
 
     function viewAnIntern($int){

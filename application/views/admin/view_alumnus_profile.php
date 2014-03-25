@@ -1,6 +1,6 @@
 
   <div id="viewInternProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>Intern Profile <img id="editAlumnusProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit Intern Profile" width="25" height="25" /></legend>
+    <legend>Alumnus Profile <img id="editAlumnusProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit Intern Profile" width="25" height="25" /></legend>
 
     <!-- PERSONAL INFORMATION -->
     <div class="panel panel-info">
@@ -202,11 +202,11 @@
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputCompany" class="control-label">Current Company</label> 
+              <label for="inputCompany" class="control-label">Current Company</label>
               <select id="iCurrentCompanyID" name="iCurrentCompanyID" class="editbox form-control">
-              <?php foreach ($myCompanyNames as $company) { ?><? echo $company->companyName;?>
+              <?php foreach ($myCompanyNames as $company) { ?>
                 <option value = <? echo $company->employerID; ?> <? if ($myAlumnus->currentEmployerID == $company->employerID) echo "selected='selected'";?>> <? echo $company->companyName;?> </option>
-              <? } ?>
+              <?php } ?>
               </select>
               </div>
             </div>

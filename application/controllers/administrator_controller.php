@@ -88,6 +88,7 @@ class Administrator_Controller extends MY_Controller {
         $data['myCompanyNames'] = $this->intern_model->getAllCompanyNames();
 
 		$this->load->helper('form');
+		$this->load->view('admin/header.php');
 		$this->load->view('admin/view_intern_profile', $data);
 	}
 
@@ -400,6 +401,7 @@ class Administrator_Controller extends MY_Controller {
         $data['myCompanyNames'] = $this->alumnus_model->getAllCompanyNames();
 
 		$this->load->helper('form');
+		$this->load->view('admin/header.php');
 		$this->load->view('admin/view_alumnus_profile', $data);
 	}
 

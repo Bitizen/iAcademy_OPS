@@ -65,7 +65,7 @@ class Intern_Model extends CI_Model {
 
 		$data = $this -> db -> query($sql);
 		$this -> db -> reconnect();
-		$result = $data -> result_array();
+		$result = $data -> result();
 
 		return $result;
 	}
@@ -91,7 +91,7 @@ class Intern_Model extends CI_Model {
 			, 'isVerified' => $this -> input -> post('iIsVerified')
 		);
 
-		$data = $this -> db -> query($sql, $intern);
+		$data = $this -> db -> query($sql, $parameters);
 	}
 
     function viewAnIntern($int){
