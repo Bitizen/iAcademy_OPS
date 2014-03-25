@@ -153,6 +153,12 @@ class Administrator_Controller extends MY_Controller {
 		}
 	}
 
+	// Fetches New Grad List
+	function getNewGradList(){
+		$this->load->model('intern_model');
+		$this->intern_model->viewNewGrads();
+	}
+
 	// View Employers
 	function viewEmployers() {
 		$this->load->view('admin/header.php');
@@ -464,6 +470,22 @@ class Administrator_Controller extends MY_Controller {
 	           $this->db->insert('students');
            }
 		}
+	}
+
+
+	// Load Update Intern To Alumnus Page
+	function updateInternToAlumnus(){
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/update_intern_to_alumnus');  
+	}
+
+	// Update Interns To Alumni
+	function updateInternsToAlumni(){
+		$this->load->model('intern_model');
+		$this->intern_model->updateInternsToAlumni();
+
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/update_intern_to_alumnus');  
 	}
 
 	////////////////////////////////////////////////////////////

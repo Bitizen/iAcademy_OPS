@@ -73,6 +73,7 @@
           <li class="dropdown-header">Manage Interns</li>
           <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddInternView">Add Intern</a></li>
           <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddInternsByBulk">Add Interns By Bulk</a></li>
+          <li><a href="<?php echo base_url();?>index.php/administrator_controller/updateInternToAlumnus">Update Intern Status to Alumnus</a></li>
         </ul>
       </li>
       <li class="dropdown">

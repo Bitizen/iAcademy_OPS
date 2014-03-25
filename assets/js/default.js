@@ -41,4 +41,5 @@ $(document).ready(function() {
           $('#iNewIndustryType').hide();
       }
   });
+
 }); // end of onReady function
