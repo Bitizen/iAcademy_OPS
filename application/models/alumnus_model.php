@@ -29,6 +29,37 @@ class Alumnus_Model extends CI_Model {
 		echo $this->datatables->generate();
 	}
 
+	// View My Account Details
+	function viewMyAccount() {
+		$user = $this->ion_auth->user()->row();
+		$username = $user->username;
+		$sql = "CALL viewMyAccount(?)";
+
+		$data = $this->db->query($sql, $username);
+		$this->db->reconnect();
+		$row = $data->row();
+
+		return $row;
+	}
+
+	// Update My Personal Details
+	function updateUser() {
+		
+		$user = $this->ion_auth->user()->row();
+		$username = $user->username;
+
+		$sql = "CALL updateContactDetails(?,?,?,?)";
+
+		$parameters = array(
+			'username'=> $username
+			, 'telephone' => $this->input->post('iLandline')
+			, 'mobile' => $this->input->post('iMobile')
+			, 'email' => $this->input->post('iEmail')
+		);
+
+		$data = $this->db->query($sql, $parameters);
+	}
+
 	function viewAlumnus() {
 
   		$sql = "CALL viewAlumnus(?)";
