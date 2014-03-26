@@ -69,7 +69,7 @@ class Intern_Model extends CI_Model {
 		$this->datatables->from('iops.students');
 		//$this-> datatables->join('iops.employers', 'employers.employerID = students.curretEmployerID', 'left');
 		$this->datatables->where('iops.students.isGraduate = ', '0');
-		$this->datatables->where('iops.students.yearGraduated = ', date("Y"));
+		//$this->datatables->where('iops.students.yearGraduated = ', date("Y"));
 		//$this->datatables->unset_column('studentID');
 		echo $this->datatables->generate();
 	}
@@ -145,12 +145,20 @@ class Intern_Model extends CI_Model {
 	function updateInternsToAlumni() {
 
 		$selected = $this->input->post('selected');
+		$year = $this->input->post('year');
+		$month = $this->input->post('month');
+		$term = $this->input->post('term');
 		//$decodedSelected = json_decode($selected);
 
-  		$sql = "CALL updateInternToAlumnus(?)";
+  		$sql = "CALL updateInternToAlumnus(?,?,?,?)";
     	foreach($selected as $student) {
 			//$this->db->update('iops.student', 1, array('studentID' => $student));
-			$data = $this->db->query($sql, $student);
+			$parameters = array(
+				'studentID' => $student
+				, 'year' => $year
+				, 'month' => $month
+				, 'term' => $term);
+			$data = $this->db->query($sql, $parameters);
 		}
 	}
 

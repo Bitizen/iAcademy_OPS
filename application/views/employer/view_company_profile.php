@@ -157,7 +157,7 @@
 
     <!-- PRIMARY CONTACY -->
     <div class="tab-pane fade" id="representatives">
-      <?php if($myEmployerContacts['first']->first_name != null || $myEmployerContacts['first']->first_name != "") { ?>
+    <?php if($myEmployerContacts['first']->first_name != null && $myEmployerContacts['first']->first_name != "") { ?>
       <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Primary Contact</h3></div>
       <div class="panel-body">
@@ -193,7 +193,9 @@
     <!-- END PRIMARY CONTACT-->
 
     <!-- SECONDARY CONTACY -->
-    <?php if($myEmployerContacts['second']->first_name != null || $myEmployerContacts['second']->first_name != "") {?>
+    <?php if($myEmployerContacts['second']->first_name != null && $myEmployerContacts['second']->first_name != ""
+          && ($myEmployerContacts['first']->first_name != $myEmployerContacts['second']->first_name
+          && $myEmployerContacts['first']->last_name != $myEmployerContacts['second']->last_name)) {?>
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Secondary Contact</h3></div>
       <div class="panel-body">
@@ -229,7 +231,9 @@
     <!-- END SECONDARY CONTACT-->
 
     <!-- TERTIARY CONTACY -->
-    <?php if($myEmployerContacts['third']->first_name != null || $myEmployerContacts['third']->first_name != "") {?>
+    <?php if($myEmployerContacts['third']->first_name != null && $myEmployerContacts['third']->first_name != ""
+          && ($myEmployerContacts['third']->first_name != $myEmployerContacts['second']->first_name
+          && $myEmployerContacts['third']->last_name != $myEmployerContacts['second']->last_name)) {?>
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Tertiary Contact</h3></div>
       <div class="panel-body">

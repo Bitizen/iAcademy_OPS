@@ -37,7 +37,7 @@
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
       <li><a href="<?php echo base_url();?>index.php/intern_controller/viewMyAccount">My Account</a></li>
-      <li><a href="<?php echo base_url();?>index.php/intern_controller/viewEmployers">Employer</a></li>
+      <li><a href="<?php echo base_url();?>index.php/intern_controller/viewEmployers">Employers</a></li>
       <li><a href="<?php echo base_url();?>index.php/intern_controller/viewInterns">Interns</a></li>
       <li><a href="<?php echo base_url();?>index.php/intern_controller/viewCareers">Careers</a></li>
     </ul>
