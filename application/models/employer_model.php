@@ -32,6 +32,56 @@ class Employer_Model extends CI_Model {
 		return $result;
 	}
 
+	function viewMyStudentEmployer() {
+
+  		$sql = "CALL viewMyStudentEmployer(?)";
+
+		$user = $this->ion_auth->user()->row();
+		$parameter = $user->username;
+
+		$data = $this->db->query($sql, $parameter);
+		$this->db->reconnect();
+		$result = $data->row();
+
+		return $result;
+	}
+
+	function viewMyStudentContacts() {
+
+		$user = $this->ion_auth->user()->row();
+		$parameter = $user->username;
+
+  		$sql1 = "CALL viewMyStudentEmployer(?)";
+		$data1 = $this->db->query($sql1, $parameter);
+		$this->db->reconnect();
+		$result1 = $data1->row(0);
+
+  		$sql = "CALL viewMyStudentContacts(?)";
+		$data = $this->db->query($sql, $result1->companyName);
+		$this->db->reconnect();
+		$result = $data->row();
+
+		return $result;
+	}
+
+	function viewAffiliatedInterns(){
+		$sql = "CALL viewAffiliatedInterns(?)";
+		$employer = $this->input->get('eID', TRUE);
+		$data = $this->db->query($sql, $employer);
+		$this->db->reconnect();
+		$result = $data->result();
+		return $data->result();
+	}
+
+	function viewAffiliatedEmployees(){
+		$sql = "CALL viewAffiliatedEmployees(?)";
+		$employer = $this->input->get('eID', TRUE);
+		$data = $this->db->query($sql, $employer);
+		$this->db->reconnect();
+		$result = $data->result();
+		return $data->result();
+	}	
+
 	function updateEmployer() {
 
 		$sql = "CALL updateEmployer(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -73,7 +123,6 @@ class Employer_Model extends CI_Model {
 		return $result;
 	}
 
-
 	function viewEmployerContacts() {
 
   		$sql = "CALL viewEmployerContacts(?)";
@@ -88,7 +137,7 @@ class Employer_Model extends CI_Model {
 
 		return $result;
 	}
-
+	
 	function viewMyEmployerContacts() {
 
   		$sql = "CALL viewMyEmployerContacts(?)";
@@ -195,51 +244,6 @@ class Employer_Model extends CI_Model {
 		$data = $this->db->query($sql, $parameters);
 	}
 
-	function createEmployer() {
-
-		$checkIfExists = "CALL checkIfEmpRecExists(?)";
-		$query = $this->db->query($checkIfExists, array('employerID' => $_POST['employerID']));
-		$this->db->reconnect();
-		
-		if ( sizeof($query->row_array()) == 0) {
-			$createStudProc = "CALL addEmployer (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			$result = $this->db->query( $createStudProc,
-				 array('employerID' => $_POST['employerID']
-					, 'firstName' => $_POST['firstName']
-					, 'lastName' => $_POST['lastName']
-					, 'middleName' => $_POST['middleName']
-					, 'landline' => $_POST['landline']
-					, 'mobile' => $_POST['mobile']
-					, 'emailAddress' => $_POST['emailAddress']
-					, 'address' => $_POST['address']
-					, 'contactDetailsLastUpdated' => date('Y-m-d H:i:s', now())
-					, 'yearGraduated' => $_POST['yearGraduated']
-					, 'monthGraduated' => $_POST['monthGraduated']
-					, 'termGraduated' => $_POST['termGraduated']
-					, 'courseID' => $_POST['courseID']
-					, 'statusID' => $_POST['statusID'] ));
-
-			$this->db->reconnect();
-			/*
-			$createStudProc = "CALL addStudentAsUser (?,?,?,?,?,?)";
-			$result = $this->db->query( $createStudProc,
-				 array(
-					 'first_name' => $_POST['firstName']
-					, 'last_name' => $_POST['lastName']
-					, 'middle_name' => $_POST['middleName']
-					, 'landline' => $_POST['landline']
-					, 'mobile' => $_POST['mobile']
-					, 'email' => $_POST['emailAddress']));	
-			*/
-		}
-		else {
-			echo "<script>
-			window.location.href='<?= echo base_url(); ?>index.php/administrator_controller/addEmployer';
-			alert('Student record already exists!');
-			</script>";
-        }
-	}
-
 	function getIndustryType($industryId) {
         //return ($active == 1)? 'image link 1' : 'image link 2';
         $industries = unserialize (INDUSTRY_LIST);
@@ -262,14 +266,34 @@ class Employer_Model extends CI_Model {
 		
 		$industries = unserialize (INDUSTRY_LIST);
 		$this -> load -> library('Datatables');
-		$this-> datatables -> select('employerID, companyName, industryType, completeMailingAddress, telephoneNumber, 
-				   faxNumber, website');	
+		$this-> datatables -> select('employerID
+			, companyName
+			, completeMailingAddress
+			, industryType
+			, industryPartner
+			');	
 		$this-> datatables -> from('iops.employers');
 		$this-> datatables-> add_column('edit', '<a href="viewEmployer?eID=$1">VIEW</a>', 'employerID');
 		$this-> datatables -> unset_column('employerID');
 		echo $this->datatables->generate();
 	}
-
+	
+	public function viewNoSECEmployers() {
+		
+		$industries = unserialize (INDUSTRY_LIST);
+		$this -> load -> library('Datatables');
+		$this-> datatables -> select('employerID
+			, companyName
+			, completeMailingAddress
+			, industryType
+			, industryPartner
+			');	
+		$this-> datatables -> from('iops.employers');
+		$this-> datatables -> where('employers.SECRegistrationFilePath =', '');
+		$this-> datatables-> add_column('edit', '<a href="viewEmployer?eID=$1">VIEW</a>', 'employerID');
+		$this-> datatables -> unset_column('employerID');
+		echo $this->datatables->generate();
+	}
 
 	public function generateReportForEmployers() {
 		$this->load->dbutil();			
@@ -290,5 +314,98 @@ class Employer_Model extends CI_Model {
 			redirect('home/getListOfEmployers', 'refresh');
 		}
 	}
+
+	// Add company to employers table
+	function createEmployer(){
+		$checkIfExists = "CALL checkIfEmpRecExists(?)";
+		$query = $this->db->query($checkIfExists, array('employerID' => $_POST['employerID']));
+		$this->db->reconnect();
+
+		if ( sizeof($query->row_array()) == 0) {
+			
+			$industry = ($this->input->post('iIndustryType') == "NEW")? $this->input->post('iNewIndustryType') : $this->input->post('iIndustryType');
+			$sql = "CALL addEmployer(?,?,?,?,?,?)";
+			$parameters = array(
+				'iCompanyName' => $this->input->post('iCompanyName')
+				, 'industry' => $industry
+				, 'iCompleteMailingAddress' => $this->input->post('iCompleteMailingAddress')
+				, 'iTelephoneNumber' => $this->input->post('iTelephoneNumber')
+				, 'iFaxNumber' => $this->input->post('iFaxNumber')
+				, 'iWebsite' => $this->input->post('iWebsite')
+			);
+
+			$this->db->query($sql, $parameters);
+			$this->db->reconnect();
+		}
+		else {
+			echo "<script>
+			window.location.href='<?= echo base_url(); ?>index.php/administrator_controller/loadAddInternView';
+			alert('Employer/Company record already exists!');
+			</script>";
+        }	
+	}
+
+
+	// Add representative to users table and to users_groups
+	function createRepresentative(){
+		$checkIfExists = "CALL checkIfIdentityExists(?,?)";
+		$query = $this->db->query($checkIfExists, 
+			array(
+				'username' => $this->input->post('username')
+				,'email'   => $this->input->post('email')) 
+			);
+		$this->db->reconnect();
+
+		if ( sizeof($query->row_array()) == 0) {
+
+			// Add to users table
+			$username = strtolower($this->input->post('username'));
+			$email    = strtolower($this->input->post('email'));
+			$password = $this->input->post('password');
+
+			$additional_data = array(
+					 'first_name' => $this->input->post('first_name')
+					, 'last_name' => $this->input->post('last_name')
+					, 'middle_name' => $this->input->post('middle_name')
+					, 'landline' => $this->input->post('landline')
+					, 'mobile' => $this->input->post('mobile')
+			);
+			
+			$repUserID = $this->ion_auth->register($username, $password, $email, $additional_data, array('2')); // employer group id is 2	
+			$this->db->reconnect();
+
+			if($repUserID != FALSE){
+
+				// link the representative to a company
+				$representativeType = $this->input->post('representativeType'); //primary, secondary or teritary contact  
+
+				if($representativeType == 1){
+					$sql = "CALL setRepAsPrimaryContact(?,?)";
+				}else if($representativeType == 2){
+					$sql = "CALL setRepAsSecondaryContact(?,?)";
+				}else if($representativeType == 3){
+					$sql = "CALL setRepAsTertiaryContact(?,?)";
+				}
+
+				$this->db->query($sql, array('employerID' => $this->input->post('employerID'),  'repUserID' => $repUserID) );
+				$this->db->reconnect();
+
+
+				$query = "CALL linkMyEmployerContacts(?,?)";
+				$this->db->query($query, array('repUserID' => $repUserID, 'employerID' => $this->input->post('employerID'),  ) );
+
+
+
+			}//end if register successful
+
+		}		
+		else {
+			echo "<script>
+			window.location.href='<?= echo base_url(); ?>index.php/administrator_controller/loadAddInternView';
+			alert('Representative record already exists!');
+			</script>";
+        }	
+	}
+
 }
 ?>

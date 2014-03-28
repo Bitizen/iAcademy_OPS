@@ -9,13 +9,12 @@
 		$('#example').dataTable( {
 			"bProcessing": true,
 			"bServerSide": true,
-			"sAjaxSource": "<?= base_url();?>index.php/administrator_controller/getAlumnusList",
+			"sAjaxSource": "<?= base_url();?>index.php/administrator_controller/getAlumnusList",	
 			"sServerMethod": "POST"
 		} );
 	} );
 </script>
 
-<?php $courses = unserialize (COURSE_LIST); ?>
 	<div id="viewUserListDiv" class="col-lg-10 col-lg-offset-1">
 	  <legend>Alumni</legend>
 		<div id="dt_example">
@@ -23,16 +22,16 @@
 			<div id="dynamic">
 				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 					<thead>
-						<tr>
-							<th width="10%">First Name</th>
-							<th width="10%">Last Name</th>
-							<th width="10%">Middle Name</th>
-							<th width="10%">Landline</th>
-							<th width="15%">Mobile</th>
-							<th width="15%">Email</th>
-							<th width="5%">Course</th>
-							<th width="10%">Status</th>
-							<th width="10%">Company</th>
+						<tr>	
+							<th width="9%">First Name</th>
+							<th width="5%">Middle Name</th>
+							<th width="9%">Last Name</th>
+							<th width="11%">Course</th>
+							<th width="11%">Skill</th>
+							<th width="9%">Employment Status</th>
+							<th width="8%">Company</th>
+							<th width="8%">Position</th>
+							<th width="5%">Affiliation Status</th>
 							<th width="5%">View</th>
 						</tr>
 					</thead>

@@ -1,6 +1,6 @@
 
   <div id="viewMyProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>My Account <img id="editMyProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit My Profile" width="25" height="25" /></legend>
+    <legend>My Account <img id="editMyProfile" src="<?php echo base_url();?>assets/images/edit.png" alt="Edit My Profile" width="25" height="25" /></legend>
     <!-- PERSONAL INFORMATION -->
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Personal Information</h3></div>
@@ -60,9 +60,6 @@
             <h4 class="modal-title">Profile Editor</h4>
           </div>
           <div class="modal-body">
-          <div class="validateTips alert alert-dismissable alert-warning">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>Note : </strong> All form fields are required.</div><br/>
       
         <!-- PERSONAL INFORMATION -->
         <div class="panel panel-primary">
@@ -157,9 +154,6 @@
             <h4 class="modal-title">Change Password</h4>
           </div>
           <div class="modal-body">
-          <div class="validateTips alert alert-dismissable alert-warning">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>Note : </strong> All form fields are required.</div><br/>
 
           <!-- CHANGE PASSWORD FORM -->
           <?php echo form_open("auth/change_password");?>

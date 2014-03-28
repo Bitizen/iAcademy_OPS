@@ -8,6 +8,7 @@ class Administrator_Controller extends MY_Controller {
         $this->load->library('table');
         $this->load->database();
         $this->load->helper('file');
+        $this->load->helper('html');
         $config['allowed_types'] = 'csv';
     }
 
@@ -57,8 +58,11 @@ class Administrator_Controller extends MY_Controller {
 
 	// View Interns
 	function viewInterns() {
+		//$this->load->model('intern_model');
+        //$data['allInterns'] = $this->intern_model->viewInterns();        
+		//$this->load->helper('form');
 		$this->load->view('admin/header.php');
-		$this->load->view('admin/view_interns');  
+		$this->load->view('admin/view_interns');
     }
 
 	// Fetches Arranged Intern List
@@ -73,6 +77,7 @@ class Administrator_Controller extends MY_Controller {
 		$this->load->model('intern_model');
         $data['myIntern'] = $this->intern_model->viewIntern();
         $data['myCompanyNames'] = $this->intern_model->getAllCompanyNames();
+    	$data['myEmployerContacts'] = $this->intern_model->viewInternContacts();
 
 		$this->load->helper('form');
 		$this->load->view('admin/header.php');
@@ -86,25 +91,26 @@ class Administrator_Controller extends MY_Controller {
 		$this->intern_model->updateIntern();
         $data['myIntern'] = $this->intern_model->viewIntern();
         $data['myCompanyNames'] = $this->intern_model->getAllCompanyNames();
+    	$data['myEmployerContacts'] = $this->intern_model->viewInternContacts();
 
 		$this->load->helper('form');
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/view_intern_profile', $data);
 	}
 
-	// Load Add Intern Page
+	/* Load Add Intern Page
 	function loadAddInternView() {
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/add_intern');  
-	}
+	}*/
 
-	// Add Intern
+	/* Add Intern
 	function addIntern() {
 		$this->load->model('intern_model');
 		$this->intern_model->createStudent();
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/add_intern'); 
-	}
+	}*/
 
 	// Load Add Interns By Bulk Page
 	function loadAddInternsByBulk(){
@@ -165,6 +171,18 @@ class Administrator_Controller extends MY_Controller {
 		$this->load->view('admin/view_employers');  	
 	}
 
+	// View Employers
+	function viewNoSECEmployers() {
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/view_no_sec_employers');  	
+	}
+
+	// Fetch Employers with No SEC Registration
+	function getNoSECEmployerList() {
+		$this->load->model('employer_model');
+		$this->employer_model->viewNoSECEmployers();
+	}
+
 	// Fetches Arranged Employer List
 	function getEmployerList(){
 		$this->load->model('employer_model');
@@ -184,6 +202,8 @@ class Administrator_Controller extends MY_Controller {
 		$this->load->model('employer_model');
         $data['myEmployer'] = $this->employer_model->viewEmployer();
         $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
 		$this->load->helper('form');
 		$this->load->view('admin/header.php');
@@ -197,17 +217,19 @@ class Administrator_Controller extends MY_Controller {
 		$this->employer_model->updateEmployer();
         $data['myEmployer'] = $this->employer_model->viewEmployer();
         $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
 		$this->load->helper('form');
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/view_employer', $data);
 	}
 
-	// Load Add Employer View
+	/* Load Add Employer View
 	function addEmployer() {
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/add_employer'); 
-	}
+	}*/
 
 	// Load Add Job Opening View
 	function addCareer() {
@@ -242,11 +264,14 @@ class Administrator_Controller extends MY_Controller {
 
 		if ( ! $this->upload->do_upload()) {
 			$data['uploadErrorSEC'] = array('error' => $this->upload->display_errors());
-			
+				
 			$this->load->model('employer_model');
 	        $data['myEmployer'] = $this->employer_model->viewEmployer();
-        	$data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
+			$this->load->helper('form');
 			$this->load->view('admin/header.php');
 			$this->load->view('admin/view_employer', $data);
 		}
@@ -263,7 +288,7 @@ class Administrator_Controller extends MY_Controller {
 
 			$parameters = array(
 				'username' => $representative
-				, 'filePath' => "uploads\SEC_Registration\\".$data['uploadSuccessSEC']['upload_success']['file_name']
+				, 'filePath' => "uploads/SEC_Registration/".$data['uploadSuccessSEC']['upload_success']['file_name']
 			);
 
 			$dataQ = $this->db->query($sql, $parameters);
@@ -271,8 +296,11 @@ class Administrator_Controller extends MY_Controller {
 			// Load Page
 			$this->load->model('employer_model');
 	        $data['myEmployer'] = $this->employer_model->viewEmployer();
-        	$data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
+			$this->load->helper('form');
 			$this->load->view('admin/header.php');
 			$this->load->view('admin/view_employer', $data);
 		}
@@ -293,8 +321,11 @@ class Administrator_Controller extends MY_Controller {
 			
 			$this->load->model('employer_model');
 	        $data['myEmployer'] = $this->employer_model->viewEmployer();
-        	$data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
+			$this->load->helper('form');
 			$this->load->view('admin/header.php');
 			$this->load->view('admin/view_employer', $data);
 		}
@@ -311,7 +342,7 @@ class Administrator_Controller extends MY_Controller {
 
 			$parameters = array(
 				'username' => $representative
-				, 'filePath' => "uploads\Company_Logos\\".$data['uploadSuccessLogo']['upload_success']['file_name']
+				, 'filePath' => "uploads/Company_Logos/".$data['uploadSuccessLogo']['upload_success']['file_name']
 			);
 
 			$dataQ = $this->db->query($sql, $parameters);
@@ -319,8 +350,11 @@ class Administrator_Controller extends MY_Controller {
 			// Load Page
 			$this->load->model('employer_model');
 	        $data['myEmployer'] = $this->employer_model->viewEmployer();
-        	$data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
+			$this->load->helper('form');
 			$this->load->view('admin/header.php');
 			$this->load->view('admin/view_employer', $data);
 		}
@@ -341,8 +375,11 @@ class Administrator_Controller extends MY_Controller {
 			
 			$this->load->model('employer_model');
 	        $data['myEmployer'] = $this->employer_model->viewEmployer();
-        	$data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
+			$this->load->helper('form');
 			$this->load->view('admin/header.php');
 			$this->load->view('admin/view_employer', $data);
 		}
@@ -359,7 +396,7 @@ class Administrator_Controller extends MY_Controller {
 
 			$parameters = array(
 				'username' => $representative
-				, 'filePath' => "uploads\Other_Documents\\".$data['uploadSuccessOther']['upload_success']['file_name']
+				, 'filePath' => "uploads/Other_Documents/".$data['uploadSuccessOther']['upload_success']['file_name']
 			);
 
 			$dataQ = $this->db->query($sql, $parameters);
@@ -367,8 +404,11 @@ class Administrator_Controller extends MY_Controller {
 			// Load Page
 			$this->load->model('employer_model');
 	        $data['myEmployer'] = $this->employer_model->viewEmployer();
-        	$data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
 
+			$this->load->helper('form');
 			$this->load->view('admin/header.php');
 			$this->load->view('admin/view_employer', $data);
 		}
@@ -392,6 +432,7 @@ class Administrator_Controller extends MY_Controller {
 		$this->load->model('alumnus_model');
         $data['myAlumnus'] = $this->alumnus_model->viewAlumnus();
         $data['myCompanyNames'] = $this->alumnus_model->getAllCompanyNames();
+    	$data['myEmployerContacts'] = $this->alumnus_model->viewAlumnusContacts();
 
 		$this->load->helper('form');
 		$this->load->view('admin/header.php');
@@ -405,25 +446,26 @@ class Administrator_Controller extends MY_Controller {
 		$this->alumnus_model->updateAlumnus();
         $data['myAlumnus'] = $this->alumnus_model->viewAlumnus();
         $data['myCompanyNames'] = $this->alumnus_model->getAllCompanyNames();
+    	$data['myEmployerContacts'] = $this->alumnus_model->viewAlumnusContacts();
 
 		$this->load->helper('form');
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/view_alumnus_profile', $data);
 	}
 
-	// Load Add Alumnus Page
+	/* Load Add Alumnus Page
 	function loadAddAlumnusView() {
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/add_alumnus');  
-	}
+	}*/
 
-	// Add Alumnus
+	/* Add Alumnus
 	function addAlumnus() {
 		$this->load->model('alumnus_model');
 		$this->alumnus_model->createStudent();
 		$this->load->view('admin/header.php');
 		$this->load->view('admin/add_alumnus'); 
-	}
+	}*/
 
 	// Load Add Alumni By Bulk Page
 	function loadAddAlumniByBulk(){
@@ -488,115 +530,187 @@ class Administrator_Controller extends MY_Controller {
 		$this->load->view('admin/update_intern_to_alumnus');  
 	}
 
-	////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////
 
-	/*
-	// Update current user
-	function updateUser2() {
+	function uploadInternsResume() {
+
+		$this->load->helper('url');
+		$this->load->model('alumnus_model');
+		$student = $this->alumnus_model->viewMyAlumnus();
 		
-		$user = $this->ion_auth->user()->row();
-		$username = $user->username;
+		$config['file_name'] = $alumnus->lastName.'_'.$alumnus->firstName.'_Resume';
+		$config['upload_path'] = './uploads/Resume/';
+		$config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx';
+		$config['max_size']	= '2048';
+		$config['max_width']  = '5000';
+		$config['max_height']  = '5000';
 
-		$sql = "CALL updateUser(?,?,?,?,?,?,?,?,?)";
+		$this->load->library('upload', $config);
 
-		$parameters = array(
-			'username' => $username
-			, 'firstName' => $this->input->post('iFirstName')
-			, 'middleName' => $this->input->post('iMiddleName')
-			, 'lastName' => $this->input->post('iLastName')
-			, 'position' => $this->input->post('iPosition')
-			, 'telephone' => $this->input->post('iLandline')
-			, 'mobile' => $this->input->post('iMobile')
-			, 'email' => $this->input->post('iEmail')
-			, 'dateOfBirth' => $this->input->post('iDateOfBirth')
-		);
+		if ( ! $this->upload->do_upload()) {
+			$data['uploadErrorResume'] = array('error' => $this->upload->display_errors());
+			
+			//$this->load->model('alumnus_model');
+	        $data['myAlumnus'] = $this->alumnus_model->viewMyAccount();
+	        $data['myAlumnusDetails'] = $this->alumnus_model->viewMyIntern();
 
+			$this->load->model('employer_model');
+	        $data['myEmployer'] = $this->employer_model->viewMyStudentEmployer();
+	        $data['myEmployerContacts'] = $this->employer_model->viewMyStudentContacts();
 
-		$data = $this->db->query($sql, $parameters);
-	}
-
-	// View specified user
-	// Grant access to: superadmin, admin, employer
-	function viewSpecificUser($id) {
-		$user = $this->ion_auth->user($id)->row();
-
-		if(!$user){
-			redirect('welcome.php');
+			$this->load->helper('form');
+			$this->load->view('alumnus/header');
+			$this->load->view('alumnus/view_my_account', $data);
 		}
+		else {
 
-		$parameter = $user->username;
-		$sql = "CALL viewUser(?)";
+			// Output Upload Success
+			$data['uploadSuccess'] = array('upload_success' => $this->upload->data());
 
-		$data = $this->db->query($sql, $parameter);
-		$this->db->reconnect();
-		$row = $data->row();
+			// Update Inters's Resume Path
+			$sql = "CALL updateResumePath(?,?)";
 
-		return $row;
+			$user = $this->ion_auth->user()->row();
+			$student = $user->username;
+
+			$parameters = array(
+				'username' => $student
+				, 'filePath' => "uploads/Resume/".$data['uploadSuccess']['upload_success']['file_name']
+			);
+
+			$dataQ = $this->db->query($sql, $parameters);
+
+			// Load Page
+			//$this->load->model('alumnus_model');
+	        $data['myAlumnus'] = $this->alumnus_model->viewMyAccount();
+	        $data['myAlumnusDetails'] = $this->alumnus_model->viewMyIntern();
+
+			$this->load->model('employer_model');
+	        $data['myEmployer'] = $this->employer_model->viewMyStudentEmployer();
+	        $data['myEmployerContacts'] = $this->employer_model->viewMyStudentContacts();
+
+			$this->load->helper('form');
+			$this->load->view('alumnus/header');
+			$this->load->view('alumnus/view_my_account', $data);
+		}
 	}
 
-
-	//loads view of list of admins
-	public function getListOfAdmins() {
-		$this->load->view('admin/viewAllAdministrators');  		  
-	}
-
-	//loads view of list of employers
-	public function getListOfEmployers2() {
-		$this->load->view('employer/viewAllEmployers');  	
-	}
-
-	//fetch list of employers
-	public function getEmployerDataByAjax() {
-		$this->load->model('employer_model');
-		$this->employer_model->viewAllEmployers();
-	}
-
-	//generate CSV report for view employers function
-	public function generateReportForEmployers2() {
-		$this->load->model('employer_model');
-		$this->employer_model->genRepForEmployersView();
-		//$this->load->view('employer/viewAllEmployers');  
-	}
-
-	//loads view of list of interns
-	public function getListOfInterns() {
-		$this->load->view('intern/viewAllInterns');  
-	}
-
-	//fetch list of interns
-	public function getInternDataByAjax() {
+	// Load Add Intern Page
+	function loadAddInternView() {
 		$this->load->model('intern_model');
-		$this->intern_model->viewAllInterns();
-	}
-
-	
-	public function getIntern($int)
-	{
-		$this->input->get('int', TRUE);
-		$this->load->model('intern_model');
-		$data['result'] = $this->intern_model->viewAnIntern($int);
+		$this->data['companyList'] = $this->intern_model->getAllCompanyNames();
 		$this->load->helper('form');
-		$this->load->view('intern/viewIntern', $data);
+		$this->load->view('admin/header');
+		$this->load->view('admin/add_intern', $this->data);  
 	}
 
-
-	public function showInterns() {
+	// Add Intern
+	function addIntern() {
 		$this->load->model('intern_model');
-        $data['students'] = $this->intern_model->viewStudents();
-      	$this->load->helper('form');
-        $this->load->view('intern/viewInterns', $data);
-    }
-
-    function showIntern() {
-		$this->load->model('intern_model');
-		$data['studentChosen'] = $this->intern_model->viewStudent();
-		//$this->load->helper('form');
-        $this->load->view('intern/viewIntern', $data);
+		$this->intern_model->createStudent();
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/add_intern'); 
 	}
-	*/
+
+	// Load Add Encoder View
+	function loadAddEncoderView(){
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/add_encoder');  		
+	}
+
+	// Add Encoder
+	function addEncoder() {
+		$this->load->model('encoder_model');
+		$this->encoder_model->addEncoder();
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/view_users'); 
+	}
+
+	// Load Add Employer View
+	function loadAddEmployerView() {
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/add_employer'); 
+	}
+
+	function viewAdministrators() {
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/view_administrators');
+	} 
+
+	// Fetches Arranged Admin List
+	function getAdministratorList() {
+		$this->load->model('administrator_model');
+		$this->administrator_model->viewAdministrators();
+	} 
+
+	// Add Employer
+	function addEmployer() {
+		$this->load->model('employer_model');
+		$this->employer_model->createEmployer();
+		redirect('Administrator_Controller/viewEmployers');
+	}
+
+	function loadAddRepresentative(){
+		$this->load->view('admin/header.php');
+		$this->load->model('alumnus_model');
+		$this->data['companyList'] = $this->alumnus_model->getAllCompanyNames();
+		$this->load->helper('form');
+		$this->load->view('employer/add_representative', $this->data); 
+	}
+
+	function addRepresentative(){
+		$this->load->model('employer_model');
+		$this->employer_model->createRepresentative();
+	}
+
+	// Load Add Admin View
+	function loadAddAdminView() {
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/add_admin'); 
+	}
+
+	// Add Admin
+	function addAdmin() {
+		$this->load->model('administrator_model');
+		$this->load->helper('form');
+		$this->administrator_model->createAdmin();
+		redirect('Administrator_Controller/viewAdministrators');
+	}
+	// DICE 03/26/2014
+	function loadAddAlumnusView(){
+		$this->load->model('alumnus_model');
+		$this->data['companyList'] = $this->alumnus_model->getAllCompanyNames();
+		$this->load->helper('form');
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/add_alumnus', $this->data);  		
+	}
+	
+	// Add Alumnus
+	function addAlumnus() {
+		$this->load->model('alumnus_model');
+		$this->alumnus_model->createStudent();
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/add_alumnus'); 
+	}
+
+	// Load Add Evaluation Page
+	function loadAddEvaluationView() {
+		$this->load->view('admin/header');
+		$this->load->view('employer/add_evaluation');  
+	}
+
+	// Add Evaluation
+	function addEvaluation(){
+		$this->load->model('evaluation_model');
+		$this->evaluation_model->addEvaluation();
+		$this->load->view('admin/header.php');
+		$this->load->view('admin/add_intern');
+	}
+
+	////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////
+
 }
 ?>

@@ -11,22 +11,17 @@
             <td class="td-fields">Full Name</td>
             <td class="td-values"><?php echo $myAlumnus->firstName;?> <?php echo $myAlumnus->middleName;?> <?php echo $myAlumnus->lastName;?></td>
           </tr>
-          <tr>
-            <td class="td-fields">Address</td>
-            <td class="td-values"><?php echo $myAlumnus->address;?></td>
-          </tr>
-          <tr>
-            <td class="td-fields">Verified</td>
-            <td class="td-values">
-              <?php if ($myAlumnus->isVerified==1) echo 'Yes'; else echo 'No'; ?>
-            </td>
-          </tr>
         </table>
       </div>
     </div>
     <!-- END PERSONAL INFORMATION -->
 
-    <!-- CONTACT DETAILS -->
+    <!-- CONTACT DETAILS 
+          <tr>
+            <td class="td-fields">Address</td>
+            <td class="td-values"><?php echo $myAlumnus->address;?></td>
+          </tr>
+
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Contact Details</h3></div>
       <div class="panel-body">
@@ -65,7 +60,11 @@
           </tr>
           <tr>
             <td class="td-fields">Current Company</td>
-            <td class="td-values"><?php echo $myAlumnus->companyName;?></td>
+            <td class="td-values">
+              <a href="<?php echo base_url();?>index.php/intern_controller/viewEmployer?eID=<?php echo $myAlumnus->currentEmployerID;?>">
+                <?php echo $myAlumnus->companyName;?>
+              </a>
+            </td>
           </tr>
         </table>
       </div>

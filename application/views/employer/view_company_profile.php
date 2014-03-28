@@ -1,6 +1,6 @@
 
   <div id="empViewMyProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>Employer Profile <img id="editMyProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit Company Profile" width="25" height="25" /></legend>
+    <legend>Employer Profile <img id="editMyProfile" src="<?php echo base_url();?>assets/images/edit.png" alt="Edit Company Profile" width="25" height="25" /></legend>
      
      <ul class="nav nav-tabs" style="margin-bottom: 15px;">
       <li class="active"><a href="#company_details" data-toggle="tab">Company Details</a></li>
@@ -42,7 +42,7 @@
                   }
               ?>
               <?php //if(strlen($uploadErrorSEC != 0)) echo $uploadErrorSEC;?>
-              <?php echo form_open_multipart('upload/uploadSECRegistration');?>
+              <?php echo form_open_multipart('employer_controller/uploadSECRegistration');?>
                 <input type="file" name="userfile" size="20" />
                 <br/>
                 <input type="submit" class="btn btn-default" value="Upload SEC Registration" />
@@ -90,7 +90,7 @@
                   }
               ?>
               <?php //if($uploadErrorLogo != null) echo $uploadErrorLogo;?>
-              <?php echo form_open_multipart('upload/uploadCompanyLogo');?>
+              <?php echo form_open_multipart('employer_controller/uploadCompanyLogo');?>
                 <input type="file" name="userfile" size="20" />
                 <br/>
                 <input type="submit" class="btn btn-default" value="Upload Company Logo" />
@@ -119,7 +119,7 @@
               ?>
               <br/>
               <?php //if($uploadErrorOther != null) echo $uploadErrorOther;?>
-              <?php echo form_open_multipart('upload/uploadOtherDocuments');?>
+              <?php echo form_open_multipart('employer_controller/uploadOtherDocuments');?>
                 <input type="file" name="userfile" size="20" />
                 <br/>
                 <input type="submit" class="btn btn-default" value="Upload Other Documents" />

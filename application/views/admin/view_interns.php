@@ -16,7 +16,6 @@
 	} );
 </script>
 
-<?php $courses = unserialize (COURSE_LIST); ?>
 	<div id="viewUserListDiv" class="col-lg-10 col-lg-offset-1">
 	  <legend>Interns</legend>
 		<div id="dt_example">
@@ -28,12 +27,10 @@
 							<th width="10%">First Name</th>
 							<th width="10%">Last Name</th>
 							<th width="10%">Middle Name</th>
-							<th width="10%">Landline</th>
-							<th width="15%">Mobile</th>
-							<th width="15%">Email</th>
-							<th width="5%">Course</th>
+							<th width="10%">Course</th>
+							<th width="10%">Skill</th>
 							<th width="10%">Status</th>
-							<th width="10%">Company</th>
+							<th width="7%">Company</th>
 							<th width="5%">View</th>
 						</tr>
 					</thead>
@@ -46,5 +43,6 @@
 			</div>
 			</div>
 		</div>
+	</div>
 	</body>
 </html>

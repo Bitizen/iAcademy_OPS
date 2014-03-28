@@ -8,18 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title>iAcademy Online Placement System</title>
-  
+
+  <!--<script src="<?php echo base_url();?>assets/tableSortReqs/js/jquery-latest.js"></script> -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="<?php echo base_url();?>assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+  <script src="<?php echo base_url();?>assets/js/bootstrap.js"></script>
+  <!--<script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>-->
+  <!--<script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
+  <script src="<?php echo base_url();?>assets/js/default.js" type="text/javascript" ></script>
+
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/default.js"></script>
+  <link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" media="all"/>
-  
-  <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
-  <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-
-  <link href="<?php echo base_url();?>assets/css/datepicker.css" rel="stylesheet">
-  <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
 </head>
 <body>
@@ -41,18 +41,23 @@
         <a href="<?php echo base_url();?>index.php/administrator_controller" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewUsers">View Users</a></li>
+          <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewAdministrators">View Admins</a></li>
           <li class="divider"></li>
           <li class="dropdown-header">Manage Users</li>
-          <li><a href="<?php echo base_url();?>index.php/auth/create_user">Add User</a></li>
+          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddAdminView">Add Admin</a></li>
+          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddEncoderView">Add Encoder</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employers <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewEmployers">View Employers</a></li>
+          <li><a href="<?php echo base_url();?>index.php/administrator_controller/viewNoSECEmployers">View Employers with No SEC Registration</a></li>
           <li class="divider"></li>
           <li class="dropdown-header">Manage Employers</li>
-          <li><a href="<?php echo base_url();?>index.php/administrator_controller/addEmployer">Add Employer</a></li>
+          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddEmployerView">Add Employer</a></li>
+          <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddRepresentative">Add Representative</a></li>
+           <li><a href="<?php echo base_url();?>index.php/administrator_controller/loadAddEvaluationView">Add Evaluation</a></li>
         </ul>
       </li>
       <li class="dropdown">

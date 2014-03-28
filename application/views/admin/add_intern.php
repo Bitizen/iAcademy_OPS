@@ -1,69 +1,68 @@
+<div class='col-lg-10 col-lg-offset-1'>
 
-		<div id="container">
-			<form action = "<?php echo base_url();?>index.php/administrator_controller/addIntern" accept-charset="utf-8" method = "POST" onSubmit="return confirm('Are you sure?')">
-			<table>
+<legend>Add Intern</legend>
+			<form action = "<?php echo base_url();?>index.php/administrator_controller/addIntern" accept-charset="utf-8" 
+        method = "POST" onSubmit="return confirm('Are you sure?')">
+			<table class="tg">
     			<tr>
-    				<th width="50%"><h3>Personal Information</h3></th>
-    				<th width="50%"></th>
+    				<th><h4>Personal Information</h4></th>
+    				<th></th>
     			</tr>
     			<tr> 
-            <td><label for="studentID">Student Id</label></td>
-            <td><input type="text" name="studentID" required/></td>
+            <td class="td-fields"><label for="studentID">Student Id</label></td>
+            <td class="td-values"><input type="text" name="studentID" required/></td>
           <tr/>
           <tr>
-            <td><label for="firstName">Firstname</label></td>
-            <td><input type="text" name="firstName" required /></td> 
+            <td class="td-fields"><label for="first_name">First Name</label></td>
+            <td class="td-values"><input type="text" name="first_name" required /></td> 
           <tr/>
           <tr>
-            <td><label for="middleName">Middlename</label></td>
-            <td><input type="text" name="middleName" required /></td>
+            <td class="td-fields"><label for="middle_name">Middle Name</label></td>
+            <td class="td-values"><input type="text" name="middle_name" required /></td>
           <tr/>
           <tr>
-            <td><label for="lastName">Lastname</label></td>
-            <td><input type="text" name="lastName" required /></td>
+            <td class="td-fields"><label for="last_name">Last Name</label></td>
+            <td class="td-values"><input type="text" name="last_name" required /></td>
           <tr/>
           <tr>
-            <td><label for="address">Address</label></td>
-            <td><input type="text" name="address" tabindex="3" required /></td>
+            <td class="td-fields"><label for="address">Address</label></td>
+            <td  class="td-values"><input type="text" name="address" tabindex="3" required /></td>
           <tr/>  
+      <tr>
+        <td class="td-fields">
+              <label for="courseID" class="">Course</label></td>
+              <?php $courses = unserialize (COURSE_LIST); $index = 0; ?>
+              <td class="td-values">
+              <select id="courses" name="courseID" class="" required>
+              <?php foreach ($courses as $course => $value): ?>
+                 <option value="<?php echo $index++; ?>"> <?php echo $courses[$course] ?></option>
+              <?php endforeach?>
+              </select>              
+              </td>
+        </td>
+      </tr>
           <tr>
-            <td><label for="courseID">COURSE</label></td>
-            <td>
-              <select name="courseID" required>
-                <option value = "" selected="selected">-- Select Course --</option>
-                <option value = 1> BSBA Financial Management </option>
-                <option value = 2> BA Multimedia Arts and Design </option>
-                <option value = 3> BSBA Marketing and Advertising </option>
-                <option value = 4> BS Animation </option>
-                <option value = 5> BSCS Software Engineering </option>
-                <option value = 6> BS Game Development </option>
-                <option value = 7> BSIT Web Development </option>
-                <option value = 8> Bachelor of Fashion Design and Technology </option>
-              </select>
-            </td>
-          <tr/>
-          <tr>
-            <td>
-              <h3>Graduation</h3>
+            <td><br>
+              <h4>Graduation</h4>
             </td>
             <td>
             </td>
           <tr/>   
          <tr>
-          <td>
-            <label for="yearGraduated">YEAR</label>
+          <td class="td-fields">
+            <label for="yearGraduated">Year</label>
           </td>
-          <td>
+          <td class="td-values">
             <select name="yearGraduated" id="yearpicker">
               <option value = "" selected="selected">-- Select Year --</option>
             </select>
           </td>
         <tr/>                
         <tr>
-          <td>
-            <label for="monthGraduated">MONTH</label>
+          <td class="td-fields">
+            <label for="monthGraduated">Month</label>
           </td>
-          <td>
+          <td class="td-values">
             <select name="monthGraduated" required>
               <option value = "" selected="selected">-- Select Month --</option>
               <option value = 1> Jan </option>
@@ -82,8 +81,8 @@
           </td>
         <tr/>
         <tr>
-          <td>
-            <label for="termGraduated">TERM</label>
+          <td class="td-fields">
+            <label for="termGraduated">Term</label>
           </td>
           <td>
             <select name="termGraduated" required>
@@ -94,55 +93,79 @@
             </select>
           </td>
         <tr/>
-			</table>
 
-			<table>
+
 				<tr>
-					<th width="50%"><h3>Contact Information</h3></th>
-					<th width="50%"></th>
+					<th><h4><br>Contact Information</h4></th>
+					<th></th>
 				</tr>
 				<tr> 
-          <td><label for="landline">Landline</label></td>
-          <td><input type="text" name="landline" tabindex="3" /></td>
+          <td class="td-fields"><label for="landline">Landline</label></td>
+          <td class="td-values"><input type="text" name="landline" /></td>
         <tr/>
         <tr>
-          <td><label for="mobile">Mobile</label></td>
-          <td><input type="text" name="mobile" /></td> 
+          <td class="td-fields"><label for="mobile">Mobile</label></td>
+          <td class="td-values"><input type="text" name="mobile" /></td> 
         <tr/>
+
         <tr>
-          <td><label for="emailAddress">Email</label></td>
-          <td><input type="text" name="emailAddress" required /></td>
-        <tr/>
-        <tr>
-          <td><label for="contactDetailsLastUpdated"></label></td>
-          <td><input type="hidden" id="DATE_TODAY" name="contactDetailsLastUpdated"  /></td>
+          <td class="td-fields"><label for="contactDetailsLastUpdated"></label></td>
+          <td class="td-values"><input type="hidden" id="DATE_TODAY" name="contactDetailsLastUpdated"  /></td>
         <tr/>                
-			</table>
 
-			<table>
+
 				<tr>
-					<th width="50%"><h3>Internship Information</h3></th>
-					<th width="50%"></th>
+					<th><h4>Internship Status</th>
+					<th></th>
 				</tr>
-				<tr> 
-          <td><label for="statusID">Status</label></td>
-          <td><select name="statusID" required>
-                <option value = "" selected="selected">-- Select Status --</option>
-                <option value = 1> Available </option>
-                <option value = 2> Currently On-The-Job </option>
-                <option value = 3> Completed Internship 1 </option>
-                <option value = 4> Completed Internship 2 </option>
-                <option value = 5> Employed </option>
+        <td class="td-fields">
+              <label for="statusID" class="">Status</label></td>
+              <?php $status = unserialize (INTERN_STATUS); ?>
+              <td class="td-values">
+              <select id="statusID" name="statusID" class="" required>
+              <?php foreach ($status as $key => $value): ?>
+                 <option value="<?php echo $value; ?>"> <?php echo $status[$key] ?></option>
+              <?php endforeach?>
+              </select>              
+              </td>
+        </td>
+        <tr>
+          <td class="td-fields"><label for="company">Company</label></td>
+              <td class="td-values">
+              <select name='company'>
+                <option value="0">NA</option>
+              <?php foreach ($companyList as $c): ?>
+                 <option value="<?php echo $c['employerID'] ?>"> <?php echo $c['companyName'] ?> </option>
+              <?php endforeach?>
               </select></td>
         <tr/>
-        <tr>
-          <td><label for="FIRSTNAME">Company</label></td>
-          <td><input type="text" name="FIRSTNAME" /></td> 
-        <tr/>
-        <tr>
-          <td></td>
-          <td><input type="submit" value="Submit"/></td>
-        <tr/>
+
+      <tr>
+        <th><h4>Account Information</th>
+        <th></th>
+      </tr>
+      <tr>
+            <td class="td-fields"><label for="username">Username:</label>  </td> 
+            <td class="td-values"><input type="text" name="username" value="" id="username"  required/>   </td>    
+      </tr>
+      <tr>
+            <td class="td-fields"><label for="email">Email:</label>  </td> 
+            <td class="td-values"><input type="text" name="email" value="" id="email"  required/>   </td>    
+      </tr>
+      <tr>
+            <td class="td-fields"><label for="password">Password:</label>  </td> 
+            <td class="td-values"><input type="text" name="password" value="" id="password"  required/>   </td>    
+      </tr>
+
+      <tr>
+            <td class="td-fields"><label for="password_confirm">Confirm Password:</label>  </td> 
+            <td class="td-values"><input type="text" name="password_confirm" value="" id="password_confirm"  required/>  </td>     
+      </tr>
+
+        <tr><td></td>
+        <td><input type="submit" name="submit"  class="btn btn-primary" value="Add Alumnus"  />
+        <input type="button" name="submit"  class="btn btn-default" value="Cancel" /></td></tr> 
+
 			</table>
 
 			</form>

@@ -34,9 +34,6 @@
 			var selectedRows = Array();
 			var oTT = TableTools.fnGetInstance('example');
 	    	var aData = oTT.fnGetSelectedData();
-	    	//var yearGraduated = document.getElementById('yearGraduated').value;
-	    	//var monthGraduated = document.getElementById('monthGraduated').value;
-	    	//var termGraduated = document.getElementById('termGraduated').value;
 	    	var yearGraduated = $("#yearGraduated").val();
 	    	var monthGraduated = $("#monthGraduated").val();
 	    	var termGraduated = $("#termGraduated").val();
@@ -48,15 +45,18 @@
 
 			$.ajax({
 			  url: '<?= base_url();?>index.php/administrator_controller/updateInternsToAlumni',
-			  data: {selected: selectedRows, year: yearGraduated, month: monthGraduated, term: termGraduated},
+			  data: {selected: selectedRows
+			  	, year: yearGraduated
+			  	, month: monthGraduated
+			  	, term: termGraduated},
 			  type: 'POST',
 			  dataType: 'JSON',
 			  success: function(msg){
-		         alert("Students Updated");
+		         //alert("Students Updated");
 		      }
 			});
 
-			//document.location.reload(true);
+			document.location.reload(true);
 	    });
 
 	});
@@ -114,12 +114,11 @@
 				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 					<thead>
 						<tr>
-							<th width="1%">Student ID</th>
-							<th width="10%">First Name</th>
-							<th width="10%">Middle Name</th>
-							<th width="10%">Last Name</th>
-							<th width="5%">Course</th>
-							<th width="10%">Status</th>
+							<th width="12%">First Name</th>
+							<th width="12%">Last Name</th>
+							<th width="11%">Middle Name</th>
+							<th width="25%">Course</th>
+							<th width="25%">Status</th>
 							<th width="10%">Company</th>
 						</tr>
 					</thead>

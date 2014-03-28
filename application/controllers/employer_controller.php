@@ -2,6 +2,16 @@
 
 class Employer_Controller extends MY_Controller {
 
+	function __construct() {
+        parent::__construct();
+
+        $this->load->library('Datatables');
+        $this->load->library('table');
+        $this->load->database();
+        $this->load->helper('file');
+        $this->load->helper('html');
+    }
+
 	// View My Company Details
 	function index() {
 		$this->load->view('employer/header');
@@ -104,4 +114,64 @@ class Employer_Controller extends MY_Controller {
 		$this->load->view('employer/header.php');
 		$this->load->view('employer/view_alumnus_profile', $data);
 	}
+
+	function uploadSECRegistration() {
+
+		$this->load->model('employer_model');
+		$companyName = $this->employer_model->getCompanyName();
+		
+		$config['file_name'] = $companyName->companyName.'_SEC_Registration';
+		$config['upload_path'] = './uploads/SEC_Registration/';
+		$config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx';
+		$config['max_size']	= '2048';
+		$config['max_width']  = '5000';
+		$config['max_height']  = '5000';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload()) {
+			$data['uploadErrorSEC'] = array('error' => $this->upload->display_errors());
+				
+			$this->load->model('employer_model');
+	        $data['myEmployer'] = $this->employer_model->viewEmployer();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
+
+			$this->load->helper('form');
+			$this->load->view('employer/header.php');
+			$this->load->view('employer/view_company_profile', $data);
+		}
+		else {
+
+			// Output Upload Success
+			$data['uploadSuccessSEC'] = array('upload_success' => $this->upload->data());
+
+			// Update Employer's File Path
+			$sql = "CALL updateSECRegistrationFilePath(?,?)";
+
+			$user = $this->ion_auth->user()->row();
+			$representative = $user->username;
+
+			$parameters = array(
+				'username' => $representative
+				, 'filePath' => "uploads/SEC_Registration/".$data['uploadSuccessSEC']['upload_success']['file_name']
+			);
+
+			$dataQ = $this->db->query($sql, $parameters);
+
+			// Load Page
+			$this->load->model('employer_model');
+	        $data['myEmployer'] = $this->employer_model->viewEmployer();
+	        $data['myEmployerContacts'] = $this->employer_model->viewEmployerContacts();
+	        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewAffiliatedInterns();
+	        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewAffiliatedEmployees();
+
+			$this->load->helper('form');
+			$this->load->view('employer/header.php');
+			$this->load->view('employer/view_company_profile', $data);
+		}
+	}
+
+
 }

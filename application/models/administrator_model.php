@@ -51,6 +51,27 @@ class Administrator_Model extends CI_Model {
 		echo $this->datatables->generate();
 	}
 
+	// Outputs User List
+	function viewAdministrators() {
+		$this -> load -> library('Datatables');
+		$this-> datatables -> select('firstName, middleName, lastName, position');	
+		$this-> datatables -> from('administrators');	
+		$this-> datatables-> add_column('edit', '<a href="viewAdministrator?aID=$1">VIEW</a>', 'administratorID');
+		$this-> datatables -> unset_column('administratorID');	
+		echo $this->datatables->generate();
+	}
+
+	function viewAdministrator() {
+
+  		$sql = "CALL viewAdministrator(?)";
+  		$administrator = $this->input->get('aID', TRUE);
+
+		$data = $this->db->query($sql, $administrator);
+		$this->db->reconnect();
+		$result = $data->row();
+
+		return $result;
+	}
 
 	////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////
@@ -82,6 +103,50 @@ class Administrator_Model extends CI_Model {
 		$row = $data->row();
 
 		return $row;
+	}
+	
+	function createAdmin(){
+		$checkIfExists = "CALL checkIfAdminRecExists(?)";
+		$query = $this->db->query($checkIfExists, array('administratorID' => $_POST['administratorID']));
+		$this->db->reconnect();
+
+		if ( sizeof($query->row_array()) == 0) {
+			
+			// Add to administrators table
+			$sql = "CALL addAdministrator(?,?,?,?)";
+			$parameters = array(
+				'first_name' => $this->input->post('first_name')
+				, 'last_name' => $this->input->post('last_name')
+				, 'middle_name' => $this->input->post('middle_name')
+				, 'position' => $this->input->post('position')
+			);
+			
+			$this->db->query($sql, $parameters);
+			$this->db->reconnect();
+
+			// Add to users table
+			$username = strtolower($_POST['username']);
+			$email    = strtolower($_POST['email']);
+			$password = $_POST['password'];
+
+			$additional_data = array(
+					 'first_name' => $_POST['first_name']
+					, 'last_name' => $_POST['last_name']
+					, 'middle_name' => $_POST['middle_name']
+					, 'landline' => $_POST['landline']
+					, 'mobile' => $_POST['mobile']
+			);
+			
+			// administrator group id is 1			
+			$this->ion_auth->register($username, $password, $email, $additional_data, array('1'));
+		}
+		else {
+			echo "<script>
+			window.location.href='<?= echo base_url(); ?>index.php/administrator_controller/loadAddInternView';
+			alert('Admin record already exists!');
+			</script>";
+        }
+        	
 	}
 	
 }

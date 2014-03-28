@@ -39,59 +39,64 @@ class Intern_Model extends CI_Model {
 	
 	function viewInterns() {
 		$this->load->library('Datatables');
-		$this->datatables->select('studentID
-			, firstName
-			, lastName
-			, middleName
-			, landline
-			, mobile
-			, emailAddress
-			, courseID
-			, statusID
-			, currentEmployerID');
-		$this->datatables->from('iops.students');
-		//$this-> datatables->join('iops.employers', 'employers.employerID = students.curretEmployerID', 'left');
-		$this->datatables->where('iops.students.isGraduate = ', '0');
-		$this->datatables->add_column('edit', '<a href="viewIntern?sID=$1">VIEW</a>', 'studentID');
-		$this->datatables->unset_column('studentID');
+		$this->datatables->select('students.studentID
+			, students.firstName
+			, students.lastName
+			, students.middleName
+			, courses.course
+			, skills.description
+			, intern_status.status
+			, employers.companyName');
+		$this->datatables->from('students');
+		$this->datatables->join('employers', 'employers.employerID = students.currentEmployerID', 'left');
+		$this->datatables->join('courses', 'courses.courseID = students.courseID', 'left');
+		$this->datatables->join('intern_status', 'intern_status.intern_statusID = students.statusID', 'left');
+
+		$this->datatables->join('students_skills', 'students_skills.studentID = students.studentID', 'left');
+		$this->datatables->join('skills', 'skills.skillID = students_skills.skillID', 'left');
+
+		$this->datatables->where('students.isGraduate = ', '0');
+		$this->datatables->add_column('edit', '<a href="viewIntern?sID=$1">VIEW</a>', 'students.studentID');
+		$this->datatables->unset_column('students.studentID');
 		echo $this->datatables->generate();
 	}
 
 	function viewNewGrads() {
 		$this->load->library('Datatables');
-		$this->datatables->select('studentID
-			, firstName
-			, middleName
-			, lastName
-			, courseID
-			, statusID
-			, currentEmployerID');
-		$this->datatables->from('iops.students');
-		//$this-> datatables->join('iops.employers', 'employers.employerID = students.curretEmployerID', 'left');
-		$this->datatables->where('iops.students.isGraduate = ', '0');
+		$this->datatables->select('students.studentID
+			, students.firstName
+			, students.lastName
+			, students.middleName
+			, courses.course
+			, intern_status.status
+			, employers.companyName');
+		$this->datatables->from('students');
+		$this->datatables->join('employers', 'employers.employerID = students.currentEmployerID', 'left');
+		$this->datatables->join('courses', 'courses.courseID = students.courseID', 'left');
+		$this->datatables->join('intern_status', 'intern_status.intern_statusID = students.statusID', 'left');
+		$this->datatables->where('students.isGraduate = ', '0');
 		//$this->datatables->where('iops.students.yearGraduated = ', date("Y"));
-		//$this->datatables->unset_column('studentID');
+		$this->datatables->unset_column('students.studentID');
 		echo $this->datatables->generate();
 	}
 
 	function viewVerifiedInterns() {
 		$this->load->library('Datatables');
-		$this->datatables->select('studentID
-			, firstName
-			, lastName
-			, middleName
-			, landline
-			, mobile
-			, emailAddress
-			, courseID
-			, statusID
-			, currentEmployerID');
+		$this->datatables->select('students.studentID
+			, students.firstName
+			, students.lastName
+			, students.middleName
+			, courses.course
+			, intern_status.status
+			, employers.companyName');
 		$this->datatables->from('iops.students');
-		//$this-> datatables->join('iops.employers', 'employers.employerID = students.curretEmployerID', 'left');
+		$this->datatables->join('employers', 'employers.employerID = students.currentEmployerID', 'left');
+		$this->datatables->join('courses', 'courses.courseID = students.courseID', 'left');
+		$this->datatables->join('intern_status', 'intern_status.intern_statusID = students.statusID', 'left');
 		$this->datatables->where('iops.students.isGraduate = ', '0');
 		$this->datatables->where('iops.students.isVerified = ', '1');
-		$this->datatables->add_column('edit', '<a href="viewIntern?sID=$1">VIEW</a>', 'studentID');
-		$this->datatables->unset_column('studentID');
+		$this->datatables->add_column('edit', '<a href="viewIntern?sID=$1">VIEW</a>', 'students.studentID');
+		$this->datatables->unset_column('students.studentID');
 		echo $this->datatables->generate();
 	}
 
@@ -101,6 +106,38 @@ class Intern_Model extends CI_Model {
   		$intern = $this->input->get('sID', TRUE);
 
 		$data = $this->db->query($sql, $intern);
+		$this->db->reconnect();
+		$result = $data->row();
+
+		return $result;
+	}
+
+	function viewInternContacts() {
+
+  		$intern = $this->input->get('sID', TRUE);
+
+  		$sql1 = "CALL viewIntern(?)";
+		$data1 = $this->db->query($sql1, $intern);
+		$this->db->reconnect();
+		$result1 = $data1->row(0);
+
+  		$sql = "CALL viewEmployerContacts(?)";
+		$data = $this->db->query($sql, $result1->currentEmployerID);
+		$this->db->reconnect();
+		$result['first'] = $data->row(0);
+		$result['second'] = $data->row(1);
+		$result['third'] = $data->row(2);
+
+		return $result;
+	}
+
+	function viewMyIntern() {
+
+  		$sql = "CALL viewMyStudent(?)";
+		$user = $this->ion_auth->user()->row();
+		$username = $user->username;
+
+		$data = $this->db->query($sql, $username);
 		$this->db->reconnect();
 		$result = $data->row();
 
@@ -120,7 +157,7 @@ class Intern_Model extends CI_Model {
 
 	function updateIntern() {
 		
-		$sql = "CALL updateIntern(?,?,?,?,?,?,?,?,?,?,?,?)";
+		$sql = "CALL updateIntern(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
   		$intern = $this->input->get('sID', TRUE);
 
@@ -137,6 +174,7 @@ class Intern_Model extends CI_Model {
 			, 'courseID' => $this->input->post('iCourseID')
 			, 'statusID' => $this->input->post('iStatusID')
 			, 'isVerified' => $this->input->post('iIsVerified')
+			, 'availability' => $this->input->post('iAvailability')
 		);
 
 		$data = $this->db->query($sql, $parameters);
@@ -151,6 +189,8 @@ class Intern_Model extends CI_Model {
 		//$decodedSelected = json_decode($selected);
 
   		$sql = "CALL updateInternToAlumnus(?,?,?,?)";
+  		$sql_isUser = "CALL checkIfStudentIsUser(?)";
+  		$sql_userGroup = "CALL updateInternUserGroup(?)";
     	foreach($selected as $student) {
 			//$this->db->update('iops.student', 1, array('studentID' => $student));
 			$parameters = array(
@@ -158,7 +198,20 @@ class Intern_Model extends CI_Model {
 				, 'year' => $year
 				, 'month' => $month
 				, 'term' => $term);
+			$intern = array(
+				'studentID' => $student);
+
 			$data = $this->db->query($sql, $parameters);
+			$this->db->reconnect();
+			
+			$data_isUser = $this->db->query($sql_isUser, $intern);
+			$data_isUserResult['valid'] = $data_isUser->row();
+			$this->db->reconnect();
+			
+			if ($data_isUserResult['valid'] != null
+				&& $data_isUserResult['valid']->id > 0) {
+				$data_userGroup = $this->db->query($sql_userGroup, $intern);
+			}
 		}
 	}
 
@@ -176,51 +229,6 @@ class Intern_Model extends CI_Model {
 		return $result;
 	}
 
-	function createStudent() {
-
-		$checkIfExists = "CALL checkIfStudRecExists(?)";
-		$query = $this->db->query($checkIfExists, array('studentID' => $_POST['studentID']));
-		$this->db->reconnect();
-		
-		if ( sizeof($query->row_array()) == 0) {
-			$createStudProc = "CALL addStudent (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			$result = $this->db->query( $createStudProc,
-				 array('studentID' => $_POST['studentID']
-					, 'firstName' => $_POST['firstName']
-					, 'lastName' => $_POST['lastName']
-					, 'middleName' => $_POST['middleName']
-					, 'landline' => $_POST['landline']
-					, 'mobile' => $_POST['mobile']
-					, 'emailAddress' => $_POST['emailAddress']
-					, 'address' => $_POST['address']
-					, 'contactDetailsLastUpdated' => date('Y-m-d H:i:s', now())
-					, 'yearGraduated' => $_POST['yearGraduated']
-					, 'monthGraduated' => $_POST['monthGraduated']
-					, 'termGraduated' => $_POST['termGraduated']
-					, 'courseID' => $_POST['courseID']
-					, 'statusID' => $_POST['statusID'] ));
-
-			$this->db->reconnect();
-
-			$createStudProc = "CALL addStudentAsUser (?,?,?,?,?,?)";
-			$result = $this->db->query( $createStudProc,
-				 array(
-					 'first_name' => $_POST['firstName']
-					, 'last_name' => $_POST['lastName']
-					, 'middle_name' => $_POST['middleName']
-					, 'landline' => $_POST['landline']
-					, 'mobile' => $_POST['mobile']
-					, 'email' => $_POST['emailAddress']));	
-		}
-		else {
-			echo "<script>
-			window.location.href='<?= echo base_url(); ?>index.php/administrator_controller/loadAddInternView';
-			alert('Student record already exists!');
-			</script>";
-        }
-	}
-
-
 	function viewStudents() {
 		$data = $this->db->query("CALL getStudentsData()");
 		$this->db->reconnect();
@@ -236,6 +244,59 @@ class Intern_Model extends CI_Model {
 		$result = $data->row();
 		return $result;
 	}
+
+	function createStudent() {
+
+		$checkIfExists = "CALL checkIfStudRecExists(?)";
+		$query = $this -> db -> query($checkIfExists, array('studentID' => $_POST['studentID']));
+		$this -> db -> reconnect();
+		
+		if ( sizeof($query -> row_array()) == 0) {
+			
+			// Add to students table
+			$createStudProc = "CALL addStudent (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			$result = $this -> db -> query( $createStudProc,
+				 array('studentID' => $_POST['studentID']
+					, 'firstName' => $_POST['first_name']
+					, 'lastName' => $_POST['last_name']
+					, 'middleName' => $_POST['middle_name']
+					, 'landline' => $_POST['landline']
+					, 'mobile' => $_POST['mobile']
+					, 'emailAddress' => $_POST['email']
+					, 'address' => $_POST['address']
+					, 'contactDetailsLastUpdated' => date('Y-m-d H:i:s', now())
+					, 'yearGraduated' => $_POST['yearGraduated']
+					, 'monthGraduated' => $_POST['monthGraduated']
+					, 'termGraduated' => $_POST['termGraduated']
+					, 'courseID' => $_POST['courseID']
+					, 'statusID' => $_POST['statusID'] ));
+			$this->db->reconnect();
+
+			// Add to users table
+			$username = strtolower($_POST['username']);
+			$email    = strtolower($_POST['email']);
+			$password = $_POST['password'];
+
+			$additional_data = array(
+					 'first_name' => $_POST['first_name']
+					, 'last_name' => $_POST['last_name']
+					, 'middle_name' => $_POST['middle_name']
+					, 'landline' => $_POST['landline']
+					, 'mobile' => $_POST['mobile']
+			);
+			
+			// students groupID is 5			
+			$this->ion_auth->register($username, $password, $email, $additional_data, array('5'));	
+			
+		}
+		else {
+			echo "<script>
+			window.location.href='<?= echo base_url(); ?>index.php/administrator_controller/loadAddInternView';
+			alert('Student record already exists!');
+			</script>";
+        }
+	}
+
 
 }
 ?>

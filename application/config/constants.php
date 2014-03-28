@@ -55,8 +55,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 */
 
 define('COURSE_LIST', serialize( array(
-	'NA'
-	, 'BSBA Financial Management'
+	'BSBA Financial Management'
 	, 'BA Multimedia Arts and Design'
 	, 'BSBA Marketing and Advertising'
 	, 'BS Animation'
@@ -66,27 +65,23 @@ define('COURSE_LIST', serialize( array(
 	, 'Bachelor of Fashion Design and Technology')));
 
 define('ADMINISTRATOR_POSITION', serialize( array(
-	'NA'
-	, 'Dean'
+	'Dean'
 	, 'Secretary')));
 
 define('ALUMNUS_EMPLOYMENT_STATUS', serialize( array(
-	'NA'
-	, 'Employed'
+	'Employed'
 	, 'Unemployed (Seeking for a Job)'
-	, 'Unemployed (Not Seeking for a Job')));
+	, 'Unemployed (Not Seeking for a Job)')));
 
 define('INTERN_STATUS', serialize( array(
-	'NA'
-	, 'Available'
+	'Available'
 	, 'Currently On-The-Job'
 	, 'Completed Internship 1'
 	, 'Completed Internship 2'
 	, 'Employed')));
 
 define('INDUSTRY_LIST', serialize( array(
-	'NA'
-	, 'Adevertising / Design and Marketing'
+	'Advertising / Design and Marketing'
 	, 'Aerospace & Defense'
 	, 'Automobiles & Parts'
 	, 'Business Process Outsourcing'

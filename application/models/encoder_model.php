@@ -273,5 +273,43 @@ class Encoder_Model extends CI_Model {
 			redirect('home/getListOfEmployers', 'refresh');
 		}
 	}
+
+	
+	function addEncoder(){
+		$checkIfExists = "CALL checkIfIdentityExists(?,?)";
+		$query = $this->db->query($checkIfExists, 
+		array(
+			'username' => $this->input->post('username')
+			,'email'   => $this->input->post('email') )
+		);
+		$this->db->reconnect();
+
+		if ( sizeof($query->row_array()) == 0) {
+
+			// Add to users table
+			$username = strtolower($this->input->post('username'));
+			$email    = strtolower($this->input->post('email'));
+			$password = $this->input->post('password');
+
+			$additional_data = array(
+					 'first_name' => $this->input->post('first_name')
+					, 'last_name' => $this->input->post('last_name')
+					, 'middle_name' => $this->input->post('middle_name')
+					, 'landline' => $this->input->post('landline')
+					, 'mobile' => $this->input->post('mobile')
+			);
+			
+			// encoder group id is 3			
+			$this->ion_auth->register($username, $password, $email, $additional_data, array('3'));
+		}
+		else {
+			echo "<script>
+			window.location.href='<?= echo base_url(); ?>index.php/administrator_controller/loadAddInternView';
+			alert('Encoder record already exists!');
+			</script>";
+        }	
+	}
+
+
 }
 ?>

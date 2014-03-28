@@ -1,76 +1,153 @@
 
   <div id="viewInternProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>Intern Profile <img id="editInternProfile" src="<?php echo base_url();?>assets\images\edit.png" alt="Edit Intern Profile" width="25" height="25" /></legend>
+    <legend>Intern Profile <img id="editInternProfile" src="<?php echo base_url();?>assets/images/edit.png" alt="Edit Intern Profile" width="25" height="25" /></legend>
 
-    <!-- PERSONAL INFORMATION -->
-    <div class="panel panel-info">
-      <div class="panel-heading"><h3 class="panel-title">Personal Information</h3></div>
-      <div class="panel-body">
-        <table class="tg">
-          <tr>
-            <td class="td-fields">Full Name</td>
-            <td class="td-values"><?php echo $myIntern->firstName;?> <?php echo $myIntern->middleName;?> <?php echo $myIntern->lastName;?></td>
-          </tr>
-          <tr>
-            <td class="td-fields">Address</td>
-            <td class="td-values"><?php echo $myIntern->address;?></td>
-          </tr>
-          <tr>
-            <td class="td-fields">Verified</td>
-            <td class="td-values">
-              <?php if ($myIntern->isVerified==1) echo 'Yes'; else echo 'No'; ?>
-            </td>
-          </tr>
-        </table>
+    <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+      <li class="active"><a href="#personal_information" data-toggle="tab">Personal Information</a></li>
+      <li><a href="#internship_details" data-toggle="tab">Internship Details</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <!-- PERSONAL INFORMATION -->
+      <div class="tab-pane fade active in" id="personal_information">
+      <?php $courses = unserialize (COURSE_LIST); ?>
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="panel-title">Personal Information</h3></div>
+        <div class="panel-body">
+          <table class="tg">
+            <tr>
+              <td class="td-fields">Full Name</td>
+              <td class="td-values"><?php echo $myIntern->firstName;?> <?php echo $myIntern->middleName;?> <?php echo $myIntern->lastName;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Address</td>
+              <td class="td-values"><?php echo $myIntern->address;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Course</td>
+              <td class="td-values"><?php echo $courses[$myIntern->courseID];?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Verified</td>
+              <td class="td-values">
+                <?php if ($myIntern->isVerified==1) echo 'Yes'; else echo 'No'; ?>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
-    <!-- END PERSONAL INFORMATION -->
+      <!-- END PERSONAL INFORMATION -->
 
-    <!-- CONTACT DETAILS -->
-    <div class="panel panel-info">
-      <div class="panel-heading"><h3 class="panel-title">Contact Details</h3></div>
-      <div class="panel-body">
-        <table class="tg">
-          <tr>
-            <td class="td-fields">Landline</td>
-            <td class="td-values"><?php echo $myIntern->landline;?></td>
-          </tr>
-          <tr>
-            <td class="td-fields">Mobile</td>
-            <td class="td-values"><?php echo $myIntern->mobile;?></td>
-          </tr>
-          <tr>
-            <td class="td-fields">Email</td>
-            <td class="td-values"><?php echo $myIntern->emailAddress;?></td>
-          </tr>
-        </table>
+      <!-- CONTACT DETAILS -->
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="panel-title">Contact Details</h3></div>
+        <div class="panel-body">
+          <table class="tg">
+            <tr>
+              <td class="td-fields">Landline</td>
+              <td class="td-values"><?php echo $myIntern->landline;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Mobile</td>
+              <td class="td-values"><?php echo $myIntern->mobile;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Email</td>
+              <td class="td-values"><?php echo $myIntern->emailAddress;?></td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
-    <!-- END CONTACT DETAILS -->
+      </div>
+      <!-- END CONTACT DETAILS -->
 
-    <!-- STUDENT INFORMATION -->
-    <?php $courses = unserialize (COURSE_LIST); ?>
-    <?php $status = unserialize (INTERN_STATUS); ?>
-    <div class="panel panel-info">
-      <div class="panel-heading"><h3 class="panel-title">Student Information</h3></div>
-      <div class="panel-body">
-        <table class="tg">
-          <tr>
-            <td class="td-fields">Course</td>
-            <td class="td-values"><?php echo $courses[$myIntern->courseID];?></td>
-          </tr>
-          <tr>
-            <td class="td-fields">Internship Status</td>
-            <td class="td-values"><?php echo $status[$myIntern->statusID];?></td>
-          </tr>
-          <tr>
-            <td class="td-fields">Current Company</td>
-            <td class="td-values"><?php echo $myIntern->companyName;?></td>
-          </tr>
-        </table>
+      <!-- STUDENT INFORMATION -->
+      <div class="tab-pane fade" id="internship_details">
+      <?php $courses = unserialize (COURSE_LIST); ?>
+      <?php $status = unserialize (INTERN_STATUS); ?>
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="panel-title">Intern Details</h3></div>
+        <div class="panel-body">
+          <table class="tg">
+            <tr>
+              <td class="td-fields">Employment Status</td>
+              <td class="td-values"><?php echo $status[$myIntern->statusID];?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Availability</td>
+              <td class="td-values"><?php echo $myIntern->availability;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Resume</td>
+              <td class="td-values"><!--
+                <?php /*if (strlen($myIntern->resumePath) != 0) {
+
+                      $image_properties = array(
+                                'src' => base_url().$myIntern->resumePath,
+                                'alt' => $myIntern->last_name.'_'.$myIntern->first_name.'_Resume',
+                                'class' => '',
+                                'width' => '100',
+                                'height' => '150',
+                                'title' => $myIntern->last_name.'_'.$myIntern->first_name.'_Resume'
+                      );
+
+                      echo img($image_properties);
+                    }*/
+                ?>
+                <?php //if(strlen($uploadErrorSEC != 0)) echo $uploadErrorSEC;?>
+                <?php //echo form_open_multipart('administrator_controller/uploadResume');?>
+                  <input type="file" name="userfile" size="20" />
+                  <br/>
+                  <input type="submit" class="btn btn-default" value="Upload Resume" />
+                </form>-->
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
+      <!-- END STUDENT INFORMATION -->
+
+      <!-- COMPANY DETAILS -->
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="panel-title">Company Details</h3></div>
+        <div class="panel-body">
+          <table class="tg">
+            <tr>
+              <td class="td-fields">Company</td>
+              <td class="td-values">
+                <a href="<?php echo base_url();?>index.php/administrator_controller/viewEmployer?eID=<?php echo $myIntern->currentEmployerID;?>">
+                  <?php echo $myIntern->companyName;?>
+                </a>
+              </td>
+            </tr>
+            <?php if($myEmployerContacts['first']->first_name != null && $myEmployerContacts['first']->first_name != "") { ?>
+            <tr>
+              <td class="td-fields">Mailing Address</td>
+              <td class="td-values"><?php echo $myIntern->completeMailingAddress;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Representative</td>
+              <td class="td-values"><?php echo $myEmployerContacts['first']->first_name;?> <?php echo $myEmployerContacts['first']->middle_name;?> <?php echo $myEmployerContacts['first']->last_name;?>, <?php echo $myEmployerContacts['first']->position;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Telephone Number</td>
+              <td class="td-values"><?php echo $myEmployerContacts['first']->landline;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Mobile Number</td>
+              <td class="td-values"><?php echo $myEmployerContacts['first']->mobile;?></td>
+            </tr>
+            <tr>
+              <td class="td-fields">Email</td>
+              <td class="td-values"><?php echo $myEmployerContacts['first']->email;?></td>
+            </tr>
+            <?php } ?>
+          </table>
+        </div>
+      </div>
+      </div>
+      <!-- END COMPANY DETAILS -->
+
     </div>
-    <!-- END STUDENT INFORMATION -->
 
     <!-- UPDATE MY PROFILE DIALOG -->
     <div class="modal" id="dialog-edit-intern-profile" >
@@ -81,9 +158,6 @@
             <h4 class="modal-title">Profile Editor</h4>
           </div>
           <div class="modal-body">
-          <div class="validateTips alert alert-dismissable alert-warning">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>Note : </strong> All form fields are required.</div><br/>
       
         <!-- PERSONAL INFORMATION -->
         <form class="form-horizontal" action="<?php echo base_url();?>index.php/administrator_controller/updateIntern?sID=<?php echo $myIntern->studentID;?>" method="POST">
@@ -175,28 +249,22 @@
               <div class="col-lg-10">
               <label for="inputCourse" class="control-label">Course</label>
               <select id="iCourseID" name="iCourseID" class="editbox form-control" required>
-                <!--<option value = 0 <? if ($myIntern->courseID == 0) echo "selected='selected'";?>> <? echo $courses[0];?> </option>-->
-                <option value = 1 <? if ($myIntern->courseID == 1) echo "selected='selected'";?>> <? echo $courses[1];?> </option>
-                <option value = 2 <? if ($myIntern->courseID == 2) echo "selected='selected'";?>> <? echo $courses[2];?> </option>
-                <option value = 3 <? if ($myIntern->courseID == 3) echo "selected='selected'";?>> <? echo $courses[3];?> </option>
-                <option value = 4 <? if ($myIntern->courseID == 4) echo "selected='selected'";?>> <? echo $courses[4];?> </option>
-                <option value = 5 <? if ($myIntern->courseID == 5) echo "selected='selected'";?>> <? echo $courses[5];?> </option>
-                <option value = 6 <? if ($myIntern->courseID == 6) echo "selected='selected'";?>> <? echo $courses[6];?> </option>
-                <option value = 7 <? if ($myIntern->courseID == 7) echo "selected='selected'";?>> <? echo $courses[7];?> </option>
-                <option value = 8 <? if ($myIntern->courseID == 8) echo "selected='selected'";?>> <? echo $courses[8];?> </option>
-              </select>
+                <?php 
+                  $i=0;
+                  foreach ($courses as $course) { ?>
+                  <option value = <? echo $i;?> <? if ($myIntern->courseID == $i) echo "selected='selected'";?>> <? echo $courses[$i];?> </option>
+                <?php $i++; } ?></select>
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
               <label for="inputStatus" class="control-label">Internship Status</label>
               <select id="iStatusID" name="iStatusID" class="editbox form-control" required>
-                <!--<option value = 0 <? if ($myIntern->statusID == 0) echo "selected='selected'";?>> <? echo $status[0];?> </option>-->
-                <option value = 1 <? if ($myIntern->statusID == 1) echo "selected='selected'";?>> <? echo $status[1];?> </option>
-                <option value = 2 <? if ($myIntern->statusID == 2) echo "selected='selected'";?>> <? echo $status[2];?> </option>
-                <option value = 3 <? if ($myIntern->statusID == 3) echo "selected='selected'";?>> <? echo $status[3];?> </option>
-                <option value = 4 <? if ($myIntern->statusID == 4) echo "selected='selected'";?>> <? echo $status[4];?> </option>
-                <option value = 5 <? if ($myIntern->statusID == 5) echo "selected='selected'";?>> <? echo $status[5];?> </option>
+                <?php 
+                  $i=0;
+                  foreach ($status as $stat) { ?>
+                  <option value = <? echo $i;?> <? if ($myIntern->statusID == $i) echo "selected='selected'";?>> <? echo $status[$i];?> </option>
+                <?php $i++; } ?>
               </select>
               </div>
             </div>
@@ -208,6 +276,12 @@
                 <option value = <? echo $company->employerID; ?> <? if ($myIntern->currentEmployerID == $company->employerID) echo "selected='selected'";?>> <? echo $company->companyName;?> </option>
               <? } ?>
               </select>
+              </div>
+            </div>
+            <div class="form-group">
+            <div class="col-lg-10">
+              <label for="inputCompanyName" class="control-label">Availability</label>
+              <input type="text" value="<?php echo $myIntern->availability; ?>" class="editbox form-control" name="iAvailability" size="20" />
               </div>
             </div>
           </div>

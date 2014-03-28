@@ -1,6 +1,6 @@
 
   <div id="viewMyProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>Announcements <img id="createAnnouncement" src="<?php echo base_url();?>assets\images\add.png" alt="Create New Announcement" width="25" height="25" /></legend>
+    <legend>Announcements <img id="createAnnouncement" src="<?php echo base_url();?>assets/images/add.png" alt="Create New Announcement" width="25" height="25" /></legend>
     <!-- ANNOUNCEMENTS -->
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Some Announcement</h3></div>
