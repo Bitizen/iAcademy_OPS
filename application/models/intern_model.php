@@ -63,7 +63,8 @@ class Intern_Model extends CI_Model {
 
 	function viewNewGrads() {
 		$this->load->library('Datatables');
-		$this->datatables->select('students.studentID
+		$this->datatables->select('
+			students.studentID
 			, students.firstName
 			, students.lastName
 			, students.middleName
@@ -76,7 +77,7 @@ class Intern_Model extends CI_Model {
 		$this->datatables->join('intern_status', 'intern_status.intern_statusID = students.statusID', 'left');
 		$this->datatables->where('students.isGraduate = ', '0');
 		//$this->datatables->where('iops.students.yearGraduated = ', date("Y"));
-		$this->datatables->unset_column('students.studentID');
+		//$this->datatables->unset_column('students.studentID');
 		echo $this->datatables->generate();
 	}
 

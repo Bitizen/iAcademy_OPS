@@ -114,6 +114,7 @@
 				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 					<thead>
 						<tr>
+							<th width="12%">Student ID</th>
 							<th width="12%">First Name</th>
 							<th width="12%">Last Name</th>
 							<th width="11%">Middle Name</th>
