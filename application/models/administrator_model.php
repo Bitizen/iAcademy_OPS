@@ -44,11 +44,17 @@ class Administrator_Model extends CI_Model {
 	// Outputs User List
 	function viewUsers() {
 		$this -> load -> library('Datatables');
-		$this-> datatables -> select('first_name, last_name, email, mobile');	
+		$this-> datatables -> select('
+			users.last_name
+			, users.first_name
+			, users.email
+			, users.mobile
+			, users.position
+			, groups.description');	
 		$this-> datatables -> from('iops.users');	
-		$this-> datatables-> add_column('edit', '<a href="viewIntern?sID=$1">VIEW</a>', 'studentID');
-		$this-> datatables -> unset_column('studentID');	
-		echo $this->datatables->generate();
+		$this -> datatables -> join('users_groups', 'users_groups.user_id = users.id', 'left');
+		$this -> datatables -> join('groups', 'groups.id = users_groups.group_id', 'left');
+		echo $this -> datatables -> generate();
 	}
 
 	// Outputs User List
@@ -58,7 +64,7 @@ class Administrator_Model extends CI_Model {
 		$this-> datatables -> from('administrators');	
 		$this-> datatables-> add_column('edit', '<a href="viewAdministrator?aID=$1">VIEW</a>', 'administratorID');
 		$this-> datatables -> unset_column('administratorID');	
-		echo $this->datatables->generate();
+		echo $this -> datatables -> generate();
 	}
 
 	function viewAdministrator() {

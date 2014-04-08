@@ -1,6 +1,6 @@
 
   <div id="viewMyProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>My Account <img id="editMyProfile" src="<?php echo base_url();?>assets/images/edit.png" alt="Edit My Profile" width="25" height="25" /></legend>
+    <legend>My Account<img id="editMyProfile" src="<?php echo base_url();?>assets/images/edit.png" alt="Edit My Profile" width="25" height="25" /></legend>
     <!-- PERSONAL INFORMATION -->
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Personal Information</h3></div>

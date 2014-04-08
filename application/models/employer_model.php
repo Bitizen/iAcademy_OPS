@@ -82,6 +82,30 @@ class Employer_Model extends CI_Model {
 		return $data->result();
 	}	
 
+	function viewMyAffiliatedInterns(){
+
+		$user = $this->ion_auth->user()->row();
+		$parameter = $user->username;
+
+		$sql = "CALL viewMyAffiliatedInterns(?)";
+		$data = $this->db->query($sql, $parameter);
+		$this->db->reconnect();
+		$result = $data->result();
+		return $data->result();
+	}
+
+	function viewMyAffiliatedEmployees(){
+
+		$user = $this->ion_auth->user()->row();
+		$parameter = $user->username;
+
+		$sql = "CALL viewMyAffiliatedEmployees(?)";
+		$data = $this->db->query($sql, $parameter);
+		$this->db->reconnect();
+		$result = $data->result();
+		return $data->result();
+	}	
+
 	function updateEmployer() {
 
 		$sql = "CALL updateEmployer(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -266,15 +290,16 @@ class Employer_Model extends CI_Model {
 		
 		$industries = unserialize (INDUSTRY_LIST);
 		$this -> load -> library('Datatables');
-		$this-> datatables -> select('employerID
+		$this -> datatables -> select('employerID
 			, companyName
 			, completeMailingAddress
 			, industryType
 			, industryPartner
 			');	
-		$this-> datatables -> from('iops.employers');
-		$this-> datatables-> add_column('edit', '<a href="viewEmployer?eID=$1">VIEW</a>', 'employerID');
-		$this-> datatables -> unset_column('employerID');
+		$this -> datatables -> from('iops.employers');
+		$this -> datatables -> edit_column('companyName', '<a href="viewEmployer?eID=$1">$2</a>', 'employerID, companyName');
+		//$this-> datatables-> add_column('edit', '<a href="viewEmployer?eID=$1">VIEW</a>', 'employerID');
+		$this -> datatables -> unset_column('employerID');
 		echo $this->datatables->generate();
 	}
 	
@@ -282,16 +307,17 @@ class Employer_Model extends CI_Model {
 		
 		$industries = unserialize (INDUSTRY_LIST);
 		$this -> load -> library('Datatables');
-		$this-> datatables -> select('employerID
+		$this -> datatables -> select('employerID
 			, companyName
 			, completeMailingAddress
 			, industryType
 			, industryPartner
 			');	
-		$this-> datatables -> from('iops.employers');
-		$this-> datatables -> where('employers.SECRegistrationFilePath =', '');
-		$this-> datatables-> add_column('edit', '<a href="viewEmployer?eID=$1">VIEW</a>', 'employerID');
-		$this-> datatables -> unset_column('employerID');
+		$this -> datatables -> from('iops.employers');
+		$this -> datatables -> where('employers.SECRegistrationFilePath =', '');
+		$this -> datatables -> edit_column('companyName', '<a href="viewEmployer?eID=$1">$2</a>', 'employerID, companyName');
+		//$this-> datatables-> add_column('edit', '<a href="viewEmployer?eID=$1">VIEW</a>', 'employerID');
+		$this -> datatables -> unset_column('employerID');
 		echo $this->datatables->generate();
 	}
 

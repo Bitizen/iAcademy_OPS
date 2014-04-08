@@ -77,4 +77,10 @@ $(document).ready(function() {
     $('#dialog-view-employee-profile').modal();  
   }); 
 
+  /* New Modals */
+  $('#viewSECModal').click(function() {
+    $('#viewSECModalDiv').modal();  
+  }); 
+  /* End New Modals */
+
 }); // end of onReady function

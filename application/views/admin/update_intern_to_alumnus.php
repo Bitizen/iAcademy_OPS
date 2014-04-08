@@ -59,6 +59,8 @@
 			document.location.reload(true);
 	    });
 
+		/* Modal */
+
 	});
 
 </script>
@@ -115,8 +117,8 @@
 					<thead>
 						<tr>
 							<th width="12%">Student ID</th>
-							<th width="12%">First Name</th>
 							<th width="12%">Last Name</th>
+							<th width="12%">First Name</th>
 							<th width="11%">Middle Name</th>
 							<th width="25%">Course</th>
 							<th width="25%">Status</th>
@@ -132,5 +134,75 @@
 			</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- MODAL -->
+    <form class="form-horizontal" action="<?php echo base_url();?>index.php/administrator_controller/updateUser" method="POST">
+    <fieldset>
+      
+    <div class="modal" id="dialog-edit-company-profile" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Profile Editor</h4>
+          </div>
+          <div class="modal-body">
+      
+        <!-- PERSONAL INFORMATION -->
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Personal Information</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="col-lg-10">
+                <label for="inputCompanyName" class="control-label">First Name</label>
+                <input type="text" value="<?php echo $user->first_name; ?>" class="editbox form-control" name="iFirstName" size="20" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10">
+                <label for="inputCompanyName" class="control-label">Middle Name</label>
+                <input type="text" value="<?php echo $user->middle_name; ?>" class="editbox form-control" name="iMiddleName" size="20" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10">
+                <label for="inputCompanyName" class="control-label">Last Name</label>
+                <input type="text" value="<?php echo $user->last_name; ?>" class="editbox form-control" name="iLastName" size="20" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10">
+                <label for="inputCompanyName" class="control-label">Position</label>
+                <input type="text" value="<?php echo $user->position; ?>" class="editbox form-control" name="iPosition" size="20" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10">
+              <label for="inputDateOfBirth" class="control-label">Date Of Birth</label>
+              <div class="input-group date">
+                <input type="text" id="trigger-datepicker" name="iDateOfBirth" class="form-control" value="<?php echo $user->date_of_birth; ?>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END PERSONAL INFORMATION -->
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </fieldset>
+    </form>
+    <!-- END MODAL -->
+
 	</body>
 </html>

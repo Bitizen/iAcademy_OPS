@@ -37,6 +37,8 @@ class Employer_Controller extends MY_Controller {
 		$this->load->model('employer_model');
         $data['myEmployer'] = $this->employer_model->viewMyEmployer();
         $data['myEmployerContacts'] = $this->employer_model->viewMyEmployerContacts();
+        $data['myEmployerAffiliatedInterns'] = $this->employer_model->viewMyAffiliatedInterns();
+        $data['myEmployerAffiliatedEmployees'] = $this->employer_model->viewMyAffiliatedEmployees();
 
 		$this->load->helper('form');
 		$this->load->view('employer/header');

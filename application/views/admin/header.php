@@ -13,13 +13,13 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery-ui-1.10.4.custom.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/bootstrap.js"></script>
-  <!--<script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>-->
-  <!--<script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
+  <script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>
+  <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   <script src="<?php echo base_url();?>assets/js/default.js" type="text/javascript" ></script>
 
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
   <link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css"/>
 
 </head>
 <body>

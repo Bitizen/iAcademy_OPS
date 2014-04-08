@@ -23,16 +23,15 @@
 				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 					<thead>
 						<tr>	
-							<th width="9%">First Name</th>
-							<th width="5%">Middle Name</th>
-							<th width="9%">Last Name</th>
+							<th width="11%">Last Name</th>
+							<th width="11%">First Name</th>
+							<th width="8%">Middle Name</th>
 							<th width="11%">Course</th>
 							<th width="11%">Skill</th>
 							<th width="9%">Employment Status</th>
 							<th width="8%">Company</th>
 							<th width="8%">Position</th>
 							<th width="5%">Affiliation Status</th>
-							<th width="5%">View</th>
 						</tr>
 					</thead>
 					<tbody>

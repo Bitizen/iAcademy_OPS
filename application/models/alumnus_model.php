@@ -23,9 +23,9 @@ class Alumnus_Model extends CI_Model {
 		$this -> load -> library('Datatables');
 		$this -> datatables -> select(
 			'students.studentID
+			, students.lastName
 			, students.firstName
 			, students.middleName
-			, students.lastName
 			, courses.course
 			, skills.description
 			, employment_status.status
@@ -38,13 +38,14 @@ class Alumnus_Model extends CI_Model {
 		$this -> datatables -> join('employment_status', 'employment_status.employment_statusID = students.statusID', 'left');
 
 		$this -> datatables -> join('students_skills', 'students_skills.studentID = students.studentID', 'left');
-		$this -> datatables-> join('skills', 'skills.skillID = students_skills.skillID', 'left');
+		$this -> datatables -> join('skills', 'skills.skillID = students_skills.skillID', 'left');
 
 		$this -> datatables -> join('employers_students_log', 'employers_students_log.studentID = students.studentID', 'left');
 		$this -> datatables -> join('positions', 'positions.positionID = employers_students_log.positionID', 'left');
 
-		$this -> datatables -> where('iops.students.isGraduate = ', '1');
-		$this -> datatables -> add_column('edit', '<a href="viewAlumnus?sID=$1">VIEW</a>', 'students.studentID');
+		//$this -> datatables -> where('iops.students.isGraduate = ', '1');
+		$this -> datatables -> edit_column('students.lastName', '<a href="viewAlumnus?sID=$1">$2</a>', 'students.studentID, students.lastName');
+		//$this -> datatables -> add_column('edit', '<a href="viewAlumnus?sID=$1">VIEW</a>', 'students.studentID');
 		$this -> datatables -> unset_column('students.studentID');
 		echo $this -> datatables -> generate();
 	}

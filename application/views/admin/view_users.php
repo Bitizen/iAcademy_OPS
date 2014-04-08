@@ -24,10 +24,12 @@
 				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 					<thead>
 						<tr>
-							<th width="20%">Firstname</th>
 							<th width="20%">Lastname</th>
-							<th width="30%">Email</th>
-							<th width="30%">Contact Number</th>
+							<th width="20%">Firstname</th>
+							<th width="23%">Email</th>
+							<th width="18%">Contact Number</th>
+							<th width="10%">Position</th>
+							<th width="9%">User Group</th>
 						</tr>
 					</thead>
 					<tbody>

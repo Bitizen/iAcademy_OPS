@@ -174,9 +174,6 @@
             </tr>
           </table>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
         </div>
       </div>
       </div><!-- /.modal-content -->
@@ -229,9 +226,6 @@
               <td><input type="text" id="currentEmployerEmp" class="text-primary" value=""readonly /></td>
             </tr>
           </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
         </div>
       </div>
@@ -422,16 +416,15 @@
             <td class="td-fields">SEC Registration</td>
             <td class="td-values">
               <?php if (strlen($myEmployer->SECRegistrationFilePath) != 0) {
-
                     $image_properties = array(
                               'src' => base_url().$myEmployer->SECRegistrationFilePath,
                               'alt' => $myEmployer->companyName.' SEC Registration',
                               'class' => '',
                               'width' => '100',
                               'height' => '150',
-                              'title' => $myEmployer->companyName.' SEC Registration'
+                              'title' => $myEmployer->companyName.' SEC Registration',
+                              'id' => 'viewSECModal'
                     );
-
                     echo img($image_properties);
                   }
                   else {
@@ -624,6 +617,37 @@
   </div>
   </div>
 
+<!-- VIEW SEC MODAL -->
+  <?php if (strlen($myEmployer->SECRegistrationFilePath) != 0) {
+        $big_image_properties = array(
+                  'src' => base_url().$myEmployer->SECRegistrationFilePath,
+                  'alt' => $myEmployer->companyName.' SEC Registration',
+                  'class' => '',
+                  'width' => '500',
+                  'height' => '700',
+                  'title' => $myEmployer->companyName.' SEC Registration'
+        );
+  ?>
+    <div class="modal" id="viewSECModalDiv" >sbuskd
+      
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title"><?php echo $myEmployer->companyName;?> SEC Registration</h4>
+          <div class="modal-body">
+  <?
+      echo img($big_image_properties);
+  ?>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?
+      }
+  ?>
+<!-- END VIEW SEC MODAL -->
 
 <!-- UPDATE COMPANY PROFILE DIALOG -->
 <div class="modal" id="dialog-edit-company-profile" >
@@ -632,6 +656,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title"><?php echo $myEmployer->companyName;?></h4>
+      </div>
       <div class="modal-body">
  
       <!-- COMPANY DETAILS -->
@@ -766,23 +791,5 @@
 </div>
 <!-- END UPDATE COMPANY PROFILE DIALOG -->
 
-<!-- START VIEW AFFILIATED INTERN'S PROFILE -->
-    <div id="dialog-view-intern-profile" class="modal">
-    <div class="modal-dialog">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-           <h3 id="myModalLabel">Modal header</h3>
-
-      </div>
-      <div class="modal-body">
-          <p>One fine body…</p>
-      </div>
-      <div class="modal-footer">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-          <button class="btn btn-primary">Save changes</button>
-      </div>
-      </div>
-  </div>
-<!-- END VIEW AFFILIATED INTERN'S PROFILE -->
 </body>
 </html>

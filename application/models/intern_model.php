@@ -40,8 +40,8 @@ class Intern_Model extends CI_Model {
 	function viewInterns() {
 		$this->load->library('Datatables');
 		$this->datatables->select('students.studentID
-			, students.firstName
 			, students.lastName
+			, students.firstName
 			, students.middleName
 			, courses.course
 			, skills.description
@@ -56,7 +56,8 @@ class Intern_Model extends CI_Model {
 		$this->datatables->join('skills', 'skills.skillID = students_skills.skillID', 'left');
 
 		$this->datatables->where('students.isGraduate = ', '0');
-		$this->datatables->add_column('edit', '<a href="viewIntern?sID=$1">VIEW</a>', 'students.studentID');
+		$this->datatables->edit_column('students.lastName', '<a href="viewIntern?sID=$1">$2</a>', 'students.studentID, students.lastName');
+		//$this->datatables->add_column('edit', '<a href="viewIntern?sID=$1">VIEW</a>', 'students.studentID');
 		$this->datatables->unset_column('students.studentID');
 		echo $this->datatables->generate();
 	}
@@ -65,8 +66,8 @@ class Intern_Model extends CI_Model {
 		$this->load->library('Datatables');
 		$this->datatables->select('
 			students.studentID
-			, students.firstName
 			, students.lastName
+			, students.firstName
 			, students.middleName
 			, courses.course
 			, intern_status.status

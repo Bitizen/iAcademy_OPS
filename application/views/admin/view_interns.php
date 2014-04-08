@@ -24,14 +24,13 @@
 				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 					<thead>
 						<tr>
-							<th width="10%">First Name</th>
-							<th width="10%">Last Name</th>
-							<th width="10%">Middle Name</th>
-							<th width="10%">Course</th>
-							<th width="10%">Skill</th>
-							<th width="10%">Status</th>
-							<th width="7%">Company</th>
-							<th width="5%">View</th>
+							<th width="15%">Last Name</th>
+							<th width="15%">First Name</th>
+							<th width="15%">Middle Name</th>
+							<th width="15%">Course</th>
+							<th width="15%">Skill</th>
+							<th width="15%">Status</th>
+							<th width="10%">Company</th>
 						</tr>
 					</thead>
 					<tbody>

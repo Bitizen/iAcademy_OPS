@@ -24,11 +24,10 @@
 				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 					<thead>
 						<tr>
-							<th width="20%">Company Name</th>
-							<th width="25%">Location</th>
-							<th width="25%">Industry Type</th>
+							<th width="25%">Company Name</th>
+							<th width="28%">Location</th>
+							<th width="27%">Industry Type</th>
 							<th width="20%">Industry Partner</th>
-							<th width="10%">View</th>
 						</tr>
 					</thead>
 					<tbody>

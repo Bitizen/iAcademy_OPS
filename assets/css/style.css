@@ -18,14 +18,6 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 
 
 input[type=radio] {display: inline;}
-.ui-datepicker-trigger {
-    display: inline;
-    padding:0px;
-    padding-left:3px;
-    vertical-align:baseline;
-    position:relative;
-}
-
 
 #fullName, #mobile, #landline, #emailAdd, #physicalAdd, #course, #status, #currentEmployer, 
 #fullNameEmp, #mobileEmp, #landlineEmp, #emailAddEmp, #physicalAddEmp, #courseEmp, #statusEmp, #currentEmployerEmp{
