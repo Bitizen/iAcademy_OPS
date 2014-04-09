@@ -16,43 +16,43 @@
          var sId = $(this).data('sie');
          var currentEmp = $(this).data('cee');
 
-         $(".modal-body #fullNameEmp").val( fn + " " + mn + " " + ln );
-         $(".modal-body #mobileEmp").val( mob );
-         $(".modal-body #landlineEmp").val( phone );
-         $(".modal-body #emailAddEmp").val( email );
-         $(".modal-body #physicalAddEmp").val( add );
-         $(".modal-body #courseEmp").val( cId );
-         $(".modal-body #statusEmp").val( sId );
-         $(".modal-body #currentEmployerEmp").val( currentEmp );
-        
+         document.getElementById("fullNameEmp").innerHTML = fn + " " + mn + " " + ln;
+         document.getElementById("mobileEmp").innerHTML = mob;
+         document.getElementById("landlineEmp").innerHTML = phone;
+         document.getElementById("emailAddEmp").innerHTML = email;
+         document.getElementById("physicalAddEmp").innerHTML = add;
+         document.getElementById("courseEmp").innerHTML =  cId;
+         document.getElementById("statusEmp").innerHTML =  sId;
+         document.getElementById("currentEmployerEmp").innerHTML =  currentEmp;
+      
          if (cId == 0){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[0]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[0]; ?>';
          }else if (cId == 1){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[1]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[1]; ?>';
          }else if (cId == 2){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[2]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[2]; ?>';
          }else if (cId == 3){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[3]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[3]; ?>';
          }else if (cId == 4){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[4]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[4]; ?>';
          }else if (cId == 5){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[5]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[5]; ?>';
          }else if (cId == 6){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[6]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[6]; ?>';
          }else if (cId == 7){
-            $(".modal-body #courseEmp").val( '<?php echo $courses[7]; ?>' );
+            document.getElementById("courseEmp").innerHTML =  '<?php echo $courses[7]; ?>';
          }
 
          if (cId == 0){
-            $(".modal-body #statusEmp").val( '<?php echo $employmentStats[0]; ?>' );
+            document.getElementById("statusEmp").innerHTML =  '<?php echo $employmentStats[0]; ?>';
          }else if (sId == 1){
-            $(".modal-body #statusEmp").val( '<?php echo $employmentStats[1]; ?>' );
+            document.getElementById("statusEmp").innerHTML =  '<?php echo $employmentStats[1]; ?>';
          }else if (sId == 2){
-            $(".modal-body #statusEmp").val( '<?php echo $employmentStats[2]; ?>' );
+            document.getElementById("statusEmp").innerHTML =  '<?php echo $employmentStats[2]; ?>';
          }
 
          if (currentEmp == "" || currentEmp == null){
-            $(".modal-body #currentEmployerEmp").val( "<?php echo 'N/A';?>" );
+            document.getElementById("currentEmployerEmp").innerHTML =  "<?php echo 'N/A';?>";
           }
     });
 </script>
@@ -73,46 +73,47 @@
          var statusId = $(this).data('si');
          var currentEmployer = $(this).data('ce');
 
-         $(".modal-body #fullName").val( firstName + " " + middleName + " " + lastName );
-         $(".modal-body #mobile").val( mobile );
-         $(".modal-body #landline").val( landline );
-         $(".modal-body #emailAdd").val( emailAdd );
-         $(".modal-body #physicalAdd").val( physicalAdd );
-         $(".modal-body #course").val( courseId );
-         $(".modal-body #status").val( statusId );
-         $(".modal-body #currentEmployer").val( currentEmployer );
+         document.getElementById("fullName").innerHTML = firstName + " " + middleName + " " + lastName;
+         document.getElementById("mobile").innerHTML = mobile;
+         document.getElementById("landline").innerHTML = landline;
+         document.getElementById("emailAdd").innerHTML = emailAdd;
+         document.getElementById("physicalAdd").innerHTML = physicalAdd;
+         document.getElementById("course").innerHTML = course;
+         document.getElementById("status").innerHTML = status;
+         document.getElementById("currentEmployer").innerHTML = currentEmployer;
 
          if (courseId == 0){
-            $(".modal-body #course").val( '<?php echo $courses[0]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[0]; ?>';
          }else if (courseId == 1){
-            $(".modal-body #course").val( '<?php echo $courses[1]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[1]; ?>';
          }else if (courseId == 2){
-            $(".modal-body #course").val( '<?php echo $courses[2]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[2]; ?>';
          }else if (courseId == 3){
-            $(".modal-body #course").val( '<?php echo $courses[3]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[3]; ?>';
          }else if (courseId == 4){
-            $(".modal-body #course").val( '<?php echo $courses[4]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[4]; ?>';
          }else if (courseId == 5){
-            $(".modal-body #course").val( '<?php echo $courses[5]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[5]; ?>';
          }else if (courseId == 6){
-            $(".modal-body #course").val( '<?php echo $courses[6]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[6]; ?>';
          }else if (courseId == 7){
-            $(".modal-body #course").val( '<?php echo $courses[7]; ?>' );
+            document.getElementById("course").innerHTML = '<?php echo $courses[7]; ?>';
          }
 
          if (statusId == 0){
-            $(".modal-body #status").val( '<?php echo $internStats[0]; ?>' );
+            //$(".modal-body #status").val( '<?php echo $internStats[0]; ?>' );
+            document.getElementById("status").innerHTML = '<?php echo $internStats[0]; ?>';
          }else if (statusId == 1){
-            $(".modal-body #status").val( '<?php echo $internStats[1]; ?>' );
+            document.getElementById("status").innerHTML = '<?php echo $internStats[1]; ?>';
          }else if (statusId == 2){
-            $(".modal-body #status").val( '<?php echo $internStats[2]; ?>' );
+            document.getElementById("status").innerHTML = '<?php echo $internStats[2]; ?>';
          }else if (statusId == 3){
-            $(".modal-body #status").val( '<?php echo $internStats[3]; ?>' );
+            document.getElementById("status").innerHTML = '<?php echo $internStats[3]; ?>';
          }else if (statusId == 4){
-            $(".modal-body #status").val( '<?php echo $internStats[4]; ?>' );
+            document.getElementById("status").innerHTML = '<?php echo $internStats[4]; ?>';
          }
           if (currentEmployer == "" || currentEmployer == null){
-            $(".modal-body #currentEmployer").val( "<?php echo 'N/A';?>" );
+            document.getElementById("currentEmployer").innerHTML = "<?php echo 'N/A';?>";
           }
     });  
   </script>
@@ -132,47 +133,48 @@
   <div class="modal fade" id="dialog-view-intern-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-        <div class="panel panel-default">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <div class="panel-heading"><h3 class="panel-title">Intern Profile</h3></div>
-        </div>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Intern Profile</h4>
+          </div>
         <div class="panel-body">
         <div class="modal-body">
           <table class="internProfileTbl">
             <tr>
-              <td><h6 class="text-info">FULLNAME</h6></td>
-              <td><input type="text" id="fullName" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>FULLNAME</strong></h5></td>
+              <td><div type="text" id="fullName" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">MOBILE</h6></td>
-              <td><input type="text" id="mobile" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>MOBILE</strong></h5></td>
+              <td><div type="text" id="mobile" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">LANDLINE</h6></td>
-              <td><input type="text" id="landline" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>LANDLINE</strong></h5></td>
+              <td><div type="text" id="landline" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">EMAIL</h6></td>
-              <td><input type="text" id="emailAdd" class="text-primary" value="" readonly /></td>
+              <td><h5 class="text-primary"><strong>EMAIL</strong></h5></td>
+              <td><div type="text" id="emailAdd" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">ADDRESS</h6></td>
-              <td><input type="text" id="physicalAdd" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>ADDRESS</strong></h5></td>
+              <td><div type="text" id="physicalAdd" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">COURSE</h6></td>
-              <td><input type="text" id="course" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>COURSE</strong></h5></td>
+              <td><div type="text" id="course" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">INTERNSHIP STATUS</h6></td>
-              <td><input type="text" id="status" class="text-primary" value="" readonly /></td>
+              <td><h5 class="text-primary"><strong>INTERNSHIP STATUS</strong></h5></td>
+              <td><div type="text" id="status" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">CURRENT EMPLOYER</h6></td>
-              <td><input type="text" id="currentEmployer" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>CURRENT EMPLOYER</strong></h5></td>
+              <td><div type="text" id="currentEmployer" class="text-primary" /></div></td>
             </tr>
           </table>
+        </div>
+        <div class="modal-footer">
         </div>
         </div>
       </div>
@@ -183,49 +185,52 @@
 
 <!-- Start NEWLY ADDED View Employee Profile -->
   <div class="modal fade" id="dialog-view-employee-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-        <div class="panel panel-default">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <div class="panel-heading"><h3 class="panel-title">Employee Profile</h3></div>
-        </div>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Employee Profile</h4>
+          </div>
         <div class="panel-body">
+        <div class="modal-body">
         <div class="modal-body">
           <table class="employeeProfileTbl">
             <tr>
-              <td><h6 class="text-info">FULLNAME</h6></td>
-              <td><input type="text" id="fullNameEmp" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>FULLNAME</strong></h5></td>
+              <td><div type="text" id="fullNameEmp" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">MOBILE</h6></td>
-              <td><input type="text" id="mobileEmp" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>MOBILE</strong></h5></td>
+              <td><div type="text" id="mobileEmp" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">LANDLINE</h6></td>
-              <td><input type="text" id="landlineEmp" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>LANDLINE</strong></h5></td>
+              <td><div type="text" id="landlineEmp" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">EMAIL</h6></td>
-              <td><input type="text" id="emailAddEmp" class="text-primary" value="" readonly/></td>
+              <td><h5 class="text-primary"><strong>EMAIL</strong></h5></td>
+              <td><div type="text" id="emailAddEmp" class="text-primary" /></div></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">ADDRESS</h6></td>
+              <td><h5 class="text-primary"><strong>ADDRESS</strong></h5></td>
               <td><input type="text" id="physicalAddEmp" class="text-primary" value="" readonly/></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">COURSE</h6></td>
+              <td><h5 class="text-primary"><strong>COURSE</strong></h5></td>
               <td><input type="text" id="courseEmp" class="text-primary" value="" readonly/></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">EMPLOYMENT STATUS</h6></td>
+              <td><h5 class="text-primary"><strong>EMPLOYMENT STATUS</strong></h5></td>
               <td><input type="text" id="statusEmp" class="text-primary" value="" readonly/></td>
             </tr>
             <tr>
-              <td><h6 class="text-info">CURRENT EMPLOYER</h6></td>
+              <td><h5 class="text-primary"><strong>CURRENT EMPLOYER</strong></h5></td>
               <td><input type="text" id="currentEmployerEmp" class="text-primary" value=""readonly /></td>
             </tr>
           </table>
+        </div>
+        <div class="modal-footer">
+         
         </div>
         </div>
       </div>
@@ -241,33 +246,19 @@
       <div class="panel-body">
             <table id="table1" class="table table-striped table-hover">
             <thead> 
-
-              <tr class="success">
-       
+              <tr class="active">
+                <th class="td-values">Lastname</th>
                 <th class="td-values">Firstname</th>
                 <th class="td-values">Middlename</th>
-                <th class="td-values">Lastname</th>
                 <th class="td-values">Position</th>
                 <th class="td-values">Affiliation Status</th>
-                <th class="td-values">View</th>
               </tr>
               </thead>
               <tbody> 
             <?php foreach($myEmployerAffiliatedInterns as $student):?>
               <tr class="active">
               
-                <td class="td-values"> <?=$student->firstName?> </td>
-                <td class="td-values"> <?=$student->middleName?> </td> 
-                <td class="td-values"> <?=$student->lastName?> </td> 
-                <td class="td-values"> <?=$student->position?> </td>
-                <td class="td-values"> <?php if ($student->startDate != 0000-00-00 && $student->endDate != 0000-00-00) { 
-                    echo "Past";
-                }else if($student->endDate == 0000-00-00){
-                    echo "Current";
-                }
-                ?></td>
-                <td class="td-values"> 
-                  <a data-toggle="modal" href="#dialog-view-intern-profile"  class="viewInternProfile btn btn-link" 
+                <td class="td-values"> <a data-toggle="modal" href="#dialog-view-intern-profile"  class="viewInternProfile" 
                       data-fn="<?php echo $student->firstName;?>"
                       data-mn="<?php echo $student->middleName;?>"
                       data-ln="<?php echo $student->lastName;?>"
@@ -278,8 +269,16 @@
                       data-ci="<?php echo $student->courseID;?>"
                       data-si="<?php echo $student->statusID;?>"
                       data-ce="<?php echo $student->companyName;?>"
-                  >View</a>
-                </td>
+                  > <?=$student->lastName?> </a></td>
+                <td class="td-values"> <?=$student->firstName?> </td>
+                <td class="td-values"> <?=$student->middleName?> </td> 
+                <td class="td-values"> <?=$student->position?> </td>
+                <td class="td-values"> <?php if ($student->startDate != 0000-00-00 && $student->endDate != 0000-00-00) { 
+                    echo "Past";
+                }else if($student->endDate == 0000-00-00){
+                    echo "Current";
+                }
+                ?></td>
               </tr>
              <?php endforeach;?>
              </tbody>
@@ -294,33 +293,18 @@
       <div class="panel-body">
            <table id="table2"  class="table table-striped table-hover" >
             <thead> 
-              <tr class="success">
-         
+              <tr class="active">        
+                <th class="td-values">Lastname</th>
                 <th class="td-values">Firstname</th>
                 <th class="td-values">Middlename</th>
-                <th class="td-values">Lastname</th>
                 <th class="td-values">Position</th>
                 <th class="td-values">Affiliation Status</th>
-                <th class="td-values">View</th>
               </tr>
               </thead>
               <tbody> 
             <?php foreach($myEmployerAffiliatedEmployees as $employee):?>
               <tr class="active">
-       
-                <td class="td-values"> <?=$employee->firstName?> </td>
-                <td class="td-values"> <?=$employee->middleName?> </td> 
-                <td class="td-values"> <?=$employee->lastName?> </td>
-                <td class="td-values"> <?=$employee->position?> </td>
-                <td class="td-values"> <?php if ($employee->startDate != 0000-00-00 && $employee->endDate != 0000-00-00) { 
-                    echo "Past";
-                }else if($employee->endDate == 0000-00-00){
-                    echo "Current";
-                }
-                ?></td>
-        
-                  <td class="td-values"> 
-                  <a data-toggle="modal" href="#dialog-view-employee-profile"  class="viewEmployeeProfile btn btn-link" 
+                <td class="td-values"> <a data-toggle="modal" href="#dialog-view-employee-profile"  class="viewEmployeeProfile" 
                       data-fne="<?php echo $employee->firstName;?>"
                       data-mne="<?php echo $employee->middleName;?>"
                       data-lne="<?php echo $employee->lastName;?>"
@@ -331,9 +315,16 @@
                       data-cie="<?php echo $employee->courseID;?>"
                       data-sie="<?php echo $employee->statusID;?>"
                       data-cee="<?php echo $employee->companyName;?>"
-                  >View</a>
-                </td> 
-                
+                  ><?=$employee->lastName?> </a> </td>
+                <td class="td-values"> <?=$employee->firstName?> </td>
+                <td class="td-values"> <?=$employee->middleName?> </td> 
+                <td class="td-values"> <?=$employee->position?> </td>
+                <td class="td-values"> <?php if ($employee->startDate != 0000-00-00 && $employee->endDate != 0000-00-00) { 
+                    echo "Past";
+                }else if($employee->endDate == 0000-00-00){
+                    echo "Current";
+                }
+                ?></td>                
               </tr>
              <?php endforeach;?>
               </tbody>
@@ -416,15 +407,16 @@
             <td class="td-fields">SEC Registration</td>
             <td class="td-values">
               <?php if (strlen($myEmployer->SECRegistrationFilePath) != 0) {
+
                     $image_properties = array(
                               'src' => base_url().$myEmployer->SECRegistrationFilePath,
                               'alt' => $myEmployer->companyName.' SEC Registration',
                               'class' => '',
                               'width' => '100',
                               'height' => '150',
-                              'title' => $myEmployer->companyName.' SEC Registration',
-                              'id' => 'viewSECModal'
+                              'title' => $myEmployer->companyName.' SEC Registration'
                     );
+
                     echo img($image_properties);
                   }
                   else {
@@ -617,37 +609,6 @@
   </div>
   </div>
 
-<!-- VIEW SEC MODAL -->
-  <?php if (strlen($myEmployer->SECRegistrationFilePath) != 0) {
-        $big_image_properties = array(
-                  'src' => base_url().$myEmployer->SECRegistrationFilePath,
-                  'alt' => $myEmployer->companyName.' SEC Registration',
-                  'class' => '',
-                  'width' => '500',
-                  'height' => '700',
-                  'title' => $myEmployer->companyName.' SEC Registration'
-        );
-  ?>
-    <div class="modal" id="viewSECModalDiv" >sbuskd
-      
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title"><?php echo $myEmployer->companyName;?> SEC Registration</h4>
-          <div class="modal-body">
-  <?
-      echo img($big_image_properties);
-  ?>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?
-      }
-  ?>
-<!-- END VIEW SEC MODAL -->
 
 <!-- UPDATE COMPANY PROFILE DIALOG -->
 <div class="modal" id="dialog-edit-company-profile" >
@@ -656,7 +617,6 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title"><?php echo $myEmployer->companyName;?></h4>
-      </div>
       <div class="modal-body">
  
       <!-- COMPANY DETAILS -->
@@ -791,5 +751,23 @@
 </div>
 <!-- END UPDATE COMPANY PROFILE DIALOG -->
 
+<!-- START VIEW AFFILIATED INTERN'S PROFILE -->
+    <div id="dialog-view-intern-profile" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+           <h3 id="myModalLabel">Modal header</h3>
+
+      </div>
+      <div class="modal-body">
+          <p>One fine body…</p>
+      </div>
+      <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          <button class="btn btn-primary">Save changes</button>
+      </div>
+      </div>
+  </div>
+<!-- END VIEW AFFILIATED INTERN'S PROFILE -->
 </body>
 </html>
