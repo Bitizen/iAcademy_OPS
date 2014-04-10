@@ -10,8 +10,7 @@ $(document).ready(function() {
     });
   });
 
-  */
-  
+  /*
   $('#trigger-datepicker').datepicker({
       format: "yyyy-mm-dd"
   });
@@ -41,8 +40,18 @@ $(document).ready(function() {
       $('input.monthYearPicker').monthYearPicker();
         //all jQuery code which uses $ needs to be inside here
     });
+*/
 
   $('#iNewIndustryType').hide();
+
+  $('#iIndustryType').change(function () {
+      if ($('#iIndustryType').val() == "NEW") {
+          $('#iNewIndustryType').show();
+          $('#iNewIndustryType').val("");
+      } else {
+          $('#iNewIndustryType').hide();
+      }
+  });
 
   $('#editInternProfile').click(function() {
     $('#dialog-edit-intern-profile').modal();  
@@ -60,15 +69,6 @@ $(document).ready(function() {
       $('#dialog-change-my-password').modal();
   });
 
-  $('#iIndustryType').change(function () {
-      if ($('#iIndustryType').val() == "NEW") {
-          $('#iNewIndustryType').show();
-          $('#iNewIndustryType').val("");
-      } else {
-          $('#iNewIndustryType').hide();
-      }
-  });
-
   $('#viewInternProfile').click(function() {
     $('#dialog-view-intern-profile').modal();  
   });   
@@ -77,10 +77,32 @@ $(document).ready(function() {
     $('#dialog-view-employee-profile').modal();  
   }); 
 
-  /* New Modals */
   $('#viewSECModal').click(function() {
     $('#viewSECModalDiv').modal();  
   }); 
-  /* End New Modals */
+
+  $('#confirmUpdate').click(function() {
+    $('#confirmUpdateDiv').modal();  
+  }); 
+
+  $('#addEmployerBtn').click(function() {
+      jQuery.noConflict();
+      $('#addEmployerDiv').modal();  
+  });  
+
+  $('#addContactBtn').click(function() {
+      jQuery.noConflict();
+      $('#addContactDiv').modal();  
+  });  
+
+  $('#addAdminBtn').click(function() {
+      jQuery.noConflict();
+      $('#addAdminDiv').modal();  
+  });  
+
+  $('#addEncoderBtn').click(function() {
+      jQuery.noConflict();
+      $('#addEncoderDiv').modal();  
+  }); 
 
 }); // end of onReady function

@@ -15,15 +15,37 @@
 		} );
 	} );
 </script>
+    <div class="modal fade" id="addInternModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 	<div id="viewUserListDiv" class="col-lg-10 col-lg-offset-1">
+
+	<button id="addInternbtn" class="btn btn-info" data-toggle="modal" data-target="#addInternModal">
+      Add Intern
+    </button>
+		
 	  <legend>Interns</legend>
 		<div id="dt_example">
 		<div id="container">
 			<div id="dynamic">
-				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover" id="example">
 					<thead>
-						<tr>
+						<tr class="info">
 							<th width="15%">Last Name</th>
 							<th width="15%">First Name</th>
 							<th width="15%">Middle Name</th>

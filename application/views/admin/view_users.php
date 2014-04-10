@@ -1,29 +1,33 @@
 
-	<style type="text/css" title="currentStyle">
-		@import "<?= base_url();?>assets/css/demo_page.css";
-		@import "<?= base_url();?>assets/css/demo_table.css";
-	</style>
-	<script type="text/javascript" language="javascript" src="<?= base_url();?>assets/js/jquery-1.7.2.js"></script>
-	<script type="text/javascript" language="javascript" src="<?= base_url();?>assets/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" charset="utf-8">
-		$(document).ready(function() {
-			$('#example').dataTable( {
-				"bProcessing": true,
-				"bServerSide": true,
-				"sAjaxSource": "<?= base_url();?>index.php/administrator_controller/getUserList",
-				"sServerMethod": "POST"
-			} );
-		} );
-	</script>
+  <script type="text/javascript" language="javascript" src="<?php echo base_url();?>assets/js/jquery-1.7.2.js"></script>
+
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/demo_page.css" type="text/css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/demo_table.css" type="text/css">
+  <script type="text/javascript" language="javascript" src="<?= base_url();?>assets/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+      $('#example').dataTable( {
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": "<?= base_url();?>index.php/administrator_controller/getUserList",
+        "sServerMethod": "POST"
+      } );
+    } );
+  </script>
+
+  <div class="col-lg-10 col-lg-offset-1">
+  	<a id="addAdminBtn" class="btn btn-info">Add Admin</a>
+  	<a id="addEncoderBtn" class="btn btn-info">Add Encoder</a>
+  </div>
 
 	<div id="viewUserListDiv" class="col-lg-10 col-lg-offset-1">
 	  <legend>Users</legend>
 		<div id="dt_example">
 		<div id="container">
 			<div id="dynamic">
-				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover" id="example">
 					<thead>
-						<tr>
+						<tr class= "info">
 							<th width="20%">Lastname</th>
 							<th width="20%">Firstname</th>
 							<th width="23%">Email</th>
@@ -42,5 +46,248 @@
 		</div>
 		</div>
 	</div>
+
+
+<!-- START ADD ENCODER MODAL -->
+<div id="addEncoderDiv" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Encoder</h4>
+      </div>
+      <div class="modal-body">
+      <!-- ADD ADMIN FORM -->
+      <form action="<?php echo base_url();?>index.php/administrator_controller/addEncoder" method="post" 
+            class="form-horizontal" accept-charset="utf-8" onSubmit="return confirm('Are you sure?')">
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Basic Info</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="first_name" class="col-lg-3 control-label">First Name:</label>
+            <div class="col-lg-8">
+            <input type="text" name="first_name" value="" id="first_name" class="form-control input-sm" required />
+             </div>
+          </div>
+
+
+          <div class="form-group">   
+            <label for="middle_name" class="col-lg-3 control-label">Middle Name:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="middle_name" value="" id="middle_name" class="form-control input-sm" required />
+            </div>
+          </div>
+
+          <div class="form-group">     
+            <label for="last_name" class="col-lg-3 control-label">Last Name:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="last_name" value="" id="last_name"  class="form-control input-sm"required />    
+            </div>
+          </div>
+
+
+           <div class="form-group">
+            <label for="position" class="col-lg-3 control-label">Position:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="position" value="" id="position" class="form-control input-sm" required/>     
+            </div>
+          </div>
+
+
+           <div class="form-group">
+            <label for="landline" class="col-lg-3 control-label">Phone:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="landline" value="" id="landline" class="form-control input-sm"  required/>    
+            </div>
+          </div>      
+
+           <div class="form-group">
+            <label for="mobile" class="col-lg-3 control-label">Mobile:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="mobile" value="" id="mobile" class="form-control input-sm" />
+            </div>
+           </div> 
+       </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Account info</h3>
+        </div>
+        <div class="panel-body">
+           <div class="form-group">
+            <label for="email" class="col-lg-3 control-label">Email:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="email" value="" id="email" class="form-control input-sm"  required/>   
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="username" class="col-lg-3 control-label">Username:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="username" value="" id="username" class="form-control input-sm" required/>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="password" class="col-lg-3 control-label">Password:</label>            
+            <div class="col-lg-8">
+              <input type="password" name="password" value="" id="password" class="form-control input-sm" required/>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="password_confirm" class="col-lg-3 control-label">Confirm Password:</label>            
+            <div class="col-lg-8">
+              <input type="password" name="password_confirm" value="" id="password_confirm" class="form-control input-sm" required/>
+            </div>
+          </div>
+       </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password_confirm" class="col-lg-8 control-label"></label>            
+      </div>
+
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add Encoder</button>
+     </div>
+    </form>    
+      <!-- END ADD ENCODER FORM -->
+    </div>
+  </div>
+</div>
+</div>
+<!-- END OF ADD ENCODER MODAL -->
+
+
+<!-- START ADD ADMIN MODAL -->
+<div id="addAdminDiv" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Admin</h4>
+      </div>
+      <div class="modal-body">
+      <!-- ADD ADMIN FORM -->
+        <form action="<?php echo base_url();?>index.php/administrator_controller/addAdmin" method="post" 
+            class="form-horizontal" accept-charset="utf-8" onSubmit="return confirm('Add Admin?')">
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Basic Info</h3>
+          </div>
+          <div class="panel-body">
+                   <!--<div class="form-group">
+                          <label for="administrator_id" class="col-lg-2 control-label">Administrator ID: </label>
+                    <div class="col-lg-3">    
+                          <input type="text" name="administratorID" value="" id="administratorID" class="form-control input-sm" required />
+                    </div>
+                  </div>-->
+
+                  <div class="form-group">
+                    <label for="first_name" class="col-lg-3 control-label">First Name:</label>
+                    <div class="col-lg-8">
+                      <input type="text" name="first_name" value="" id="first_name" class="form-control input-sm" required />
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">   
+                    <label for="middle_name" class="col-lg-3 control-label">Middle Name:</label>            
+                    <div class="col-lg-8">
+                      <input type="text" name="middle_name" value="" id="middle_name" class="form-control input-sm" required />
+                    </div>
+                  </div>
+
+                  <div class="form-group">     
+                    <label for="last_name" class="col-lg-3 control-label">Last Name:</label>            
+                    <div class="col-lg-8">
+                      <input type="text" name="last_name" value="" id="last_name"  class="form-control input-sm"required />    
+                     </div>
+                  </div>
+
+
+                   <div class="form-group">
+                    <label for="position" class="col-lg-3 control-label">Position:</label>            
+                      <div class="col-lg-8">
+                        <input type="text" name="position" value="" id="position" class="form-control input-sm" required />     
+                     </div>
+                  </div>
+
+
+                  <div class="form-group">     
+                    <label for="landline" class="col-lg-3 control-label">Landline:</label>            
+                    <div class="col-lg-8">
+                      <input type="text" name="landline" value="" id="landline"  class="form-control input-sm" required />    
+                     </div>
+                  </div>
+
+
+                   <div class="form-group">
+                    <label for="mobile" class="col-lg-3 control-label">Mobile:</label>            
+                      <div class="col-lg-8">
+                        <input type="text" name="mobile" value="" id="mobile" class="form-control input-sm" required />     
+                     </div>
+                  </div>
+
+
+         </div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Account info</h3>
+          </div>
+          <div class="panel-body">
+             <div class="form-group">
+              <label for="email" class="col-lg-3 control-label">Email:</label>            
+              <div class="col-lg-8">
+                <input type="text" name="email" value="" id="email" class="form-control input-sm"  required/>   
+              </div>
+            </div>
+
+             <div class="form-group">
+              <label for="username" class="col-lg-3 control-label">Username:</label>            
+              <div class="col-lg-8">
+                <input type="text" name="username" value="" id="username" class="form-control input-sm" required/>
+              </div>
+            </div>
+
+             <div class="form-group">
+              <label for="password" class="col-lg-3 control-label">Password:</label>            
+              <div class="col-lg-8">
+                <input type="password" name="password" value="" id="password" class="form-control input-sm" required/>
+              </div>
+            </div>
+
+             <div class="form-group">
+              <label for="password_confirm" class="col-lg-3 control-label">Confirm Password:</label>            
+              <div class="col-lg-8">
+                <input type="password" name="password_confirm" value="" id="password_confirm" class="form-control input-sm" required/>
+              </div>
+
+         </div>
+        </div>
+
+
+  	    <div class="modal-footer">
+  	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  	        <button type="submit" class="btn btn-primary">Add Admin</button>
+        </div>
+      </form> 
+      </div>   
+      <!-- END ADD ADMIN FORM -->
+        
+    </div>
+  </div>
+</div>
+<!-- END OF ADD ADMIN MODAL -->
+
 </body>
 </html>

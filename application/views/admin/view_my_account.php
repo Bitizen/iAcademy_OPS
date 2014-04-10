@@ -1,6 +1,10 @@
+<div class="col-lg-10 col-lg-offset-1">
+  <a id="editMyProfile" class="btn btn-info">Edit My Profile</a>
+  <a id="changeMyPassword" class="btn btn-info">Change Password</a>
+</div>
 
   <div id="viewMyProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>My Account<img id="editMyProfile" src="<?php echo base_url();?>assets/images/edit.png" alt="Edit My Profile" width="25" height="25" /></legend>
+    <legend>My Account</legend>
     <!-- PERSONAL INFORMATION -->
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">Personal Information</h3></div>
@@ -45,9 +49,6 @@
     </div>
     <!-- END CONTACT DETAILS -->
 
-    <input type="button" id="changeMyPassword" class="btn btn-primary" width="25" height="25" value="Change Password"/>
-
-
     <!-- UPDATE MY PROFILE DIALOG -->
     <form class="form-horizontal" action="<?php echo base_url();?>index.php/administrator_controller/updateUser" method="POST">
     <fieldset>
@@ -60,40 +61,40 @@
             <h4 class="modal-title">Profile Editor</h4>
           </div>
           <div class="modal-body">
-      
+
         <!-- PERSONAL INFORMATION -->
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">Personal Information</h3>
           </div>
           <div class="panel-body">
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">First Name</label>
+                <label for="inputCompanyName" class="">First Name</label>
                 <input type="text" value="<?php echo $user->first_name; ?>" class="editbox form-control" name="iFirstName" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">Middle Name</label>
+                <label for="inputCompanyName" class="">Middle Name</label>
                 <input type="text" value="<?php echo $user->middle_name; ?>" class="editbox form-control" name="iMiddleName" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">Last Name</label>
+                <label for="inputCompanyName" class="">Last Name</label>
                 <input type="text" value="<?php echo $user->last_name; ?>" class="editbox form-control" name="iLastName" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">Position</label>
+                <label for="inputCompanyName" class="">Position</label>
                 <input type="text" value="<?php echo $user->position; ?>" class="editbox form-control" name="iPosition" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputDateOfBirth" class="control-label">Date Of Birth</label>
+              <label for="inputDateOfBirth" class="">Date Of Birth</label>
               <div class="input-group date">
                 <input type="text" id="trigger-datepicker" name="iDateOfBirth" class="form-control" value="<?php echo $user->date_of_birth; ?>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
               </div>
@@ -104,26 +105,26 @@
         <!-- END PERSONAL INFORMATION -->
 
         <!-- CONTACT DETAILS -->
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">Contact Details</h3>
           </div>
           <div class="panel-body">
             <div class="form-group">
             <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Telephone Number</label>
+              <label for="inputCompanyName" class="">Telephone Number</label>
               <input type="text" value="<?php echo $user->landline; ?>" class="editbox form-control" name="iLandline" size="20" />
               </div>
             </div>
             <div class="form-group">
             <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Mobile Number</label>
+              <label for="inputCompanyName" class="">Mobile Number</label>
               <input type="text" value="<?php echo $user->mobile; ?>" class="editbox form-control" name="iMobile" size="20" />
               </div>
             </div>
             <div class="form-group">
             <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Email</label>
+              <label for="inputCompanyName" class="">Email</label>
               <input type="text" value="<?php echo $user->email; ?>" class="editbox form-control" name="iEmail" size="20" />
               </div>
             </div>
@@ -133,7 +134,7 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <button type="submit" class="btn btn-primary">Update</button>
           </div>
         </div>

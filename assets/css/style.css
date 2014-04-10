@@ -19,13 +19,6 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 
 input[type=radio] {display: inline;}
 
-#fullName, #mobile, #landline, #emailAdd, #physicalAdd, #course, #status, #currentEmployer, 
-#fullNameEmp, #mobileEmp, #landlineEmp, #emailAddEmp, #physicalAddEmp, #courseEmp, #statusEmp, #currentEmployerEmp{
-	border: none;
-	border-color: transparent;
-	width:160%;
-}
-
 .internProfileTbl{
 	margin-left: 10px;
 	padding:15px;
@@ -36,4 +29,9 @@ input[type=radio] {display: inline;}
 	margin-left: 10px;
 	padding:15px;
 	width:80%;
+}
+
+#addInternBtn{
+
+	margin-left:200;
 }

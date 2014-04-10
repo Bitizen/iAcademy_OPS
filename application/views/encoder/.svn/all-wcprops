@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder
+END
+add_career.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/add_career.php
+END
+view_intern_profile.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/view_intern_profile.php
+END
+add_alumnus.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/add_alumnus.php
+END
+view_interns.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/view_interns.php
+END
+view_alumnus_profile.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/view_alumnus_profile.php
+END
+view_careers.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/view_careers.php
+END
+view_alumni.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/view_alumni.php
+END
+add_interns_by_bulk.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/add_interns_by_bulk.php
+END
+add_alumni_by_bulk.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/add_alumni_by_bulk.php
+END
+add_employer.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/add_employer.php
+END
+add_intern.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/add_intern.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/index.php
+END
+header.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/encoder/header.php
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/nriddle/!svn/ver/3/trunk/iops/application/language/italian
+END
+auth_lang.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nriddle/!svn/ver/3/trunk/iops/application/language/italian/auth_lang.php
+END
+ion_auth_lang.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nriddle/!svn/ver/3/trunk/iops/application/language/italian/ion_auth_lang.php
+END

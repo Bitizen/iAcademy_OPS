@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/email
+END
+new_password.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/email/new_password.tpl.php
+END
+activate.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/email/activate.tpl.php
+END
+forgot_password.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/email/forgot_password.tpl.php
+END

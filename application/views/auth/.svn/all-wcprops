@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth
+END
+login1.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/login1.php
+END
+create_group1.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/create_group1.php
+END
+forgot.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/forgot.php
+END
+create_user1.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/create_user1.php
+END
+edit_group1.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/edit_group1.php
+END
+forgot_password1.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/forgot_password1.php
+END
+edit_user1.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/edit_user1.php
+END
+reset_password1.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/reset_password1.php
+END
+change_password1.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/change_password1.php
+END
+deactivate_user1.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/deactivate_user1.php
+END
+index1.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/auth/index1.php
+END

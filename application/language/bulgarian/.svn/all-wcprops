@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/nriddle/!svn/ver/3/trunk/iops/application/language/bulgarian
+END
+auth_lang.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/nriddle/!svn/ver/3/trunk/iops/application/language/bulgarian/auth_lang.php
+END
+ion_auth_lang.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nriddle/!svn/ver/3/trunk/iops/application/language/bulgarian/ion_auth_lang.php
+END

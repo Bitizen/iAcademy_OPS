@@ -1,0 +1,92 @@
+10
+
+dir
+23
+https://subversion.assembla.com/svn/nriddle/trunk/iops/system/database/drivers
+https://subversion.assembla.com/svn/nriddle
+
+
+
+2014-04-08T16:36:02.738931Z
+3
+iops
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+21ac42bd-a93f-43a7-a9df-786d627d03df
+
+mssql
+dir
+
+sqlite
+dir
+
+oci8
+dir
+
+pdo
+dir
+
+postgre
+dir
+
+mysql
+dir
+
+odbc
+dir
+
+cubrid
+dir
+
+sqlsrv
+dir
+
+index.html
+file
+
+
+
+
+2014-04-09T02:28:21.000000Z
+6b37309700ffdd85eed2431b5dfd3bb1
+2014-04-08T16:36:02.738931Z
+3
+iops
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+123
+
+mysqli
+dir
+

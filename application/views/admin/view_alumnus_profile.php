@@ -111,7 +111,7 @@
             <tr>
               <td class="td-fields">Company</td>
               <td class="td-values">
-                <a href="<?php echo base_url();?>index.php/administrator_controller/viewEmployer?eID=<?php echo $myAlumnus->currentEmployerID;?>">
+                <a href="<?php echo base_url();?>index.php/administrator_controller/viewEmployer?eID=<?php echo $myAlumnus->currentEmployerID;?>" target="_blank" >
                   <?php echo $myAlumnus->companyName;?>
                 </a>
               </td>

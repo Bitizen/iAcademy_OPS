@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/nriddle/!svn/ver/23/trunk/iops/application/views/admin
+END
+indexBefore.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/indexBefore.php
+END
+view_my_account.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/nriddle/!svn/ver/19/trunk/iops/application/views/admin/view_my_account.php
+END
+view_users.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nriddle/!svn/ver/23/trunk/iops/application/views/admin/view_users.php
+END
+add_alumnus.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/add_alumnus.php
+END
+view_administrators.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nriddle/!svn/ver/19/trunk/iops/application/views/admin/view_administrators.php
+END
+view_alumnus_profile.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/view_alumnus_profile.php
+END
+view_no_sec_employers.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/view_no_sec_employers.php
+END
+add_admin.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nriddle/!svn/ver/19/trunk/iops/application/views/admin/add_admin.php
+END
+add_interns_by_bulk.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/add_interns_by_bulk.php
+END
+create_user.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/create_user.php
+END
+add_employer.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/add_employer.php
+END
+add_alumni_by_bulk.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/add_alumni_by_bulk.php
+END
+update_intern_to_alumnus.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/nriddle/!svn/ver/15/trunk/iops/application/views/admin/update_intern_to_alumnus.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/index.php
+END
+add_intern.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/add_intern.php
+END
+view_intern_profile.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/nriddle/!svn/ver/9/trunk/iops/application/views/admin/view_intern_profile.php
+END
+view_employers.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nriddle/!svn/ver/19/trunk/iops/application/views/admin/view_employers.php
+END
+add_career.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/add_career.php
+END
+view_interns.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nriddle/!svn/ver/18/trunk/iops/application/views/admin/view_interns.php
+END
+view_careers.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/view_careers.php
+END
+view_alumni.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nriddle/!svn/ver/16/trunk/iops/application/views/admin/view_alumni.php
+END
+edit_user.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/edit_user.php
+END
+view_employer.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nriddle/!svn/ver/15/trunk/iops/application/views/admin/view_employer.php
+END
+viewAllAdministrators.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/viewAllAdministrators.php
+END
+add_encoder.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/add_encoder.php
+END
+header.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nriddle/!svn/ver/19/trunk/iops/application/views/admin/header.php
+END
+indexLYKA.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nriddle/!svn/ver/3/trunk/iops/application/views/admin/indexLYKA.php
+END

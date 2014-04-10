@@ -78,27 +78,21 @@
             </tr>
             <tr>
               <td class="td-fields">Resume</td>
-              <td class="td-values"><!--
-                <?php /*if (strlen($myIntern->resumePath) != 0) {
-
-                      $image_properties = array(
-                                'src' => base_url().$myIntern->resumePath,
-                                'alt' => $myIntern->last_name.'_'.$myIntern->first_name.'_Resume',
-                                'class' => '',
-                                'width' => '100',
-                                'height' => '150',
-                                'title' => $myIntern->last_name.'_'.$myIntern->first_name.'_Resume'
-                      );
-
-                      echo img($image_properties);
-                    }*/
+              <td class="td-values">
+                <?php if (strlen($myIntern->resumePath) != 0) {
                 ?>
-                <?php //if(strlen($uploadErrorSEC != 0)) echo $uploadErrorSEC;?>
-                <?php //echo form_open_multipart('administrator_controller/uploadResume');?>
+                      <a href="<?=base_url('index.php/administrator_controller/viewResume?sID='.$this->input->get('sID', TRUE));?>" target="_blank">View <?= $myIntern->firstName;?>'s Resume</a>
+                <?
+                    }
+                ?>
+                <?php //if(strlen($uploadErrorResume != '')) echo $uploadErrorResume;?>
+
+                <?php echo form_open_multipart('administrator_controller/uploadInternResume?sID='.$this->input->get('sID', TRUE));?>
+                  <br/>
                   <input type="file" name="userfile" size="20" />
                   <br/>
                   <input type="submit" class="btn btn-default" value="Upload Resume" />
-                </form>-->
+                </form>
               </td>
             </tr>
           </table>
@@ -114,7 +108,7 @@
             <tr>
               <td class="td-fields">Company</td>
               <td class="td-values">
-                <a href="<?php echo base_url();?>index.php/administrator_controller/viewEmployer?eID=<?php echo $myIntern->currentEmployerID;?>">
+                <a href="<?php echo base_url();?>index.php/administrator_controller/viewEmployer?eID=<?php echo $myIntern->currentEmployerID;?>" target="_blank" >
                   <?php echo $myIntern->companyName;?>
                 </a>
               </td>
@@ -301,6 +295,5 @@
     </form>
     <!-- END UPDATE COMPANY PROFILE DIALOG -->
 
- 
 </body>
 </html>

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers
+END
+parser-input-select.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-input-select.js
+END
+parser-date.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-date.js
+END
+parser-file-type.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-file-type.js
+END
+parser-date-month.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-date-month.js
+END
+parser-date-two-digit-year.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-date-two-digit-year.js
+END
+parser-metric.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-metric.js
+END
+parser-date-iso8601.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-date-iso8601.js
+END
+parser-date-weekday.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-date-weekday.js
+END
+parser-ipv6.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-ipv6.js
+END
+parser-feet-inch-fraction.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-feet-inch-fraction.js
+END
+parser-ignore-articles.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nriddle/!svn/ver/3/trunk/iops/assets/tableSortReqs/js/parsers/parser-ignore-articles.js
+END

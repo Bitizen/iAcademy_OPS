@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries
+END
+cezpdf.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries/cezpdf.php
+END
+class.pdf.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries/class.pdf.php
+END
+CSVReader.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries/CSVReader.php
+END
+Bcrypt.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries/Bcrypt.php
+END
+Datatables.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries/Datatables.php
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries/index.html
+END
+Ion_auth.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/nriddle/!svn/ver/3/trunk/iops/application/libraries/Ion_auth.php
+END
