@@ -162,6 +162,19 @@ class Employer_Model extends CI_Model {
 
   		$sql = "CALL getCompanyName(?)";
 
+  		$parameter = $this->input->get('eID', TRUE);
+
+		$data = $this->db->query($sql, $parameter);
+		$this->db->reconnect();
+		$result = $data->row();
+
+		return $result;
+	}
+
+	function getMyCompanyName() {
+
+  		$sql = "CALL getMyCompanyName(?)";
+
 		$user = $this->ion_auth->user()->row();
 		$parameter = $user->username;
 

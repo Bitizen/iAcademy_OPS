@@ -3,8 +3,8 @@
 
 <div class="col-lg-10 col-lg-offset-1">
 	<a id="addEmployerBtn" class="btn btn-info">Add Employer</a>
-	<a id="addContactBtn" class="btn btn-info">Add Representative</a>
-	<a class="btn btn-info" href="<?php echo base_url();?>index.php/administrator_controller/loadAddEvaluationView">Add Evaluation</a>
+	<!--<a id="addContactBtn" class="btn btn-info">Add Representative</a>-->
+	<a class="btn btn-info" href="<?php echo base_url();?>index.php/administrator_controller/loadAddEvaluationView" target="_blank" >Add Evaluation</a>
 </div>
 <br>
 

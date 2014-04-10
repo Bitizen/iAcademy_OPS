@@ -13,6 +13,7 @@
   <script type="text/javascript" language="javascript" src="<?php echo base_url();?>assets/js/bootstrap.js"></script>
   <!--<script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>-->
   <!--<script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
+
   <script type="text/javascript" language="javascript" src="<?php echo base_url();?>assets/js/default.js" ></script>
 
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.css" type="text/css">

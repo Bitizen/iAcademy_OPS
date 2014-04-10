@@ -295,11 +295,10 @@ class Administrator_Controller extends MY_Controller {
 			// Update Employer's File Path
 			$sql = "CALL updateSECRegistrationFilePath(?,?)";
 
-			$user = $this->ion_auth->user()->row();
-			$representative = $user->username;
+	  		$employer = $this->input->get('eID', TRUE);
 
 			$parameters = array(
-				'username' => $representative
+				'username' => $employer
 				, 'filePath' => "uploads/SEC_Registration/".$data['uploadSuccessSEC']['upload_success']['file_name']
 			);
 
@@ -316,6 +315,34 @@ class Administrator_Controller extends MY_Controller {
 			$this->load->view('admin/view_employer', $data);
 		}
 	}
+
+	function viewSECRegistration(){
+
+		$this->load->helper('url');
+        $this->load->helper('download');
+		$this->load->model('employer_model');
+		$employer = $this->employer_model->viewEmployer();
+		
+		$fPath = $employer->SECRegistrationFilePath;
+		$fName = substr($fPath, 25);
+
+        $fp= fopen($fPath, "r");
+
+        header("Cache-Control: maxage=1");
+        header("Pragma: public");
+        header("Content-type: application/pdf");
+        header("Content-Disposition: inline; filename=".$fName."");
+        header("Content-Description: PHP Generated Data");
+        header("Content-Transfer-Encoding: binary");
+        header('Content-Length:' .filesize($fPath));
+        ob_clean();
+        flush();
+        while (!feof($fp)){
+            $buff = fread($fp,1024);
+            print $buff;
+        }
+        exit;
+    }
 
 	function uploadCompanyLogo() {
 

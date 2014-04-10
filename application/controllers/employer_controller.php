@@ -120,7 +120,7 @@ class Employer_Controller extends MY_Controller {
 	function uploadSECRegistration() {
 
 		$this->load->model('employer_model');
-		$companyName = $this->employer_model->getCompanyName();
+		$companyName = $this->employer_model->getMyCompanyName();
 		
 		$config['file_name'] = $companyName->companyName.'_SEC_Registration';
 		$config['upload_path'] = './uploads/SEC_Registration/';
@@ -150,7 +150,7 @@ class Employer_Controller extends MY_Controller {
 			$data['uploadSuccessSEC'] = array('upload_success' => $this->upload->data());
 
 			// Update Employer's File Path
-			$sql = "CALL updateSECRegistrationFilePath(?,?)";
+			$sql = "CALL updateMySECRegistrationFilePath(?,?)";
 
 			$user = $this->ion_auth->user()->row();
 			$representative = $user->username;

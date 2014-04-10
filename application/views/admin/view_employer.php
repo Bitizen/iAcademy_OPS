@@ -1,5 +1,5 @@
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>assets/js/jquery-1.7.2.js"></script>
-
+<script type="text/javascript" language="javascript" src="<?php echo base_url();?>assets/js/bootstrap.js"></script>
 <!-- START SCRIPTS -->
 <script>
     $(document).on("click", ".viewEmployeeProfile", function () {
@@ -207,7 +207,14 @@
               <td class="td-fields">SEC Registration</td>
               <td class="td-values">
                 <?php if (strlen($myEmployer->SECRegistrationFilePath) != 0) {
-
+                      if (substr($myEmployer->SECRegistrationFilePath, -3) == "pdf") {
+                ?>
+                      <a href="<?=base_url('index.php/administrator_controller/viewSECRegistration?eID='.$this->input->get('eID', TRUE));?>" target="_blank">View <?= $myEmployer->companyName;?>'s SEC Registration</a>
+                <?      
+                      } else if (substr($myEmployer->SECRegistrationFilePath, -3) == "png"
+                              || substr($myEmployer->SECRegistrationFilePath, -3) == "jpg"
+                              || substr($myEmployer->SECRegistrationFilePath, -3) == "gif") {
+                      
                       $image_properties = array(
                                 'src' => base_url().$myEmployer->SECRegistrationFilePath,
                                 'alt' => $myEmployer->companyName.' SEC Registration',
@@ -218,13 +225,16 @@
                       );
 
                       echo img($image_properties);
+                      
                     }
-                    else {
-                      echo "No SEC Registration.";
-                    }
+
+                  }
+                  else {
+                    echo "No SEC Registration.";
+                  }
                 ?>
                 <?php //if(strlen($uploadErrorSEC != 0)) echo $uploadErrorSEC;?>
-                <?php echo form_open_multipart('administrator_controller/uploadSECRegistration?eID=<?php echo $myEmployer->employerID;?>');?>
+                <?php echo form_open_multipart('administrator_controller/uploadSECRegistration?eID='.$myEmployer->employerID.'');?>
                   <input type="file" name="userfile" size="20" />
                   <br/>
                   <input type="submit" class="btn btn-default" value="Upload SEC Registration" />
@@ -235,7 +245,7 @@
               <td class="td-fields">Company Logo</td>
               <td class="td-values">
                 <?php if($myEmployer->companyLogoFilePath!=null) {
-
+                      /*
                       $image_properties = array(
                                 'src' => base_url().$myEmployer->companyLogoFilePath,
                                 'alt' => $myEmployer->companyName.' Company Logo',
@@ -246,13 +256,14 @@
                       );
 
                       echo img($image_properties);
+                      */
                     }
                     else {
                       echo "No Company Logo.";
                     }
                 ?>
                 <?php //if($uploadErrorLogo != null) echo $uploadErrorLogo;?>
-                <?php echo form_open_multipart('administrator_controller/uploadCompanyLogo');?>
+                <?php echo form_open_multipart('administrator_controller/uploadCompanyLogo?eID='.$myEmployer->employerID.'');?>
                   <input type="file" name="userfile" size="20" />
                   <br/>
                   <input type="submit" class="btn btn-default" value="Upload Company Logo" />
@@ -263,7 +274,7 @@
               <td class="td-fields">Other Documents</td>
               <td class="td-values">
                 <?php if($myEmployer->otherDocumentsFilePath!=null) {
-
+                      /*
                       $image_properties = array(
                                 'src' => base_url().$myEmployer->otherDocumentsFilePath,
                                 'alt' => $myEmployer->companyName.' Other Documents',
@@ -274,6 +285,7 @@
                       );
 
                       echo img(base_url().$myEmployer->otherDocumentsFilePath);
+                      */
                     }
                     else {
                       echo "No Other Documents.";
@@ -281,7 +293,7 @@
                 ?>
                 <br/>
                 <?php //if($uploadErrorOther != null) echo $uploadErrorOther;?>
-                <?php echo form_open_multipart('administrator_controller/uploadOtherDocuments');?>
+                <?php echo form_open_multipart('administrator_controller/uploadOtherDocuments?eID='.$myEmployer->employerID.'');?>
                   <input type="file" name="userfile" size="20" />
                   <br/>
                   <input type="submit" class="btn btn-default" value="Upload Other Documents" />
@@ -739,13 +751,13 @@
           <div class="panel-body">
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Company Name</label>
+              <label for="inputCompanyName" class="">Company Name</label>
                 <input type="text" value="<?php echo $myEmployer->companyName; ?>" class="editbox form-control" name="iCompanyName" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputIndustryType" class="control-label">Industry Type</label>
+              <label for="inputIndustryType" class="">Industry Type</label>
               <select id="iIndustryType" name="iIndustryType" class="editbox form-control" required>
                 <?php 
                   $industries = unserialize (INDUSTRY_LIST);
@@ -761,31 +773,31 @@
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputMailingAddress" class="control-label">Mailing Address</label>
+              <label for="inputMailingAddress" class="">Mailing Address</label>
               <input type="text" value="<?php echo $myEmployer->completeMailingAddress; ?>" class="editbox form-control" name="iCompleteMailingAddress" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputTelephoneAddress" class="control-label">Telephone Number</label>
+              <label for="inputTelephoneAddress" class="">Telephone Number</label>
               <input type="text" value="<?php echo $myEmployer->telephoneNumber; ?>" class="editbox form-control" name="iTelephoneNumber" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputFaxNumber" class="control-label">Fax Number</label>
+              <label for="inputFaxNumber" class="">Fax Number</label>
               <input type="text" value="<?php echo $myEmployer->faxNumber; ?>" class="editbox form-control" name="iFaxNumber" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputWebsite" class="control-label">Website</label>
+              <label for="inputWebsite" class="">Website</label>
               <input type="text" value="<?php echo $myEmployer->website; ?>" class="editbox form-control" name="iWebsite" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputDateEstablished" class="control-label">Date Established</label>
+              <label for="inputDateEstablished" class="">Date Established</label>
               <div class="input-group date">
                 <input type="text" id="trigger-datepicker" name="iDateEstablished" class="form-control" value="<?php echo $myEmployer->dateEstablished; ?>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
               </div>
@@ -793,7 +805,7 @@
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputHiring" class="control-label">Hiring</label>
+              <label for="inputHiring" class="">Hiring</label>
               <div class="radio">
                 <label>
                   <input type="radio" name="iHiring" id="iHiringYes" class="editbox" value = 1 <? if ($myEmployer->isHiring == 1) echo "checked";?> required /><span id="iHireYes" class="">Yes</span>
@@ -808,7 +820,7 @@
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputAllowanceProvision" class="control-label">Allowance Provision</label>
+              <label for="inputAllowanceProvision" class="">Allowance Provision</label>
               <div class="radio">
                 <label>
                   <input type="radio" name="iAllowance" id="iAllowanceYes" class="editbox" value = 1 <? if ($myEmployer->hasAllowanceProvision == 1) echo "checked";?> required /><span id="iAllowYes" class="">Yes</span>
@@ -823,7 +835,7 @@
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputOtherAvenuesForCollaboration" class="control-label">Other Avenues for Collaboration</label>
+              <label for="inputOtherAvenuesForCollaboration" class="">Other Avenues for Collaboration</label>
               <div class="checkbox">
                 <label>
                   <input type="checkbox" name="iHasScholarshipGrants" value=1 <? if ($myEmployer->hasScholarshipGrants == 1) echo "checked";?> /> Scholarship Grants

@@ -79,6 +79,85 @@ END$$
 -- END EDITS (tied to audit_log triggers)
 --
 
+
+DROP PROCEDURE IF EXISTS `updateSECRegistrationFilePath`$$
+DROP PROCEDURE IF EXISTS `updateOtherDocumentsFilePath`$$
+DROP PROCEDURE IF EXISTS `updateCompanyLogoFilePath`$$
+
+DROP PROCEDURE IF EXISTS `getCompanyName`$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateSECRegistrationFilePath`(IN `pEID` INT(11), IN `pFilePath` VARCHAR(255))
+    NO SQL
+UPDATE iOPS.employers e
+SET e.SECRegistrationFilePath = pFilePath
+WHERE e.employerID = pEID$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateOtherDocumentsFilePath`(IN `pEID` INT(11), IN `pFilePath` VARCHAR(255))
+UPDATE iOPS.employers e
+SET e.otherDocumentsFilePath = pFilePath
+WHERE e.employerID = pEID$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCompanyLogoFilePath`(IN `pEID` INT(11), IN `pFilePath` VARCHAR(255))
+UPDATE iOPS.employers e
+SET e.companyLogoFilePath = pFilePath
+WHERE e.employerID = pEID$$
+
+--
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateMyCompanyLogoFilePath`(IN `pUserName` VARCHAR(25), IN `pFilePath` VARCHAR(255))
+begin
+UPDATE iOPS.employers e
+LEFT JOIN iOPS.users_employers_students_administrators uesa
+	ON e.employerID = uesa.employerID
+LEFT JOIN iOPS.users u
+	ON uesa.userID = u.id
+SET e.companyLogoFilePath = pFilePath
+WHERE u.username = pUserName;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateMyOtherDocumentsFilePath`(IN `pUserName` VARCHAR(25), IN `pFilePath` VARCHAR(255))
+    NO SQL
+begin
+UPDATE iOPS.employers e
+LEFT JOIN iOPS.users_employers_students_administrators uesa
+	ON e.employerID = uesa.employerID
+LEFT JOIN iOPS.users u
+	ON uesa.userID = u.id
+SET e.otherDocumentsFilePath = pFilePath
+WHERE u.username = pUserName;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateMySECRegistrationFilePath`(IN `pUserName` VARCHAR(25), IN `pFilePath` VARCHAR(255))
+    NO SQL
+UPDATE iOPS.employers e
+LEFT JOIN iOPS.users_employers_students_administrators uesa
+	ON e.employerID = uesa.employerID
+LEFT JOIN iOPS.users u
+	ON uesa.userID = u.id
+SET e.SECRegistrationFilePath = pFilePath
+WHERE u.username = pUserName$$
+
+--
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getMyCompanyName`(IN `pUserName` VARCHAR(25))
+SELECT e.companyName
+
+FROM iOPS.employers e
+LEFT JOIN iOPS.users_employers_students_administrators uesa
+	ON e.employerID = uesa.employerID
+LEFT JOIN iOPS.users u
+	ON uesa.userID = u.id
+WHERE u.username like pUserName$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyName`(IN `pEID` INT(11))
+SELECT e.companyName
+FROM iOPS.employers e
+WHERE e.employerID like pEID$$
+--
+--
+--
+
 DROP PROCEDURE IF EXISTS `viewMyAffiliatedEmployees`$$
 
 
@@ -617,17 +696,6 @@ BEGIN
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCompanyLogoFilePath`(IN `pUserName` VARCHAR(25), IN `pFilePath` VARCHAR(255))
-begin
-UPDATE iOPS.employers e
-LEFT JOIN iOPS.users_employers_students_administrators uesa
-	ON e.employerID = uesa.employerID
-LEFT JOIN iOPS.users u
-	ON uesa.userID = u.id
-SET e.companyLogoFilePath = pFilePath
-WHERE u.username = pUserName;
-end$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateEmployer`(IN `pCompanyName` VARCHAR(255), IN `pIndustryType` VARCHAR(255), IN `pIsHiring` TINYINT(1), IN `pCompleteMailingAddress` VARCHAR(255), IN `pTelephoneNumber` VARCHAR(60), IN `pFaxNumber` VARCHAR(60), IN `pWebsite` VARCHAR(255), IN `pDateEstablished` DATE, IN `pHasScholarshipGrants` TINYINT(1), IN `pHasSeminarsAndTrainings` TINYINT(1), IN `pHasRecruitmentActivities` TINYINT(1), IN `pHasAllowanceProvision` TINYINT(1), IN `pHasFacultyImmersion` TINYINT(1), IN `pEmployerID` INT(21))
 begin
 UPDATE iOPS.employers e
@@ -688,18 +756,6 @@ SET e.`companyName` = pCompanyName
 WHERE u.`username` = pUserName;
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateOtherDocumentsFilePath`(IN `pUserName` VARCHAR(25), IN `pFilePath` VARCHAR(255))
-    NO SQL
-begin
-UPDATE iOPS.employers e
-LEFT JOIN iOPS.users_employers_students_administrators uesa
-	ON e.employerID = uesa.employerID
-LEFT JOIN iOPS.users u
-	ON uesa.userID = u.id
-SET e.otherDocumentsFilePath = pFilePath
-WHERE u.username = pUserName;
-end$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateRepresentative`(IN `pUserName` VARCHAR(25), IN `pFirstName` VARCHAR(50), IN `pMiddleName` VARCHAR(50), IN `pLastName` VARCHAR(50), IN `pPosition` VARCHAR(50), IN `pTelephone` VARCHAR(60), IN `pMobile` VARCHAR(60), IN `pEmail` VARCHAR(64), IN `pDateOfBirth` DATE)
 UPDATE `iOPS`.`users` 
 SET `position` = pPosition
@@ -711,16 +767,6 @@ SET `position` = pPosition
 , `mobile` = pMobile
 , `date_of_birth` = pDateOfBirth
 WHERE `users`.`username` like pUserName$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateSECRegistrationFilePath`(IN `pUserName` VARCHAR(25), IN `pFilePath` VARCHAR(255))
-    NO SQL
-UPDATE iOPS.employers e
-LEFT JOIN iOPS.users_employers_students_administrators uesa
-	ON e.employerID = uesa.employerID
-LEFT JOIN iOPS.users u
-	ON uesa.userID = u.id
-SET e.SECRegistrationFilePath = pFilePath
-WHERE u.username = pUserName$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateUser`(IN `pUserName` VARCHAR(25), IN `pFirstName` VARCHAR(50), IN `pMiddleName` VARCHAR(50), IN `pLastName` VARCHAR(50), IN `pPosition` VARCHAR(50), IN `pTelephone` VARCHAR(60), IN `pMobile` VARCHAR(60), IN `pEmail` VARCHAR(64), IN `pDateOfBirth` DATE)
 UPDATE `iOPS`.`users` 
