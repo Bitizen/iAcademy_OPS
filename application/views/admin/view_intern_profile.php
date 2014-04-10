@@ -1,6 +1,10 @@
 
+  <div class="col-lg-10 col-lg-offset-1">
+    <a id="editInternProfile" class="btn btn-info">Edit Profile</a>
+  </div>
+
   <div id="viewInternProfileDiv" class="col-lg-10 col-lg-offset-1">
-    <legend>Intern Profile <img id="editInternProfile" src="<?php echo base_url();?>assets/images/edit.png" alt="Edit Intern Profile" width="25" height="25" /></legend>
+    <legend>Intern Profile</legend>
 
     <ul class="nav nav-tabs" style="margin-bottom: 15px;">
       <li class="active"><a href="#personal_information" data-toggle="tab">Personal Information</a></li>
@@ -157,38 +161,38 @@
         <form class="form-horizontal" action="<?php echo base_url();?>index.php/administrator_controller/updateIntern?sID=<?php echo $myIntern->studentID;?>" method="POST">
         <fieldset>
           
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">Personal Information</h3>
           </div>
           <div class="panel-body">
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">First Name</label>
+                <label for="inputCompanyName" class="">First Name</label>
                 <input type="text" value="<?php echo $myIntern->firstName; ?>" class="editbox form-control" name="iFirstName" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">Middle Name</label>
+                <label for="inputCompanyName" class="">Middle Name</label>
                 <input type="text" value="<?php echo $myIntern->middleName; ?>" class="editbox form-control" name="iMiddleName" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">Last Name</label>
+                <label for="inputCompanyName" class="">Last Name</label>
                 <input type="text" value="<?php echo $myIntern->lastName; ?>" class="editbox form-control" name="iLastName" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-                <label for="inputCompanyName" class="control-label">Address</label>
+                <label for="inputCompanyName" class="">Address</label>
                 <input type="text" value="<?php echo $myIntern->address; ?>" class="editbox form-control" name="iAddress" size="20" />
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputHiring" class="control-label">Verified</label>
+              <label for="inputHiring" class="">Verified</label>
               <div class="radio">
                 <label>
                   <input type="radio" name="iIsVerified" id="iVerifiedYes" class="editbox" value = 1 <? if ($myIntern->isVerified == 1) echo "checked";?> required /><span id="iVYes" class="">Yes</span>
@@ -206,26 +210,26 @@
         <!-- END PERSONAL INFORMATION -->
 
         <!-- CONTACT DETAILS -->
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">Contact Details</h3>
           </div>
           <div class="panel-body">
             <div class="form-group">
             <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Telephone Number</label>
+              <label for="inputCompanyName" class="">Telephone Number</label>
               <input type="text" value="<?php echo $myIntern->landline; ?>" class="editbox form-control" name="iLandline" size="20" />
               </div>
             </div>
             <div class="form-group">
             <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Mobile Number</label>
+              <label for="inputCompanyName" class="">Mobile Number</label>
               <input type="text" value="<?php echo $myIntern->mobile; ?>" class="editbox form-control" name="iMobile" size="20" />
               </div>
             </div>
             <div class="form-group">
             <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Email</label>
+              <label for="inputCompanyName" class="">Email</label>
               <input type="text" value="<?php echo $myIntern->emailAddress; ?>" class="editbox form-control" name="iEmail" size="20" />
               </div>
             </div>
@@ -234,14 +238,14 @@
         <!-- END CONTACT DETAILS -->  
 
         <!-- STUDENT INFORMATION -->
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">Student Information</h3>
           </div>
           <div class="panel-body">
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputCourse" class="control-label">Course</label>
+              <label for="inputCourse" class="">Course</label>
               <select id="iCourseID" name="iCourseID" class="editbox form-control" required>
                 <?php 
                   $i=0;
@@ -252,7 +256,7 @@
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputStatus" class="control-label">Internship Status</label>
+              <label for="inputStatus" class="">Internship Status</label>
               <select id="iStatusID" name="iStatusID" class="editbox form-control" required>
                 <?php 
                   $i=0;
@@ -264,7 +268,7 @@
             </div>
             <div class="form-group">
               <div class="col-lg-10">
-              <label for="inputCompany" class="control-label">Current Company</label> 
+              <label for="inputCompany" class="">Current Company</label> 
               <select id="iCurrentCompanyID" name="iCurrentCompanyID" class="editbox form-control">
               <?php foreach ($myCompanyNames as $company) { ?><? echo $company->companyName;?>
                 <option value = <? echo $company->employerID; ?> <? if ($myIntern->currentEmployerID == $company->employerID) echo "selected='selected'";?>> <? echo $company->companyName;?> </option>
@@ -274,7 +278,7 @@
             </div>
             <div class="form-group">
             <div class="col-lg-10">
-              <label for="inputCompanyName" class="control-label">Availability</label>
+              <label for="inputCompanyName" class="">Availability</label>
               <input type="text" value="<?php echo $myIntern->availability; ?>" class="editbox form-control" name="iAvailability" size="20" />
               </div>
             </div>

@@ -1,3 +1,4 @@
+<script type="text/javascript" language="javascript" src="<?php echo base_url();?>assets/js/jquery-1.7.2.js"></script>
 
 <!-- START SCRIPTS -->
 <script>
@@ -294,6 +295,11 @@
       <!-- End Documents -->
       <!-- Start Representatives -->
       <div class="tab-pane fade" id="representatives">
+
+      <?php 
+        $contactSlots = 0;
+      ?>
+
         <!-- PRIMAY CONTACY -->
         <?php if($myEmployerContacts['first']->first_name != null && $myEmployerContacts['first']->first_name != "") { ?>
         <div class="panel panel-info">
@@ -327,7 +333,11 @@
             </table>
           </div>
         </div>
-        <?php } ?>
+        <?php } 
+        else {
+          $contactSlots += 1;
+        }
+        ?>
         <!-- END PRIMARY CONTACT-->
 
         <!-- SECONDARY CONTACY -->
@@ -365,7 +375,11 @@
             </table>
           </div>
         </div>
-        <?php } ?>
+        <?php }
+        else {
+          $contactSlots += 1;
+        }
+        ?>
         <!-- END SECONDARY CONTACT-->
 
         <!-- TERTIARY CONTACY -->
@@ -403,8 +417,17 @@
             </table>
           </div>
         </div>
-        <?php } ?>
+        <?php }
+        else {
+          $contactSlots += 1;
+        }
+        ?>
         <!-- END TERTIARY CONTACT-->
+
+      <?php if($contactSlots > 0){
+          echo '<a id="addContactBtn" class="btn btn-info">Add Contact</a>';
+      }?>
+
       </div>
       <!-- End Representatives -->
       <!-- Start Affiliates -->
@@ -570,6 +593,132 @@
     </div>
     <!-- End Tab Contents -->
   </div>
+
+
+
+
+<!-- START ADD CONTACT MODAL -->
+<div id="addContactDiv" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Contact</h4>
+      </div>
+      <div class="modal-body">
+      <!-- ADD CONTACT FORM -->
+      <form action="<?php echo base_url();?>index.php/administrator_controller/addRepresentative" method="post" 
+            class="form-horizontal" accept-charset="utf-8" onSubmit="return confirm('Are you sure?')">
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Basic Info</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="first_name" class="col-lg-3 control-label">First Name:</label>
+            <div class="col-lg-8">
+            <input type="text" name="first_name" value="" id="first_name" class="form-control input-sm" required />
+             </div>
+          </div>
+
+
+          <div class="form-group">   
+            <label for="middle_name" class="col-lg-3 control-label">Middle Name:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="middle_name" value="" id="middle_name" class="form-control input-sm" required />
+            </div>
+          </div>
+
+          <div class="form-group">     
+            <label for="last_name" class="col-lg-3 control-label">Last Name:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="last_name" value="" id="last_name"  class="form-control input-sm"required />    
+            </div>
+          </div>
+
+
+           <div class="form-group">
+            <label for="position" class="col-lg-3 control-label">Position:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="position" value="" id="position" class="form-control input-sm" required/>     
+            </div>
+          </div>
+
+
+           <div class="form-group">
+            <label for="landline" class="col-lg-3 control-label">Phone:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="landline" value="" id="landline" class="form-control input-sm"  required/>    
+            </div>
+          </div>      
+
+           <div class="form-group">
+            <label for="mobile" class="col-lg-3 control-label">Mobile:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="mobile" value="" id="mobile" class="form-control input-sm" />
+            </div>
+           </div> 
+
+            <div class="form-group">
+              <label for="dateOfBirth" class="col-lg-3 control-label">Date Of Birth:</label>
+              <div class="col-lg-8">
+                <input type="text" id="trigger-datepicker" name="dateOfBirth" class="form-control input-sm" ><!--<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>-->
+              </div>
+            </div>
+       </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Account info</h3>
+        </div>
+        <div class="panel-body">
+           <div class="form-group">
+            <label for="email" class="col-lg-3 control-label">Email:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="email" value="" id="email" class="form-control input-sm"  required/>   
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="username" class="col-lg-3 control-label">Username:</label>            
+            <div class="col-lg-8">
+              <input type="text" name="username" value="" id="username" class="form-control input-sm" required/>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="password" class="col-lg-3 control-label">Password:</label>            
+            <div class="col-lg-8">
+              <input type="password" name="password" value="" id="password" class="form-control input-sm" required/>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="password_confirm" class="col-lg-3 control-label">Confirm Password:</label>            
+            <div class="col-lg-8">
+              <input type="password" name="password_confirm" value="" id="password_confirm" class="form-control input-sm" required/>
+            </div>
+          </div>
+       </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password_confirm" class="col-lg-8 control-label"></label>            
+      </div>
+
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add Contact</button>
+     </div>
+    </form>    
+      <!-- END ADD CONTACT FORM -->
+    </div>
+  </div>
+</div>
+</div>
+<!-- END ADD CONTACT MODAL -->
 
 <!-- Start Update Company Profile -->
 <div class="modal fade" id="dialog-edit-company-profile" >
